@@ -288,6 +288,157 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/15/20210115/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="花间一壶酒">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/01/15/20210115/" itemprop="url">（HCTF 2018）WarmUp</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-01-15T17:17:45+08:00">
+                2021-01-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/web/" itemprop="url" rel="index">
+                    <span itemprop="name">web</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="HCTF-2018-WarmUp"><a href="#HCTF-2018-WarmUp" class="headerlink" title="[HCTF 2018]WarmUp"></a>[HCTF 2018]WarmUp</h2><p>PHP 代码审计<br><img src="https://img-blog.csdnimg.cn/20210115190647696.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">打开题目，查看源代码<br><img src="https://img-blog.csdnimg.cn/2021011519062779.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">发现<code>source.php</code>进入<br><img src="https://img-blog.csdnimg.cn/20210115191146718.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">发现<code>hint.php</code>进入<br><img src="https://img-blog.csdnimg.cn/20210115191242938.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">得知flag在ffffllllaaaagggg里<br>返回<code>source.php</code>，粗略的看了一下整体代码，发现是白名单验证，文件包含只能包含<code>source.php</code>和<code>hint.php</code>看下主要的，首先file不能为空，file必须是字符串，还要通过checkFile()函数的检查，才能够包含。<br>参考<a target="_blank" rel="noopener" href="https://www.cnblogs.com/leixiao-/p/10265150.html">phpmyadmin 4.8.1的一个远程文件包含的漏洞</a></p>
+<p>checkFile()函数：</p>
+<pre><code>    一开始设立了一个白名单，包括两个文件名source.php和hint.php。然后会进行3次白名单的判断，只要成功一次算通过白名单。
+    第一次判断，没有进行任何操作，直接拿输入的值来进行白名单判断。
+    第二次判断，是取输入的值第一个?号前面的字符串来进行白名单判断。
+    第三次判断，是取输入的值进行URL编码的解码，然后和第二次判断你的操作一样，取解码后的字符串的第一个?号前面的内容来进行白名单判断。
+</code></pre>
+<p><a target="_blank" rel="noopener" href="https://www.php.net/manual/zh/function.mb-substr.php"><code>mb_substr</code></a></p>
+<p><a target="_blank" rel="noopener" href="https://www.php.net/manual/zh/function.mb-strpos.php"><code>mb_strpos</code></a></p>
+<p>payload：<code>?file=hint.php?/../../../../ffffllllaaaagggg</code><br>因为本身浏览器解析的时候会进行URL的解码。所以我们需要对参数进行两次的URL编码。需要编码的其实也只有?这个字符。<code>?</code>第一从URL编码为<code>%3f</code>，将<code>%</code>再编码一次为<code>%25</code>。所以合起来<code>?</code>两次URL编码为<code>%253f</code>。<br><code>?file=source.php%253f/../../../../../../ffffllllaaaagggg</code><br>得到flag<br><img src="https://img-blog.csdnimg.cn/20210115193325204.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://example.com/2020/12/07/SSRF(CTFHub)(1)/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1437,7 +1588,7 @@
               
                 <a href="/archives%7C%7C%20archive">
               
-                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-count">38</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
