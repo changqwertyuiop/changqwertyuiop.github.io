@@ -288,6 +288,150 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/20/20210120/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="花间一壶酒">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/01/20/20210120/" itemprop="url">（ACTF2020 新生赛）BackupFile</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-01-20T17:17:45+08:00">
+                2021-01-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/web/" itemprop="url" rel="index">
+                    <span itemprop="name">web</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="ACTF2020-新生赛-BackupFile"><a href="#ACTF2020-新生赛-BackupFile" class="headerlink" title="[ACTF2020 新生赛]BackupFile"></a>[ACTF2020 新生赛]BackupFile</h2><p><img src="https://img-blog.csdnimg.cn/20210120212356824.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">由题目可知是查备份文件，扫描目录</p>
+<p><img src="https://img-blog.csdnimg.cn/20210120212601631.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">发现index.php.bak有响应<br><img src="https://img-blog.csdnimg.cn/20210120212754280.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">保存打开文件发现</p>
+<p><img src="https://img-blog.csdnimg.cn/20210120212859592.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">php的==在比较时字符串和数字进行比较时，会先将<a target="_blank" rel="noopener" href="https://www.cnblogs.com/kenshinobiy/p/4371416.html">字符串转换成数字</a>再进行比较<br>即是<code>?key=123</code>得到flag<br><img src="https://img-blog.csdnimg.cn/20210120213045993.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/19/20210119/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1687,156 +1831,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/11/28/php%E5%8F%98%E9%87%8F%E8%A6%86%E7%9B%96/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="花间一壶酒">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/11/28/php%E5%8F%98%E9%87%8F%E8%A6%86%E7%9B%96/" itemprop="url">php变量覆盖</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-11-28T16:47:45+08:00">
-                2020-11-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/web/" itemprop="url" rel="index">
-                    <span itemprop="name">web</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_40657585/article/details/83545051">https://blog.csdn.net/qq_40657585/article/details/83545051</a></p>
-<h1 id="extract-漏洞"><a href="#extract-漏洞" class="headerlink" title="extract 漏洞"></a>extract 漏洞</h1><p><img src="https://img-blog.csdnimg.cn/20201127231919826.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">extract()函数<br><img src="https://img-blog.csdnimg.cn/2020112723235148.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><img src="https://img-blog.csdnimg.cn/20201127233628583.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<p>extract()漏洞</p>
-<p><img src="https://img-blog.csdnimg.cn/20201127232445879.png" alt="在这里插入图片描述">extract()函数引入变量，当冲突的时候，会引入新的变量，意思也就是覆盖原来的变量。</p>
-<p>数组中有同名元素的时候，会覆盖。</p>
-<p>extract()  获得一个get值是liwu。content从flag里获得一个去空的flag字符串。如果相等，输出flag。</p>
-<p>构造?liwu=&amp;flag=</p>
-<p><img src="https://img-blog.csdnimg.cn/20201127232853534.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">flag{s0metimes^its-useful}</p>
-<h1 id="漏洞"><a href="#漏洞" class="headerlink" title="$$漏洞"></a>$$漏洞</h1><p><img src="https://img-blog.csdnimg.cn/20201127233915736.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/2020112723404853.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">由于第8，12-15行间的代码会将$ flag的值给覆盖掉，所以只能利用第一个foreach先将$ flag的值赋给$ _200，然后利用die($ _200)将原本的flag值打印出来。<br><img src="https://img-blog.csdnimg.cn/20201127234546336.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">flag{Variable_coverage_is_interesting}</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1887,7 +1881,7 @@
               
                 <a href="/archives%7C%7C%20archive">
               
-                  <span class="site-state-item-count">52</span>
+                  <span class="site-state-item-count">53</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1909,7 +1903,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">75</span>
+                  <span class="site-state-item-count">76</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

