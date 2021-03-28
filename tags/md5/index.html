@@ -85,7 +85,7 @@
 <meta name="description" content="……恍如隙中驹，石中火，梦中身……">
 <meta property="og:type" content="website">
 <meta property="og:title" content="花间一壶酒">
-<meta property="og:url" content="http://example.com/tags/md5/index.html">
+<meta property="og:url" content="http://example.com/tags/MD5/index.html">
 <meta property="og:site_name" content="花间一壶酒">
 <meta property="og:description" content="……恍如隙中驹，石中火，梦中身……">
 <meta property="og:locale">
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://example.com/tags/md5/"/>
+  <link rel="canonical" href="http://example.com/tags/MD5/"/>
 
 
 
 
 
-  <title>标签: md5 | 花间一壶酒</title>
+  <title>标签: MD5 | 花间一壶酒</title>
   
 
 
@@ -280,7 +280,7 @@
 
     <div id="posts" class="posts-collapse">
       <div class="collection-title">
-        <h1>md5<small>标签</small>
+        <h1>MD5<small>标签</small>
         </h1>
       </div>
 
@@ -292,37 +292,9 @@
 
       <h2 class="post-title">
         
-            <a class="post-title-link" href="/2021/02/24/20210224/" itemprop="url">
+            <a class="post-title-link" href="/2021/03/24/20210324/" itemprop="url">
               
-                <span itemprop="name">（护网杯 2018）easy_tornado</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2021-02-24T17:17:45+08:00"
-              content="2021-02-24" >
-          02-24
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2021/02/22/20210222/" itemprop="url">
-              
-                <span itemprop="name">（BJDCTF2020）Easy MD5</span>
+                <span itemprop="name">BUU CODE REVIEW 1</span>
               
             </a>
         
@@ -330,37 +302,9 @@
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
-              datetime="2021-02-22T17:17:45+08:00"
-              content="2021-02-22" >
-          02-22
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2021/02/02/20210202/" itemprop="url">
-              
-                <span itemprop="name">（MRCTF2020）Ez_bypass</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2021-02-02T17:17:45+08:00"
-              content="2021-02-02" >
-          02-02
+              datetime="2021-03-24T22:17:45+08:00"
+              content="2021-03-24" >
+          03-24
         </time>
       </div>
 
@@ -420,7 +364,7 @@
               
                 <a href="/archives%7C%7C%20archive">
               
-                  <span class="site-state-item-count">53</span>
+                  <span class="site-state-item-count">59</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -442,7 +386,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">76</span>
+                  <span class="site-state-item-count">87</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -943,6 +887,64 @@
           }
 
           // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+
+
+<script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true}});</script></body>
+</html>
+ding animation
           $(".local-search-pop-overlay").remove();
           $('body').css('overflow', '');
 
