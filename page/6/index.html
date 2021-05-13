@@ -82,12 +82,12 @@
 
 
 
-<meta name="description" content="人之所以能是相信能。">
+<meta name="description" content="人之所以能是因为相信能。">
 <meta property="og:type" content="website">
 <meta property="og:title" content="花间一壶酒">
 <meta property="og:url" content="http://example.com/page/6/index.html">
 <meta property="og:site_name" content="花间一壶酒">
-<meta property="og:description" content="人之所以能是相信能。">
+<meta property="og:description" content="人之所以能是因为相信能。">
 <meta property="og:locale">
 <meta property="article:author" content="徐行之">
 <meta name="twitter:card" content="summary">
@@ -162,7 +162,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle">人之所以能是相信能。</p>
+        <p class="site-subtitle">人之所以能是因为相信能。</p>
       
   </div>
 
@@ -537,8 +537,13 @@ php的==在比较时字符串和数字进行比较时，会先将字符串转换
         
           
           [ACTF2020 新生赛]Exec随意ping一下尝试一下获取flag 127.0.0.1&amp;cat /flag
-[SUCTF 2019]EasySQL有题目可知是SQL堆叠注入，查库查表发现flag，查flag，1;show columns from Flag;MySQL中sql_mode
-          ...
+[SUCTF 2019]EasySQL有题目可知是SQL堆叠注入，查库查表发现flag，查flag，1;show columns from Flag;MySQL中sql_mode参数
+修改sql_mode，将其设置为PIPES_AS_CONCAT，作用是将”||”作为字符串连接符而非或运算符，修改后实际语句为SELECT 1;set sql_mode=PIPES_AS_CONCAT;SELECT 1 || flag FROM Flag
+11;set sql_mode&#x3D;PIPES_AS_CONCAT;SELECT 1
+
+
+
+          
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2021/01/19/20210119/#more" rel="contents">
@@ -691,6 +696,10 @@ php的==在比较时字符串和数字进行比较时，会先将字符串转换
           
           [ACTF2020 新生赛]Include点开tips，发现存在flag.php，即php伪协议读取
 1?file&#x3D;php:&#x2F;&#x2F;filter&#x2F;read&#x3D;convert.base64-encode&#x2F;resource&#x3D;flag.php
+得到flagbase64转码得到flag
+[极客大挑战 2019]Secret File查看源码，发现/Archive_room.php打开SECRET，发现已经结束了bp抓包发现一个/action.php ，send to repeater 后得到一个  /secr3t.php回到浏览器，打开，发现flag放在了flag.php里，打开/flag.php发现
+则在/secr3t.php中伪协议读取，
+1?file&#x3D;php:&#x2F;&#x2F;filter&#x2F;read&#x3D;convert.base64-encode&#x2F;resource&#x3D;flag.
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -997,7 +1006,8 @@ php的==在比较时字符串和数字进行比较时，会先将字符串转换
         
           
           [强网杯 2019]随便注测试 1&#39;or 1=1 # ,初步判定存在SQL注入。
-再测试字段数，到3时报错，说明字段数为2.1&#39; order by 1 # 接着尝试union注入,回显了过滤的关键字。1&#39; union select 1,2#堆叠注入在SQL中，分号;是用来表示
+再测试字段数，到3时报错，说明字段数为2.1&#39; order by 1 # 接着尝试union注入,回显了过滤的关键字。1&#39; union select 1,2#堆叠注入在SQL中，分号;是用来表示一条sql语句的结束，通过 ; 号注入多条SQL语句。 
+先通过show databases爆出数据库。0&#39;; show databases; #然后用 show tables 尝试爆表。0&#39;; show tables; #words 表：1&#39;; show columns from words; #表名为数字时，要用反引号包起来查询。1919810931114514表： 1&#39;; show columns from 1919810931114514; #发现里面有flag字段 ，但是因为这里有两张表，回显内容肯定是从words这张表回显的，所以我们要想办法让191
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1149,7 +1159,12 @@ php的==在比较时字符串和数字进行比较时，会先将字符串转换
       
         
           
-          [HCTF 2018]WarmUpPHP 代码审计打开题目，查看源代码发现source.php进入发现hint.php进入得知flag在ffffllllaaaagggg里返回source.php，粗略的看了一下整体代码，发现是白名单验证，文件包含只能包含source.php和hint.php看下主要
+          [HCTF 2018]WarmUpPHP 代码审计打开题目，查看源代码发现source.php进入发现hint.php进入得知flag在ffffllllaaaagggg里返回source.php，粗略的看了一下整体代码，发现是白名单验证，文件包含只能包含source.php和hint.php看下主要的，首先file不能为空，file必须是字符串，还要通过checkFile()函数的检查，才能够包含。参考phpmyadmin 4.8.1的一个远程文件包含的漏洞
+checkFile()函数：
+    一开始设立了一个白名单，包括两个文件名source.php和hint.php。然后会进行3次白名单的判断，只要成功一次算通过白名单。
+    第一次判断，没有进行任何操作，直接拿输入的值来进行白名单判断。
+    第二次判断，是取输入的值第一个?号前面的字符串来进行白名单判断。
+    第三次判断，是取输入的值进行URL编码的解码，然后和第二次判断你的操作一样，取解码后的字符串的第一个?号前面的
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1302,7 +1317,15 @@ php的==在比较时字符串和数字进行比较时，会先将字符串转换
         
           
           SSRFSSRF(Server-Side Request Forgery:服务器端请求伪造) 是一种由攻击者构造形成由服务端发起请求的一个安全漏洞。
-SSRF 形成的原因：大都是由于服务端提供了从其他服务器应用获取数据的功能，且没有对目标地址做过滤与限制。比如从指定URL地址获取网页文本内容，加载指
+SSRF 形成的原因：大都是由于服务端提供了从其他服务器应用获取数据的功能，且没有对目标地址做过滤与限制。比如从指定URL地址获取网页文本内容，加载指定地址的图片，文档，等等。
+也就是说，对于为服务器提供服务的其他应用没有对访问进行限制，如果我构造好我的访问包，那我就有可能利用目标服务对他的其他服务器应用进行调用。
+一般情况下，SSRF攻击的目标是从外网无法访问的内部系统。（正是因为它是由服务端发起的，所以它能够请求到与它相连而与外网隔离的内部系统）。
+内网访问发现
+根据题目意思，让我们如访问内网的flag.php输入127.0.0.1/flag.php ，得到flag
+也可抓包进行访问，即可得到flag
+
+伪协议读取文件根据题目的意思我们需要使用URL的伪协议去读取文件，那么我们首先要了解URL的伪协议。
+URL伪协议有如下这些：file
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1456,8 +1479,10 @@ SSRF 形成的原因：大都是由于服务端提供了从其他服务器应用
           
           SSRF参考：
 当PHP的 file_get_contents() 函数在遇到不认识的伪协议头时候会将伪协议头当做文件夹，造成目录穿越漏洞，这时候只需不断往上跳转目录即可读到根目录的文件。这个方法可以在SSRF的众多协议被ban的情况下来进行读取文件
-本题要求?url=_参数中要有dotnet.co
-          ...
+本题要求?url=_参数中要有dotnet.com，flag在/flag中，而且过滤了php|file|zip|bzip|zlib|base|data，导致很多协议用不了。
+php遇到不认识的协议就会当目录处理?url=0://dotnet.com/../../../../../../../../flag或者?url=1emon://dotnet.com/../../../../../../../../flagflag{what’s the matter with y0u}
+
+          
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2020/12/06/SSRF/#more" rel="contents">
@@ -1608,7 +1633,10 @@ SSRF 形成的原因：大都是由于服务端提供了从其他服务器应用
       
         
           
-          php://filter可以说这是最常使用的一个伪协议，一般可以利用进行任意文件读取。php://filter 是一种元封装器， 设计用于数据流打开时的筛选过滤应用。 这对于一体式（all-in-one）的文件函数非常有用，类似 readfile()、 file() 和 file_get_conte
+          php://filter可以说这是最常使用的一个伪协议，一般可以利用进行任意文件读取。php://filter 是一种元封装器， 设计用于数据流打开时的筛选过滤应用。 这对于一体式（all-in-one）的文件函数非常有用，类似 readfile()、 file() 和 file_get_contents()， 在数据流内容读取之前没有机会应用其他过滤器。php://filter 参数封装协议摘要（针对 php://filter，参考被筛选的封装器。）
+伪协议1?file=php://filter/read=convert.base64-encode/resource=flag由题preg_match()函数过滤条件知道，过滤了php，base，但不区分大小写，因此?file=pHp://filter/read=convert.bAse64-encode/resource=flag
+解码得到flag：
+123&lt;?phpflag&#123;0f28b5d49b3020afeecd95
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1738,8 +1766,21 @@ SSRF 形成的原因：大都是由于服务端提供了从其他服务器应用
       
         
           
-          Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in 
-          ...
+          Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
+Quick StartCreate a new post1$ hexo new &quot;My New Post&quot;
+
+More info: Writing
+Run server1$ hexo server
+
+More info: Server
+Generate static files1$ hexo generate
+
+More info: Generating
+Deploy to remote sites1$ hexo deploy
+
+More info: Deployment
+
+          
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2020/11/28/hello-world/#more" rel="contents">

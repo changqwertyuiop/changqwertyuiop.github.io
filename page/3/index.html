@@ -82,12 +82,12 @@
 
 
 
-<meta name="description" content="人之所以能是相信能。">
+<meta name="description" content="人之所以能是因为相信能。">
 <meta property="og:type" content="website">
 <meta property="og:title" content="花间一壶酒">
 <meta property="og:url" content="http://example.com/page/3/index.html">
 <meta property="og:site_name" content="花间一壶酒">
-<meta property="og:description" content="人之所以能是相信能。">
+<meta property="og:description" content="人之所以能是因为相信能。">
 <meta property="og:locale">
 <meta property="article:author" content="徐行之">
 <meta name="twitter:card" content="summary">
@@ -162,7 +162,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle">人之所以能是相信能。</p>
+        <p class="site-subtitle">人之所以能是因为相信能。</p>
       
   </div>
 
@@ -548,7 +548,10 @@
 猜测可能是传参时存在金额参数或者cookie中，使用BurpSuite抓取数据包：
 
 其中item应该为商品序号，获取到其中的session：
-1sess
+1session=eyJiYWxhbmNlIjoxMzM2LCJwdXJjaGFzZXMiOltdfQ.YE130g.YeAlrt_D3MkU1cOH6Q_Agy4YFX0
+
+使用Python脚本解密session：
+12345678910111213141516171819202122232425262728293031323334import sysimport zlibfrom base64 import b64decodefrom flask.sessions import session_json_serializerfrom itsdangerous import base64_decode
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -700,7 +703,12 @@
       
         
           
-          ctfhub-web-XSS-反射型相关知识123456789101112131415161718跨站脚本攻击XSS   XSS允许恶意web用户将代码植入到提供给其它用户使用的页面中。特点：    能注入恶意的HTML/JavaScript代码到用户浏览器网址上，从而劫持会话。类型：    DOM
+          ctfhub-web-XSS-反射型相关知识123456789101112131415161718跨站脚本攻击XSS   XSS允许恶意web用户将代码植入到提供给其它用户使用的页面中。特点：    能注入恶意的HTML/JavaScript代码到用户浏览器网址上，从而劫持会话。类型：    DOM型。属于反射型的一种，利用非法输入来闭合对应的html标签。数据流向是URL→浏览器。    存储型。危害大。相关源代码存放于服务器，用户浏览该页面时触发代码执行。    反射型。需要攻击者提前构造一个恶意链接来诱使客户点击。   防御：    输入验证。    数据消毒，过滤有害输入，如&lt;&gt; ’ &quot; # &amp; JavaScript expression等。    黑名单，过滤可能造成危害的符号及标签    白名单：仅允许执行特定格式的语法。
+题解
+第一个输入框输入内容与下面Hello后的内容相同，即可以通过该输入，改变页面内容。
+
+进行测试：
+1&lt;scrip
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -855,7 +863,12 @@
           [护网杯 2018]easy_tornado分别查看
 123/flag.txt/welcome.txt/hints.txt
 
-123456789文件内容/flag.txtflag in /fllllllllllllag/welcome.txtrender/hints.txtmd5(cookie_se
+123456789文件内容/flag.txtflag in /fllllllllllllag/welcome.txtrender/hints.txtmd5(cookie_secret+md5(filename))
+
+1234tornado是一个python的模板，可能会产生SSTI注入漏洞flag在/fllllllllllllag中render是python中的一个渲染函数，也就是一种模板，通过调用的参数不同，生成不同的网页可以推断出filehash的值为md5(cookie_secret+md5(filename))
+
+1/error?msg=Error
+通过handler.settings对象获取cookie_secret的值，即：handler指向RequestHandlerRequestHandler.settings指向self.application.
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1007,7 +1020,7 @@
       
         
           
-          Less-8 GET - Blind - Boolian Based - Single Quotes (布尔型单引号GET盲注）参考：https://blog.csdn.net/szlg510027010/article/details/107171100?ops_request_misc=%257
+          Less-8 GET - Blind - Boolian Based - Single Quotes (布尔型单引号GET盲注）参考：https://blog.csdn.net/szlg510027010/article/details/107171100?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522161406528516780265468031%2522%252C%2522scm%2522%253A%252220140713.130102334.pc%255Fblog.%2522%257D&amp;request_id=161406528516780265468031&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2blogfirst_rank_v1~rank_blog_v1-8-107171100.pc_v1_rank_
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1159,7 +1172,13 @@
       
         
           
-          [BJDCTF2020]Easy MD5参考：MD5加密下的SQL注入sql注入：md5($password,true)输入1，提交查询。发现leveldo4.phpbp抓包请求头里面有Hint: select * from &#39;admin&#39; where password=md5($p
+          [BJDCTF2020]Easy MD5参考：MD5加密下的SQL注入sql注入：md5($password,true)输入1，提交查询。发现leveldo4.phpbp抓包请求头里面有Hint: select * from &#39;admin&#39; where password=md5($pass,true)
+1?password=ffifdyop
+比较特殊的字符串–ffifdyop所以 
+1select * from ‘admin’ where password=md5(‘ffifdyop’,true)
+所以直接输入 ffifdyop 就可以通过,万能密码。
+指路到/levels91.php查看源码
+1234567&lt;!--$a = $GET[&#x27;a&#x27;];$b = $_GET[&#x27;b&#x27;];if($a != $b &amp;&amp; md5($a) == md5($b))&#123;    // wow, glzjin wants a g
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1317,7 +1336,12 @@
 去源码里看一下，
 1?id=1&#x27;)) or 1=1 --+
 
-查
+查询列数：?id=1&#39;)) order by 3 --+
+绝对路径这里因为不知道具体的绝对路径，所以返回第一关去看一下
+1Less-1/?id=-1%27%20union%20select%20null,@@datadir,@@basedir%20%23
+
+时间盲注脚本（参考）使用脚本的sleep函数时间自行控制，因为不同服务器的响应时间不同，sleep时间越久，越准确。因为若sleep时间短了，有可能因为本身服务器响应较慢导致爆破出来的值错误。
+1234567891011121314151617181920212223import requestsimport timeflag = &
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1471,7 +1495,15 @@
           
           Less-5 GET - Double Injection - Single Quotes - String (双注入GET单引号字符型注入)参考：SQL注入中的常见函数
 双查询注入双查询注入其实就是一个select语句中再嵌套一个select语句，嵌套的这个语句称作子查询，例如：
-1select 
+1select concat((select database()));
+这条sql语句先执行select database()，然后在执行外边的concat()函数来输出结果，后续注入，需要先了解count()、rand()、floor()、concat()这三个函数的功能以及group by语句的用法。
+
+ count()：汇总数据函数    rand()：随机输出一个小于1的正数    floor()：把输出的结果取整    group by语句：把结果分组输出    concat()：连接两条语句
+
+rand()函数
+1select rand();
+随机输出一个小于1的正数
+floor()函数现在加上
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1624,7 +1656,13 @@
         
           
           SQLi-Labs下载、安装（环境搭建）SQLi-Labs 下载下载地址：https://github.com/Audi-1/sqli-labs
-SQLi-Labs 安装1、下载、安装、启动phpstudy（www.phpstudy.net）。2、将下载的 SQLi-Labs.zip 解压到phps
+SQLi-Labs 安装1、下载、安装、启动phpstudy（www.phpstudy.net）。2、将下载的 SQLi-Labs.zip 解压到phpstudy网站根目录下。
+1\phpStudy\WWW\sqli-labs
+
+3、修改 db-creds.inc 里代码如下：
+1\phpStudy\WWW\sqli-labs\sql-connections
+
+1234567&lt;?php//give your mysql connection username n password$dbuser =&#x27;root&#x27;;$dbpass =&#x27;root&#x27;;$dbname =&quot;security&quot;;$host = &#x27;localhost&#x27;;$dbname1 = &quot;cha
           ...
           <!--noindex-->
           <div class="post-button text-center">

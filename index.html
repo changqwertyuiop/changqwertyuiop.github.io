@@ -82,12 +82,12 @@
 
 
 
-<meta name="description" content="人之所以能是相信能。">
+<meta name="description" content="人之所以能是因为相信能。">
 <meta property="og:type" content="website">
 <meta property="og:title" content="花间一壶酒">
 <meta property="og:url" content="http://example.com/index.html">
 <meta property="og:site_name" content="花间一壶酒">
-<meta property="og:description" content="人之所以能是相信能。">
+<meta property="og:description" content="人之所以能是因为相信能。">
 <meta property="og:locale">
 <meta property="article:author" content="徐行之">
 <meta name="twitter:card" content="summary">
@@ -162,7 +162,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle">人之所以能是相信能。</p>
+        <p class="site-subtitle">人之所以能是因为相信能。</p>
       
   </div>
 
@@ -389,7 +389,12 @@ js 计时器 setInterval()函数的使用
 1setInterval(function()&#123;alert(&quot;Hello&quot;)&#125;);
 
 浏览器一直弹窗 Hello
-java DOM 中 do
+java DOM 中 document.getElementById() ，用于获取对应id里的东西。
+
+查看源码会发现左边客服投票按钮的id是“left_button”click()
+1setInterval(function()&#123;document.getElementById(&quot;left_button&quot;).click();&#125;,1);
+
+python自动投票脚本12345from selenium import webdriverdriver = webdriver.Chrome(&quot;C:\Program Files (x86)\Google\Chrome\Applic
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -544,7 +549,7 @@ java DOM 中 do
           [0CTF 2016]piapiapia
 目录扫描发现  www.zip  下载打开
 
-index.php1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253
+index.php1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253&lt;?php	require_once(&#x27;class.php&#x27;);	if($_SESSION[&#x27;username&#x27;]) &#123;		header(&#x27;Location: profile.php&#x27;);		exit;	&#125;	if($_POST[&#x27;username&#x27;] &amp;&amp; $_POST[&#x27;password&#x27;]) &#123;		$username = $_POST[&#x27;username&#x27;];		$password = $_POST[&#x27;pass
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -699,7 +704,10 @@ index.php12345678910111213141516171819202122232425262728293031323334353637383940
           11
 查看源码
 
-1234&lt;input name=&quot;t_link&quot;  value=&quot;&quot; type=&quot;hidden&quot;&gt;&lt;input name=&quot;t_history&quot;  value=&quot;&quot;
+1234&lt;input name=&quot;t_link&quot;  value=&quot;&quot; type=&quot;hidden&quot;&gt;&lt;input name=&quot;t_history&quot;  value=&quot;&quot; type=&quot;hidden&quot;&gt;&lt;input name=&quot;t_sort&quot;  value=&quot;&quot; type=&quot;hidden&quot;&gt;&lt;input name=&quot;t_ref&quot;  value=&quot;&quot; type=&quot;hidden&quot;&gt;
+
+尝试用第十关的方法，发现没有一个隐藏的成功操作。
+12345$str = $_GET[&quot;keyword&quot;];$str00 = $_GET[&quot;t_sort&quot;];$str11=$_S
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -851,7 +859,14 @@ index.php12345678910111213141516171819202122232425262728293031323334353637383940
       
         
           
-          XSSXSS，全称跨站脚本，XSS跨站脚本（Cross-Site Scripting，XSS（与css-层叠样式表冲突，所以命名为xss）），某种意义上也是一种注入攻击，是指攻击者在页面中注入恶意的脚本代码，当受害者访问该页面时，恶意代码会在其浏览器上执行，需要注意的是，XSS不仅仅扩展JavaSc
+          XSSXSS，全称跨站脚本，XSS跨站脚本（Cross-Site Scripting，XSS（与css-层叠样式表冲突，所以命名为xss）），某种意义上也是一种注入攻击，是指攻击者在页面中注入恶意的脚本代码，当受害者访问该页面时，恶意代码会在其浏览器上执行，需要注意的是，XSS不仅仅扩展JavaScript，还包括flash等其他脚本语言。根据恶意代码是否存储在服务器中，XSS可以分为存储型的XSS与反射型的XSS。
+XSS-Lab
+1没有明确的xss攻击点，所以可以尝试在URL栏里尝试输入弹框语句。
+1&lt;script&gt;alert(1)&lt;/script&gt;
+
+
+源码：
+12345&lt;?phpini_set(&quot;display_errors&quot;, 0);$str = $_GET[&quot;name&quot;];echo &quot;&lt;h2 align=center&gt;欢迎用户&quot;.$str.&quot;&lt;/h2&gt;&
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1004,7 +1019,7 @@ index.php12345678910111213141516171819202122232425262728293031323334353637383940
         
           
           [WesternCTF2018]shrine参考：SSTI模板注入
-12345678910111213141516import flask import os app = flask.Flask(__name__) app.config[&#x27;FLAG&#x27;] = os.environ.
+12345678910111213141516import flask import os app = flask.Flask(__name__) app.config[&#x27;FLAG&#x27;] = os.environ.pop(&#x27;FLAG&#x27;) @app.route(&#x27;/&#x27;) def index(): return open(__file__).read() @app.route(&#x27;/shrine/&#x27;) def shrine(shrine): def safe_jinja(s): s = s.replace(&#x27;(&#x27;, &#x27;&#x27;).replace(&#x27;)&#x27;, &#x27;&#x27;) blacklist = [&#x27;config&#x27;, &#x27;self&#x27;] return 
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1157,7 +1172,7 @@ index.php12345678910111213141516171819202122232425262728293031323334353637383940
         
           
           Mai查看源码 www.zip下载得到 index.php
-123456789101112131415161718192021222324252627282930313233343536&lt;?phperror_reporting(0);class baby&#123;	public $baby;
+123456789101112131415161718192021222324252627282930313233343536&lt;?phperror_reporting(0);class baby&#123;	public $baby;	public function __construct()&#123;		$this-&gt;baby=$_SERVER[&quot;REMOTE_ADDR&quot;];	&#125;	public function __toString()&#123;		echo &quot;key:************&quot;;	&#125;&#125;class flag&#123;	public $baby;	public $code;	public function __construct($baby)&#123;		$this-&gt;baby = $baby;	&#125;	publ
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1311,7 +1326,9 @@ index.php12345678910111213141516171819202122232425262728293031323334353637383940
           
           [MRCTF2020]套娃
 
-1234567891011&lt;!--//1st$query = $_SERVER[&#x27;QUERY_STRING&#x27;]; if( substr_count($query, &#x27;_&#x27;) !== 0 || substr_count($qu
+1234567891011&lt;!--//1st$query = $_SERVER[&#x27;QUERY_STRING&#x27;]; if( substr_count($query, &#x27;_&#x27;) !== 0 || substr_count($query, &#x27;%5f&#x27;) != 0 )&#123;    die(&#x27;Y0u are So cutE!&#x27;);&#125; if($_GET[&#x27;b_u_p_t&#x27;] !== &#x27;23333&#x27; &amp;&amp; preg_match(&#x27;/^23333$/&#x27;, $_GET[&#x27;b_u_p_t&#x27;]))&#123;    echo &quot;you are going to the next ~&quot;;&#125;!--&gt;
+
+12第一个if 中substr_count() 函数
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1465,7 +1482,10 @@ index.php12345678910111213141516171819202122232425262728293031323334353637383940
           
           参考：由浅入深理解PHP反序列化漏洞
 序列化与反序列化序列化是为了方便于数据的传输，形象化理解就像物流的过程。你想把一张桌子通过从a–&gt;b，一张桌子肯定不好运输，因此需要把它拆开（这个拆的过程就是序列化）；等到达了b需要把他组装起来（装的过程就是反序列化）。
-什么是序列化先知道json数据，每
+什么是序列化先知道json数据，每组数据使用,分隔开，数据内使用:分隔键和值。
+123&lt;?php $arr = array(&quot;No1&quot;=&gt;&quot;m0c1nu7&quot;,&quot;No2&quot;=&gt;&quot;mochu7&quot;,&quot;No3&quot;=&gt;&quot;chumo&quot;);echo json_encode($arr);
+
+12PS C:\Users\Administrator\Desktop\Test\php&gt; php .\test1.php&#123;&quot;No1&quot;:&quot;m0c1nu7&quot;,&qu
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1618,7 +1638,7 @@ index.php12345678910111213141516171819202122232425262728293031323334353637383940
         
           
           
-1234567891011121314151617181920212223242526272829303132 &lt;?php/** * Created by PhpStorm. * User: jinzhao * Date: 2019/10/6 * Time: 8:04 PM */highli
+1234567891011121314151617181920212223242526272829303132 &lt;?php/** * Created by PhpStorm. * User: jinzhao * Date: 2019/10/6 * Time: 8:04 PM */highlight_file(__FILE__);class BUU &#123;   public $correct = &quot;&quot;;   public $input = &quot;&quot;;   public function __destruct() &#123;       try &#123;           $this-&gt;correct = base64_encode(uniqid());           if($this-&gt;correct === $this-&gt;input) &#123;               echo file_get_c
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1772,7 +1792,7 @@ index.php12345678910111213141516171819202122232425262728293031323334353637383940
           
           [GWCTF 2019]枯燥的抽奖发现check.php
 
-1234567891011121314151617181920212223242526272829eYBBSvdhNf&lt;?php#这不是抽奖程序的源代码！不许看！header(&quot;Content-Type: text/html
+1234567891011121314151617181920212223242526272829eYBBSvdhNf&lt;?php#这不是抽奖程序的源代码！不许看！header(&quot;Content-Type: text/html;charset=utf-8&quot;);session_start();if(!isset($_SESSION[&#x27;seed&#x27;]))&#123;$_SESSION[&#x27;seed&#x27;]=rand(0,999999999);&#125;mt_srand($_SESSION[&#x27;seed&#x27;]);$str_long1 = &quot;abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ&quot;;$str=&#x27;&#x27;;$len1=20;for ( $i = 0
           ...
           <!--noindex-->
           <div class="post-button text-center">

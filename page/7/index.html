@@ -82,12 +82,12 @@
 
 
 
-<meta name="description" content="人之所以能是相信能。">
+<meta name="description" content="人之所以能是因为相信能。">
 <meta property="og:type" content="website">
 <meta property="og:title" content="花间一壶酒">
 <meta property="og:url" content="http://example.com/page/7/index.html">
 <meta property="og:site_name" content="花间一壶酒">
-<meta property="og:description" content="人之所以能是相信能。">
+<meta property="og:description" content="人之所以能是因为相信能。">
 <meta property="og:locale">
 <meta property="article:author" content="徐行之">
 <meta name="twitter:card" content="summary">
@@ -162,7 +162,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle">人之所以能是相信能。</p>
+        <p class="site-subtitle">人之所以能是因为相信能。</p>
       
   </div>
 
@@ -385,8 +385,13 @@
 extract 漏洞extract()函数
 extract()漏洞
 extract()函数引入变量，当冲突的时候，会引入新的变量，意思也就是覆盖原来的变量。
-数组中有同名元素的
-          ...
+数组中有同名元素的时候，会覆盖。
+extract()  获得一个get值是liwu。content从flag里获得一个去空的flag字符串。如果相等，输出flag。
+构造?liwu=&amp;flag=
+flag{s0metimes^its-useful}
+$$漏洞由于第8，12-15行间的代码会将$ flag的值给覆盖掉，所以只能利用第一个foreach先将$ flag的值赋给$ _200，然后利用die($ _200)将原本的flag值打印出来。flag{Variable_coverage_is_interesting}
+
+          
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2020/11/28/php%E5%8F%98%E9%87%8F%E8%A6%86%E7%9B%96/#more" rel="contents">
@@ -537,7 +542,9 @@ extract()函数引入变量，当冲突的时候，会引入新的变量，意�
       
         
           
-          BASIC RCERCE英文全称：remote command/code execute（远程命令/代码执行漏洞）分为远程命令执行ping和远程代码执行evel。漏洞出现的原因：没有在输入口做输入处理。我们常见的路由器、防火墙、入侵检测等设备的web管理界面上一般会给用户提供一个ping操作的web
+          BASIC RCERCE英文全称：remote command/code execute（远程命令/代码执行漏洞）分为远程命令执行ping和远程代码执行evel。漏洞出现的原因：没有在输入口做输入处理。我们常见的路由器、防火墙、入侵检测等设备的web管理界面上一般会给用户提供一个ping操作的web界面，用户从web界面输入目标IP，提交后，后台会对该IP地址进行一次ping测试，并返回测试结果。其实这就是一个接口，可以让攻击者直接向后台服务器远程注入操作系统命令或者代码，从而控制后台系统，这就是RCE漏洞。相当于直接操控服务器电脑的cmd命令行！高危漏洞！
+参考：https://blog.csdn.net/weixin_43486981/article/details/107997468https://www.cnblogs.com/NPFS/p/13797436.html
+basic rcePHP代码显示，要求将命令赋值给a然后执行,先查看一下根目录文件 /?a=system(“ls
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -693,7 +700,20 @@ extract()函数引入变量，当冲突的时候，会引入新的变量，意�
 RCE
 eval执行PHP代码显示，要求将命令赋值给cmd然后执行,先查看一下根目录文件 /?cmd=system(“ls”);！切记最后的分号不可省略！
 
-没有有用
+没有有用的文件。查看上一级的文件夹/?cmd=system(“ls /“);
+打开flag文件发现FLAG， /?cmd=system(“cat /flag_987”);
+ctfhub{aa7f6908d8b32a47e43adbaf}
+文件包含打开shell，
+request = post + get
+查看当前目录下的文件ls
+没有看见flag文件，查看上一级目录
+打开flag文件
+ctfhub{fddc1f2639fb2eff6a7f9200}
+php://input
+
+
+查看phpinfo，发现以下字段，证明是可以使用php://input的。
+查看目录，未发现flag相关文件查看上一级文件目录
           ...
           <!--noindex-->
           <div class="post-button text-center">
