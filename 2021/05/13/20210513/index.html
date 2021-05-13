@@ -375,6 +375,11 @@
           
 
           
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
 
           
 
@@ -458,7 +463,7 @@
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$a = <span class="built_in">array</span>(</span><br><span class="line">    <span class="string">&quot;one&quot;</span> =&gt; <span class="number">1</span>,</span><br><span class="line">    <span class="string">&quot;two&quot;</span> =&gt; <span class="number">2</span>,</span><br><span class="line">    <span class="string">&quot;three&quot;</span> =&gt; <span class="number">3</span>,</span><br><span class="line">    <span class="string">&quot;seventeen&quot;</span> =&gt; <span class="number">17</span></span><br><span class="line">);</span><br><span class="line">foreach ($a as $k =&gt; $v) &#123;</span><br><span class="line">    echo <span class="string">&quot;\$a[$k] =&gt; $v.\n&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line">输出 $a[one] =&gt; <span class="number">1.</span> $a[two] =&gt; <span class="number">2.</span> $a[three] =&gt; <span class="number">3.</span> $a[seventeen] =&gt; <span class="number">17.</span> </span><br></pre></td></tr></table></figure>
 
 <h3 id="数组绕过正则即相关"><a href="#数组绕过正则即相关" class="headerlink" title="数组绕过正则即相关"></a>数组绕过正则即相关</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">md5(Array()) = null</span><br><span class="line">sha1(Array()) = null</span><br><span class="line">ereg(pattern,Array()) =null</span><br><span class="line">preg_match(pattern,Array()) = <span class="literal">false</span></span><br><span class="line"><span class="built_in">strcmp</span>(Array(), “abc”) =null</span><br><span class="line">strpos(Array(),“abc”) = null</span><br><span class="line"><span class="built_in">strlen</span>(Array()) = null</span><br></pre></td></tr></table></figure>
-<h3 id="改变序列化长度，导致反序列化漏洞"><a href="#改变序列化长度，导致反序列化漏洞" class="headerlink" title="改变序列化长度，导致反序列化漏洞"></a>改变序列化长度，导致反序列化漏洞</h3><p>unserialize(str) 会忽略能够正常序列化的字符串后面的字符串。也是这到题最厉害的一点。像这样的一个字符串，我们可以可以不用反序列话，就能知道它反序列化后是什么，因为它是有规律的。<br>a:4:{s:5:“phone”;s:11:“11111111111”;s:5:“email”;s:11:“<a href="mailto:&#x31;&#97;&#x32;&#x73;&#x40;&#113;&#x71;&#46;&#x63;&#111;&#109;">&#x31;&#97;&#x32;&#x73;&#x40;&#113;&#x71;&#46;&#x63;&#111;&#109;</a>”;s:8:“nickname”;s:3:“123”;s:5:“photo”;s:39:“upload/f3b94e88bd1bd325af6f62828c8785dd”;}<br>a:4指的是由一个数组序列化而来，并且有4个值。如果是对象的话，好像是把a改成了O。然后就是一个键值名，一个变量值：<br>s:5:”phone”;第一个键值名，是string类型的，长度为五，s:11:”11111111111”;第一个变量值，string类型，长度为11.这就是它的规律。<br><strong>如果我们在这个序列化字符串的后面，再加上一些字符，后面的字符是不会被反序列化的。</strong></p>
+<h3 id="改变序列化长度，导致反序列化漏洞"><a href="#改变序列化长度，导致反序列化漏洞" class="headerlink" title="改变序列化长度，导致反序列化漏洞"></a>改变序列化长度，导致反序列化漏洞</h3><p>unserialize(str) 会忽略能够正常序列化的字符串后面的字符串。也是这到题最厉害的一点。像这样的一个字符串，我们可以可以不用反序列话，就能知道它反序列化后是什么，因为它是有规律的。<br>a:4:{s:5:“phone”;s:11:“11111111111”;s:5:“email”;s:11:“<a href="mailto:&#x31;&#97;&#50;&#115;&#x40;&#x71;&#x71;&#x2e;&#99;&#111;&#x6d;">&#x31;&#97;&#50;&#115;&#x40;&#x71;&#x71;&#x2e;&#99;&#111;&#x6d;</a>”;s:8:“nickname”;s:3:“123”;s:5:“photo”;s:39:“upload/f3b94e88bd1bd325af6f62828c8785dd”;}<br>a:4指的是由一个数组序列化而来，并且有4个值。如果是对象的话，好像是把a改成了O。然后就是一个键值名，一个变量值：<br>s:5:”phone”;第一个键值名，是string类型的，长度为五，s:11:”11111111111”;第一个变量值，string类型，长度为11.这就是它的规律。<br><strong>如果我们在这个序列化字符串的后面，再加上一些字符，后面的字符是不会被反序列化的。</strong></p>
 <h3 id=""><a href="#" class="headerlink" title=""></a></h3><p>序列化数组</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$a = array(&#x27;123&#x27;, &#x27;abc&#x27;, &#x27;4567&#x27;,&#x27;defg&#x27;);</span><br><span class="line">var_dump(serialize($a));</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
 
@@ -709,6 +714,26 @@
 
 
         
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
 
 
 
